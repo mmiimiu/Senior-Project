@@ -659,18 +659,15 @@ class ThaiNLPSearchEngine:
 
             # C. Budget / Rental Price Matching (Weight: 20%)
             price = condo["price_per_month"]
+            budget_hard_fail = False
             if entities["max_price"]:
                 max_p = entities["max_price"]
                 if price <= max_p:
-                    # Within budget bonus
-                    savings = max_p - price
                     score += 20.0
                     reasons.append(f"💰 ราคาอยู่ในงบ (฿{price:,}/ด. จากงบ ฿{max_p:,})")
-                elif price <= max_p * 1.15:  # Slightly above budget (15% grace)
-                    score += 8.0
-                    reasons.append(f"💰 เกินงบเล็กน้อย (฿{price:,}/ด.)")
                 else:
-                    score -= 25.0  # Over budget penalty
+                    # Price exceeds max budget -> hard exclude
+                    budget_hard_fail = True
             elif entities["min_price"]:
                 min_p = entities["min_price"]
                 if price >= min_p:
@@ -699,8 +696,10 @@ class ThaiNLPSearchEngine:
             # Normalize final Match Score to 0 - 100%
             final_match_pct = max(0, min(100, int(score)))
 
-            # If location mismatch occurred when a specific station was requested, exclude or heavily reduce
+            # Hard exclusions (ตัดทิ้งเลย ไม่แสดงในผล)
             if location_mismatch:
+                final_match_pct = 0
+            if budget_hard_fail:          # ราคาเกิน 2x งบที่ระบุ
                 final_match_pct = 0
 
             # If user explicitly specified Pet Friendly and condo is NOT pet friendly, keep match low
