@@ -1,14 +1,7 @@
 import React from 'react'
-import { Search, GitCompare, BarChart3, Building2, Sparkles, GraduationCap, Sun, Moon } from 'lucide-react'
+import { Sparkles, GraduationCap, Building2, Sun, Moon } from 'lucide-react'
 
-export default function Navbar({ activeTab, setActiveTab, totalCondos = 50, theme, toggleTheme }) {
-  const navItems = [
-    { id: 'search', label: 'ค้นหาด้วยภาษาธรรมชาติ', icon: Search, badge: 'Thai NLP' },
-    { id: 'compare', label: 'โหมดเปรียบเทียบ', icon: GitCompare, badge: 'NLP vs Keyword' },
-    { id: 'evaluation', label: 'ห้องทดลองประเมินผลวิจัย', icon: BarChart3, badge: 'Evaluation Lab' },
-    { id: 'explorer', label: 'คลังคอนโดทั้งหมด', icon: Building2, count: totalCondos }
-  ]
-
+export default function Navbar({ totalCondos = 0, theme, toggleTheme }) {
   return (
     <header className="glass-panel" style={{ position: 'sticky', top: 12, zIndex: 50, margin: '0 16px 24px 16px', padding: '12px 24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
@@ -43,62 +36,14 @@ export default function Navbar({ activeTab, setActiveTab, totalCondos = 50, them
           </div>
         </div>
 
-        {/* Navigation Tabs & Theme Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          
-          <nav style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'var(--bg-subtle)', padding: 4, borderRadius: 16, border: '1px solid var(--border-color)' }}>
-            {navItems.map((item) => {
-              const Icon = item.icon
-              const isActive = activeTab === item.id
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 8,
-                    padding: '8px 16px',
-                    borderRadius: 12,
-                    border: 'none',
-                    background: isActive ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : 'transparent',
-                    color: isActive ? '#ffffff' : 'var(--text-secondary)',
-                    cursor: 'pointer',
-                    fontWeight: isActive ? 600 : 500,
-                    fontSize: '0.88rem',
-                    fontFamily: 'var(--font-thai)',
-                    transition: 'all 0.2s ease',
-                    boxShadow: isActive ? '0 4px 12px rgba(99, 102, 241, 0.35)' : 'none'
-                  }}
-                >
-                  <Icon size={16} color={isActive ? '#ffffff' : 'var(--text-secondary)'} />
-                  <span>{item.label}</span>
-                  {item.badge && (
-                    <span style={{ 
-                      fontSize: '0.68rem', 
-                      padding: '2px 6px', 
-                      borderRadius: 9999, 
-                      background: isActive ? 'rgba(255, 255, 255, 0.2)' : 'rgba(99, 102, 241, 0.12)',
-                      color: isActive ? '#ffffff' : 'var(--text-secondary)'
-                    }}>
-                      {item.badge}
-                    </span>
-                  )}
-                  {item.count !== undefined && (
-                    <span style={{ 
-                      fontSize: '0.72rem', 
-                      padding: '2px 7px', 
-                      borderRadius: 9999, 
-                      background: isActive ? 'rgba(255, 255, 255, 0.2)' : 'rgba(99, 102, 241, 0.15)',
-                      color: isActive ? '#ffffff' : '#6366f1'
-                    }}>
-                      {item.count}
-                    </span>
-                  )}
-                </button>
-              )
-            })}
-          </nav>
+        {/* Right Info: Total Condos & Theme Toggle */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {totalCondos > 0 && (
+            <div className="badge badge-cyan" style={{ fontSize: '0.82rem', padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Building2 size={14} />
+              <span>{totalCondos} โครงการในระบบ</span>
+            </div>
+          )}
 
           {/* Theme Toggle Button */}
           <button
@@ -106,7 +51,7 @@ export default function Navbar({ activeTab, setActiveTab, totalCondos = 50, them
             className="btn btn-secondary"
             title={theme === 'dark' ? 'สลับเป็นโหมดสว่าง (Light Mode)' : 'สลับเป็นโหมดมืด (Dark Mode)'}
             style={{
-              padding: '8px 12px',
+              padding: '8px 14px',
               borderRadius: 14,
               display: 'flex',
               alignItems: 'center',
@@ -119,17 +64,16 @@ export default function Navbar({ activeTab, setActiveTab, totalCondos = 50, them
           >
             {theme === 'dark' ? (
               <>
-                <Sun size={17} color="#fbbf24" />
+                <Sun size={16} color="#fbbf24" />
                 <span>โหมดสว่าง</span>
               </>
             ) : (
               <>
-                <Moon size={17} color="#6366f1" />
+                <Moon size={16} color="#6366f1" />
                 <span>โหมดมืด</span>
               </>
             )}
           </button>
-
         </div>
 
       </div>

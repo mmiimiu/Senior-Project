@@ -1,23 +1,18 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { Sparkles, Building, GitCompare, AlertCircle, GraduationCap, ArrowUpDown } from 'lucide-react'
+import { Sparkles, Building, AlertCircle, GraduationCap, ArrowUpDown, X } from 'lucide-react'
 import Navbar from './components/Navbar'
 import SearchBar from './components/SearchBar'
 import EntityBadges from './components/EntityBadges'
 import CondoCard from './components/CondoCard'
 import CondoModal from './components/CondoModal'
-import ComparisonView from './components/ComparisonView'
-import EvaluationLab from './components/EvaluationLab'
-import CondoExplorer from './components/CondoExplorer'
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'dark'
   })
-  const [activeTab, setActiveTab] = useState('search')
-  const [query, setQuery] = useState('หาคอนโดติด BTS เลี้ยงสัตว์ได้ เงียบสงบ งบไม่เกิน 18,000')
+  const [query, setQuery] = useState('')
   const [sortBy, setSortBy] = useState('match')
   const [nlpResults, setNlpResults] = useState(null)
-  const [keywordResults, setKeywordResults] = useState(null)
   const [allCondos, setAllCondos] = useState([])
   const [selectedCondo, setSelectedCondo] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -41,35 +36,24 @@ export default function App() {
         if (data.condos) setAllCondos(data.condos)
       })
       .catch(err => console.error('Failed to load condos:', err))
-    
-    // Initial search
-    handleSearch('หาคอนโดติด BTS เลี้ยงสัตว์ได้ เงียบสงบ งบไม่เกิน 18,000')
   }, [])
 
   const handleSearch = async (searchQuery) => {
-    if (!searchQuery.trim()) return
+    if (!searchQuery || !searchQuery.trim()) {
+      setNlpResults(null)
+      return
+    }
     setIsLoading(true)
     setError(null)
 
     try {
-      // 1. NLP Semantic Search
       const nlpRes = await fetch('/api/search/nlp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: searchQuery, top_k: 20 })
+        body: JSON.stringify({ query: searchQuery, top_k: 50 })
       })
       const nlpData = await nlpRes.json()
       setNlpResults(nlpData)
-
-      // 2. Traditional Keyword Search (for comparison mode)
-      const kwRes = await fetch('/api/search/keyword', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: searchQuery, top_k: 20 })
-      })
-      const kwData = await kwRes.json()
-      setKeywordResults(kwData)
-
     } catch (err) {
       console.error('Search error:', err)
       setError('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์ กรุณาลองใหม่อีกครั้ง')
@@ -78,27 +62,30 @@ export default function App() {
     }
   }
 
-  const handleTestFromEvaluation = (testQuery) => {
-    setQuery(testQuery)
-    handleSearch(testQuery)
-    setActiveTab('compare') // switch to comparison view to see test result
+  const handleClearSearch = () => {
+    setQuery('')
+    setNlpResults(null)
   }
 
+  // Determine active list: search results or all condos
+  const activeCondos = nlpResults ? (nlpResults.results || []) : allCondos
+
   const sortedCondos = useMemo(() => {
-    const list = [...(nlpResults?.results || [])]
+    const list = [...activeCondos]
     if (sortBy === 'price_asc') return list.sort((a, b) => a.price_per_month - b.price_per_month)
     if (sortBy === 'price_desc') return list.sort((a, b) => b.price_per_month - a.price_per_month)
     if (sortBy === 'distance') return list.sort((a, b) => (a.distance_m || 0) - (b.distance_m || 0))
-    return list.sort((a, b) => (b.match_score || 0) - (a.match_score || 0))
-  }, [nlpResults, sortBy])
+    if (nlpResults) {
+      return list.sort((a, b) => (b.match_score || 0) - (a.match_score || 0))
+    }
+    return list
+  }, [activeCondos, sortBy, nlpResults])
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
       {/* Top Navbar */}
       <Navbar 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab} 
         totalCondos={allCondos.length} 
         theme={theme}
         toggleTheme={toggleTheme}
@@ -115,148 +102,111 @@ export default function App() {
           </div>
         )}
 
-        {/* TAB 1: Smart NLP Search */}
-        {activeTab === 'search' && (
-          <div className="animate-fade-in">
+        <div className="animate-fade-in">
+          
+          {/* Real Estate Portal Hero Section */}
+          <div style={{ textAlign: 'center', margin: '16px auto 32px auto', maxWidth: 800 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)', padding: '4px 14px', borderRadius: 9999, marginBottom: 14 }}>
+              <Sparkles size={14} color="#818cf8" />
+              <span style={{ fontSize: '0.82rem', color: '#6366f1', fontWeight: 600 }}>
+                Thai NLP Condominium Search Platform
+              </span>
+            </div>
             
-            {/* Real Estate Portal Hero Section */}
-            <div style={{ textAlign: 'center', margin: '16px auto 32px auto', maxWidth: 800 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)', padding: '4px 14px', borderRadius: 9999, marginBottom: 14 }}>
-                <Sparkles size={14} color="#818cf8" />
-                <span style={{ fontSize: '0.82rem', color: '#6366f1', fontWeight: 600 }}>
-                  Smart Real-Estate NLP Portal
-                </span>
-              </div>
-              
-              <h2 style={{ fontSize: '2.2rem', fontWeight: 800, margin: '0 0 10px 0', lineHeight: 1.25, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, var(--text-heading), #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                ค้นหาคอนโดมิเนียมตามไลฟ์สไตล์ที่คุณต้องการ
-              </h2>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', margin: '0 auto', maxWidth: 650, lineHeight: 1.5 }}>
-                ค้นหาคอนโดตามแนวรถไฟฟ้า BTS/MRT พร้อมระบุเงื่อนไขสัตว์เลี้ยง งบประมาณ และไลฟ์สไตล์ที่ต้องการได้อย่างอิสระ
-              </p>
-            </div>
-
-            {/* Natural Language Search Input */}
-            <SearchBar 
-              query={query}
-              setQuery={setQuery}
-              onSearch={handleSearch}
-              isLoading={isLoading}
-            />
-
-            {/* Extracted Entity Badges */}
-            {nlpResults?.entities && (
-              <EntityBadges 
-                entities={nlpResults.entities} 
-              />
-            )}
-
-            {/* Search Results Section */}
-            <div style={{ marginTop: 24 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 12 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: 'var(--text-heading)' }}>
-                    รายการคอนโดที่ตรงกับเงื่อนไข
-                  </h3>
-                  {nlpResults && (
-                    <span className="badge badge-indigo">
-                      พบ {nlpResults.total_found} โครงการ
-                    </span>
-                  )}
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-                  {/* Sorting Controls */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', borderRadius: 10, padding: '4px 10px' }}>
-                    <ArrowUpDown size={14} color="var(--text-muted)" />
-                    <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>จัดเรียง:</span>
-                    <select
-                      value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value)}
-                      style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', fontSize: '0.82rem', outline: 'none', cursor: 'pointer', fontFamily: 'var(--font-thai)' }}
-                    >
-                      <option value="match" style={{ background: 'var(--bg-modal)' }}>🌟 ความตรงใจสูงสุด (% Match)</option>
-                      <option value="price_asc" style={{ background: 'var(--bg-modal)' }}>💰 ราคา: ต่ำ ➔ สูง</option>
-                      <option value="price_desc" style={{ background: 'var(--bg-modal)' }}>💎 ราคา: สูง ➔ ต่ำ</option>
-                      <option value="distance" style={{ background: 'var(--bg-modal)' }}>🚆 ใกล้รถไฟฟ้าที่สุด</option>
-                    </select>
-                  </div>
-
-                  <button
-                    onClick={() => setActiveTab('compare')}
-                    className="btn btn-outline-primary"
-                    style={{ fontSize: '0.82rem', padding: '6px 14px' }}
-                  >
-                    <GitCompare size={14} />
-                    <span>เปรียบเทียบกับระบบเดิม</span>
-                  </button>
-                </div>
-              </div>
-
-              {/* Grid of Ranked Condo Cards */}
-              {isLoading ? (
-                <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-muted)' }}>
-                  <div style={{ width: 40, height: 40, border: '3px solid rgba(99, 102, 241, 0.2)', borderTopColor: '#6366f1', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 16px auto' }} />
-                  <p>กำลังวิเคราะห์ประโยคภาษาธรรมชาติและจับคู่คอนโดมิเนียม...</p>
-                  <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
-                </div>
-              ) : sortedCondos.length > 0 ? (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 }}>
-                  {sortedCondos.map((condo) => (
-                    <CondoCard 
-                      key={condo.id}
-                      condo={condo}
-                      onSelect={(c) => setSelectedCondo(c)}
-                      searchType="nlp"
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="glass-panel" style={{ textAlign: 'center', padding: '48px 24px' }}>
-                  <Building size={48} color="var(--text-muted)" style={{ margin: '0 auto 16px auto' }} />
-                  <h4 style={{ fontSize: '1.1rem', marginBottom: 6 }}>ไม่พบคอนโดมิเนียมที่ตรงกับเงื่อนไข</h4>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                    ลองปรับเปลี่ยนข้อความค้นหา หรือคลิกประโยคตัวอย่างด้านบนเพื่อทดสอบ
-                  </p>
-                </div>
-              )}
-            </div>
-
+            <h2 style={{ fontSize: '2.2rem', fontWeight: 800, margin: '0 0 10px 0', lineHeight: 1.25, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, var(--text-heading), #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              ค้นหาคอนโดมิเนียมตามไลฟ์สไตล์ที่คุณต้องการ
+            </h2>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', margin: '0 auto', maxWidth: 650, lineHeight: 1.5 }}>
+              ค้นหาคอนโดตามแนวรถไฟฟ้า BTS/MRT พร้อมระบุเงื่อนไขสัตว์เลี้ยง งบประมาณ และไลฟ์สไตล์ที่ต้องการได้อย่างอิสระ
+            </p>
           </div>
-        )}
 
-        {/* TAB 2: Side-by-Side Comparison */}
-        {activeTab === 'compare' && (
-          <div>
-            <SearchBar 
-              query={query}
-              setQuery={setQuery}
-              onSearch={handleSearch}
-              isLoading={isLoading}
-            />
-
-            <ComparisonView 
-              query={query}
-              nlpResults={nlpResults}
-              keywordResults={keywordResults}
-              onSelectCondo={(c) => setSelectedCondo(c)}
-              isLoading={isLoading}
-            />
-          </div>
-        )}
-
-        {/* TAB 3: Evaluation Lab & Research Dashboard */}
-        {activeTab === 'evaluation' && (
-          <EvaluationLab onTestQuery={handleTestFromEvaluation} />
-        )}
-
-        {/* TAB 4: Condo Explorer */}
-        {activeTab === 'explorer' && (
-          <CondoExplorer 
-            condos={allCondos} 
-            onSelectCondo={(c) => setSelectedCondo(c)} 
+          {/* Natural Language Search Input */}
+          <SearchBar 
+            query={query}
+            setQuery={setQuery}
+            onSearch={handleSearch}
+            isLoading={isLoading}
           />
-        )}
+
+          {/* Extracted Entity Badges (Shows when search is performed) */}
+          {nlpResults?.entities && (
+            <EntityBadges 
+              entities={nlpResults.entities} 
+            />
+          )}
+
+          {/* Search Results & Real-Estate Header Section */}
+          <div style={{ marginTop: 28 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: 'var(--text-heading)' }}>
+                  {nlpResults ? 'ผลการค้นหาคอนโดมิเนียม' : 'รายการคอนโดมิเนียมทั้งหมด'}
+                </h3>
+                <span className="badge badge-indigo">
+                  {nlpResults ? `พบ ${nlpResults.total_found} โครงการ` : `ทั้งหมด ${allCondos.length} โครงการ`}
+                </span>
+                {nlpResults && (
+                  <button
+                    onClick={handleClearSearch}
+                    className="btn btn-secondary"
+                    style={{ padding: '4px 10px', fontSize: '0.75rem', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 4 }}
+                  >
+                    <X size={12} />
+                    <span>แสดงคอนโดทั้งหมด</span>
+                  </button>
+                )}
+              </div>
+
+              {/* Sorting Controls */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', borderRadius: 10, padding: '5px 12px' }}>
+                <ArrowUpDown size={14} color="var(--text-muted)" />
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', fontWeight: 500 }}>จัดเรียง:</span>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', fontSize: '0.82rem', outline: 'none', cursor: 'pointer', fontFamily: 'var(--font-thai)' }}
+                >
+                  {nlpResults && (
+                    <option value="match" style={{ background: 'var(--bg-modal)' }}>🌟 ความตรงใจสูงสุด (% Match)</option>
+                  )}
+                  <option value="price_asc" style={{ background: 'var(--bg-modal)' }}>💰 ราคา: ต่ำ ➔ สูง</option>
+                  <option value="price_desc" style={{ background: 'var(--bg-modal)' }}>💎 ราคา: สูง ➔ ต่ำ</option>
+                  <option value="distance" style={{ background: 'var(--bg-modal)' }}>🚆 ใกล้รถไฟฟ้าที่สุด</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Grid of Condo Cards */}
+            {isLoading ? (
+              <div style={{ textAlign: 'center', padding: '60px 0', color: 'var(--text-muted)' }}>
+                <div style={{ width: 40, height: 40, border: '3px solid rgba(99, 102, 241, 0.2)', borderTopColor: '#6366f1', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 16px auto' }} />
+                <p>กำลังวิเคราะห์ประโยคภาษาธรรมชาติและค้นหาคอนโดมิเนียม...</p>
+                <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+              </div>
+            ) : sortedCondos.length > 0 ? (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 }}>
+                {sortedCondos.map((condo) => (
+                  <CondoCard 
+                    key={condo.id}
+                    condo={condo}
+                    onSelect={(c) => setSelectedCondo(c)}
+                    searchType={nlpResults ? 'nlp' : 'browse'}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="glass-panel" style={{ textAlign: 'center', padding: '48px 24px' }}>
+                <Building size={48} color="var(--text-muted)" style={{ margin: '0 auto 16px auto' }} />
+                <h4 style={{ fontSize: '1.1rem', marginBottom: 6 }}>ไม่พบคอนโดมิเนียมที่ตรงกับเงื่อนไข</h4>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                  ลองปรับเปลี่ยนข้อความค้นหา หรือคลิกประโยคตัวอย่างด้านบนเพื่อทดสอบ
+                </p>
+              </div>
+            )}
+          </div>
+
+        </div>
 
       </main>
 
