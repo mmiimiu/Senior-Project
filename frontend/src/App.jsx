@@ -136,10 +136,16 @@ export default function App() {
 
 
 
-          {/* Search Results & Real-Estate Header Section */}
+          {/* Content Layout: Left EntityBadges Sidebar + Right Main Condo Grid */}
           <div style={{ marginTop: 28, display: 'flex', gap: 20, alignItems: 'flex-start' }}>
 
-            {/* Main column: header + grid */}
+            {/* Left: compact 4-dimension entity guide & extraction panel */}
+            <EntityBadges 
+              entities={nlpResults?.entities} 
+              isSearched={Boolean(nlpResults)} 
+            />
+
+            {/* Right: Main column: header + grid */}
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -233,11 +239,6 @@ export default function App() {
               )}
             </div>
 
-            {/* Right: compact 4-dimension entity guide & extraction panel */}
-            <EntityBadges 
-              entities={nlpResults?.entities} 
-              isSearched={Boolean(nlpResults)} 
-            />
           </div>
 
         </div>
