@@ -1,39 +1,49 @@
 import React from 'react'
-import { Sparkles, GraduationCap, Building2, Sun, Moon } from 'lucide-react'
+import { Building2, Sun, Moon, GraduationCap } from 'lucide-react'
 
 export default function Navbar({ totalCondos = 0, theme, toggleTheme }) {
   return (
     <header className="glass-panel" style={{ position: 'sticky', top: 12, zIndex: 50, margin: '0 16px 24px 16px', padding: '12px 24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
         
-        {/* Brand & Project Info */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <div style={{ 
-            width: 44, 
-            height: 44, 
-            borderRadius: 12, 
-            background: 'linear-gradient(135deg, #6366f1, #06b6d4)', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            boxShadow: '0 4px 14px rgba(99, 102, 241, 0.4)'
+        {/* Brand — CONDO wordmark with Thesis Subtitle */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <h1 style={{
+              margin: 0,
+              fontSize: '1.6rem',
+              fontWeight: 900,
+              letterSpacing: '0.18em',
+              fontFamily: 'var(--font-en)',
+              background: 'linear-gradient(135deg, #6366f1 0%, #06b6d4 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>
+              CONDO
+            </h1>
+            <span style={{
+              fontSize: '0.72rem',
+              padding: '2px 8px',
+              borderRadius: 6,
+              background: 'rgba(99, 102, 241, 0.12)',
+              color: 'var(--accent-primary)',
+              border: '1px solid rgba(99, 102, 241, 0.25)',
+              fontWeight: 600,
+            }}>
+              Senior Project
+            </span>
+          </div>
+          <p style={{
+            margin: 0,
+            fontSize: '0.74rem',
+            color: 'var(--text-muted)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 5,
           }}>
-            <Sparkles size={24} color="#ffffff" />
-          </div>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <h1 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, background: 'linear-gradient(90deg, #6366f1, #06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                CondoLifestyle AI
-              </h1>
-              <span className="badge badge-indigo" style={{ fontSize: '0.7rem' }}>
-                Senior Project
-              </span>
-            </div>
-            <p style={{ fontSize: '0.78rem', color: 'var(--text-secondary)', margin: 0, display: 'flex', alignItems: 'center', gap: 4 }}>
-              <GraduationCap size={13} color="var(--text-muted)" />
-              การพัฒนาระบบค้นหาคอนโดมิเนียมจากภาษาธรรมชาติไทยตามเงื่อนไขไลฟ์สไตล์ (ม.รังสิต)
-            </p>
-          </div>
+            <GraduationCap size={13} color="#818cf8" />
+            การพัฒนาระบบค้นหาคอนโดมิเนียมจากข้อความภาษาธรรมชาติภาษาไทยตามเงื่อนไขไลฟ์สไตล์ (ม.รังสิต)
+          </p>
         </div>
 
         {/* Right Info: Total Condos & Theme Toggle */}

@@ -1,119 +1,128 @@
 import React from 'react'
-import { Train, Heart, DollarSign, Sparkles, Tags } from 'lucide-react'
+import { Train, Heart, DollarSign, Sparkles, Tags, ChevronRight } from 'lucide-react'
 
 export default function EntityBadges({ entities }) {
   if (!entities || Object.keys(entities).length === 0) return null
 
   return (
-    <div 
-      className="glass-card animate-fade-in"
+    <div
+      className="animate-fade-in"
       style={{
-        padding: '16px 20px',
-        marginBottom: 28,
-        border: '1px solid rgba(99, 102, 241, 0.25)',
-        background: 'var(--bg-glass)'
+        background: 'var(--bg-glass)',
+        border: '1px solid rgba(99, 102, 241, 0.2)',
+        borderRadius: 14,
+        padding: '12px 14px',
+        width: 240,
+        flexShrink: 0,
+        backdropFilter: 'blur(12px)',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+        alignSelf: 'flex-start',
+        position: 'sticky',
+        top: 80,
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }}></div>
-          <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--text-heading)' }}>
-            ผลการสกัดเงื่อนไข 4 มิติจากข้อความ (Entity Extraction Breakdown)
-          </span>
-        </div>
-        <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
-          Powered by PyThaiNLP & Custom NER Rules
+      {/* Header */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+        <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981', flexShrink: 0 }} />
+        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-heading)', letterSpacing: '0.01em' }}>
+          NLP ตรวจจับได้
         </span>
       </div>
 
-      {/* Extracted Entity Cards Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
-        
-        {/* 1. Mass Transit */}
-        <div style={{ background: 'var(--bg-subtle)', padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 4 }}>
-            <Train size={14} color="#60a5fa" />
-            <span>1. แนวรถไฟฟ้า (Transit)</span>
-          </div>
-          <div style={{ fontWeight: 600, fontSize: '0.92rem' }}>
-            {entities.station ? (
-              <span className="badge badge-cyan">{entities.station}</span>
-            ) : entities.line ? (
-              <span className="badge badge-cyan">{entities.line}</span>
-            ) : (
-              <span style={{ color: 'var(--text-muted)' }}>ไม่ระบุสถานีเจาะจง</span>
-            )}
-          </div>
+      {/* Entity rows */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+
+        {/* Transit */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Train size={12} color="#60a5fa" style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', minWidth: 44 }}>Transit</span>
+          <ChevronRight size={10} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+          <span style={{
+            fontSize: '0.7rem', fontWeight: 600, color: entities.station ? '#60a5fa' : 'var(--text-muted)',
+            background: entities.station ? 'rgba(96,165,250,0.1)' : 'transparent',
+            padding: entities.station ? '1px 7px' : '0',
+            borderRadius: 20,
+            border: entities.station ? '1px solid rgba(96,165,250,0.25)' : 'none',
+            whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 110
+          }}>
+            {entities.station || entities.line || 'ไม่ระบุ'}
+          </span>
         </div>
 
-        {/* 2. Pet Policy */}
-        <div style={{ background: 'var(--bg-subtle)', padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 4 }}>
-            <Heart size={14} color="#f43f5e" />
-            <span>2. นโยบายสัตว์เลี้ยง (Pet Policy)</span>
-          </div>
-          <div style={{ fontWeight: 600, fontSize: '0.92rem' }}>
-            {entities.pet_friendly === true ? (
-              <span className="badge badge-emerald">🐾 อนุญาตเลี้ยงสัตว์ (Pet-Friendly)</span>
-            ) : entities.pet_friendly === false ? (
-              <span className="badge badge-rose">🚫 ปลอดสัตว์เลี้ยง</span>
-            ) : (
-              <span style={{ color: 'var(--text-muted)' }}>ไม่จำกัดเงื่อนไข</span>
-            )}
-          </div>
+        {/* Pet */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <Heart size={12} color="#f43f5e" style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', minWidth: 44 }}>สัตว์เลี้ยง</span>
+          <ChevronRight size={10} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+          <span style={{
+            fontSize: '0.7rem', fontWeight: 600,
+            color: entities.pet_friendly === true ? '#10b981' : entities.pet_friendly === false ? '#f43f5e' : 'var(--text-muted)',
+            background: entities.pet_friendly === true ? 'rgba(16,185,129,0.1)' : entities.pet_friendly === false ? 'rgba(244,63,94,0.1)' : 'transparent',
+            padding: entities.pet_friendly != null ? '1px 7px' : '0',
+            borderRadius: 20,
+            border: entities.pet_friendly === true ? '1px solid rgba(16,185,129,0.25)' : entities.pet_friendly === false ? '1px solid rgba(244,63,94,0.25)' : 'none',
+          }}>
+            {entities.pet_friendly === true ? '🐾 ได้' : entities.pet_friendly === false ? '🚫 ไม่ได้' : 'ไม่ระบุ'}
+          </span>
         </div>
 
-        {/* 3. Budget Range */}
-        <div style={{ background: 'var(--bg-subtle)', padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 4 }}>
-            <DollarSign size={14} color="#f59e0b" />
-            <span>3. ช่วงราคา/งบประมาณ (Budget)</span>
-          </div>
-          <div style={{ fontWeight: 600, fontSize: '0.92rem' }}>
-            {entities.min_price && entities.max_price ? (
-              <span className="badge badge-amber">฿{entities.min_price.toLocaleString()} - ฿{entities.max_price.toLocaleString()}/ด.</span>
-            ) : entities.max_price ? (
-              <span className="badge badge-amber">ไม่เกิน ฿{entities.max_price.toLocaleString()}/เดือน</span>
-            ) : entities.min_price ? (
-              <span className="badge badge-amber">ตั้งแต่ ฿{entities.min_price.toLocaleString()}/เดือนขึ้นไป</span>
-            ) : (
-              <span style={{ color: 'var(--text-muted)' }}>ไม่จำกัดงบประมาณ</span>
-            )}
-          </div>
+        {/* Budget */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <DollarSign size={12} color="#f59e0b" style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', minWidth: 44 }}>งบ</span>
+          <ChevronRight size={10} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+          <span style={{
+            fontSize: '0.7rem', fontWeight: 600,
+            color: (entities.max_price || entities.min_price) ? '#f59e0b' : 'var(--text-muted)',
+            background: (entities.max_price || entities.min_price) ? 'rgba(245,158,11,0.1)' : 'transparent',
+            padding: (entities.max_price || entities.min_price) ? '1px 7px' : '0',
+            borderRadius: 20,
+            border: (entities.max_price || entities.min_price) ? '1px solid rgba(245,158,11,0.25)' : 'none',
+            whiteSpace: 'nowrap'
+          }}>
+            {entities.max_price
+              ? `≤ ฿${entities.max_price.toLocaleString()}`
+              : entities.min_price
+                ? `≥ ฿${entities.min_price.toLocaleString()}`
+                : 'ไม่ระบุ'}
+          </span>
         </div>
 
-        {/* 4. Lifestyle & Ambience */}
-        <div style={{ background: 'var(--bg-subtle)', padding: '10px 14px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 4 }}>
-            <Sparkles size={14} color="#a855f7" />
-            <span>4. ไลฟ์สไตล์และบรรยากาศ (Ambience)</span>
+        {/* Lifestyle */}
+        {entities.lifestyle_tags_matched?.length > 0 && (
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+            <Sparkles size={12} color="#a855f7" style={{ flexShrink: 0, marginTop: 2 }} />
+            <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', minWidth: 44 }}>ไลฟ์</span>
+            <ChevronRight size={10} color="var(--text-muted)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+              {entities.lifestyle_tags_matched.slice(0, 3).map((tag, i) => (
+                <span key={i} style={{
+                  fontSize: '0.65rem', background: 'rgba(168,85,247,0.1)', color: '#a855f7',
+                  border: '1px solid rgba(168,85,247,0.25)', padding: '1px 6px', borderRadius: 20
+                }}>{tag}</span>
+              ))}
+            </div>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
-            {entities.lifestyle_tags_matched && entities.lifestyle_tags_matched.length > 0 ? (
-              entities.lifestyle_tags_matched.map((tag, idx) => (
-                <span key={idx} className="badge badge-purple">{tag}</span>
-              ))
-            ) : (
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>วิเคราะห์ความหมายโดยรวม (Cosine)</span>
-            )}
-          </div>
-        </div>
-
+        )}
       </div>
 
-      {/* Thai Word Tokenizer Debug Chips */}
-      {entities.tokens && entities.tokens.length > 0 && (
-        <div style={{ marginTop: 12, paddingTop: 10, borderTop: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
-            <Tags size={12} /> คำที่ตัดได้ (Tokens):
-          </span>
-          {entities.tokens.map((token, i) => (
-            <span key={i} style={{ fontSize: '0.72rem', background: 'var(--bg-subtle)', padding: '2px 8px', borderRadius: 6, color: 'var(--text-secondary)', border: '1px solid var(--border-color)' }}>
-              {token}
-            </span>
+      {/* Tokens */}
+      {entities.tokens?.length > 0 && (
+        <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }}>
+          <Tags size={10} color="var(--text-muted)" style={{ flexShrink: 0 }} />
+          {entities.tokens.map((t, i) => (
+            <span key={i} style={{
+              fontSize: '0.62rem', background: 'var(--bg-subtle)', border: '1px solid var(--border-color)',
+              padding: '1px 5px', borderRadius: 4, color: 'var(--text-muted)'
+            }}>{t}</span>
           ))}
         </div>
       )}
+
+      {/* Powered by */}
+      <div style={{ marginTop: 8, fontSize: '0.6rem', color: 'var(--text-muted)', textAlign: 'right', opacity: 0.6 }}>
+        PyThaiNLP + NER
+      </div>
     </div>
   )
 }
