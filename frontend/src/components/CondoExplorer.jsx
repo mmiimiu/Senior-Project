@@ -41,7 +41,7 @@ export default function CondoExplorer({ condos = [], onSelectCondo }) {
           <span className="badge badge-indigo">ชุดข้อมูลสำหรับโครงงานวิจัย</span>
           <span className="badge badge-cyan">{condos.length} โครงการใน กทม.</span>
         </div>
-        <h2 style={{ fontSize: '1.4rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+        <h2 style={{ fontSize: '1.4rem', fontWeight: 800, margin: 0, color: 'var(--text-heading)' }}>
           คลังข้อมูลคอนโดมิเนียมตามแนวรถไฟฟ้า (Condominium Dataset Explorer)
         </h2>
         <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0 }}>
@@ -75,11 +75,11 @@ export default function CondoExplorer({ condos = [], onSelectCondo }) {
               placeholder="พิมพ์ชื่อคอนโดหรือทำเล..."
               style={{
                 width: '100%',
-                background: 'rgba(0, 0, 0, 0.3)',
+                background: 'var(--bg-subtle)',
                 border: '1px solid var(--border-color)',
                 borderRadius: 10,
                 padding: '8px 12px 8px 36px',
-                color: '#ffffff',
+                color: 'var(--text-primary)',
                 fontSize: '0.85rem',
                 fontFamily: 'var(--font-thai)',
                 outline: 'none'
@@ -98,11 +98,11 @@ export default function CondoExplorer({ condos = [], onSelectCondo }) {
             onChange={(e) => setSelectedStation(e.target.value)}
             style={{
               width: '100%',
-              background: 'rgba(15, 23, 42, 0.9)',
+              background: 'var(--bg-glass)',
               border: '1px solid var(--border-color)',
               borderRadius: 10,
               padding: '8px 12px',
-              color: '#ffffff',
+              color: 'var(--text-primary)',
               fontSize: '0.85rem',
               fontFamily: 'var(--font-thai)',
               outline: 'none',
@@ -110,7 +110,7 @@ export default function CondoExplorer({ condos = [], onSelectCondo }) {
             }}
           >
             {stations.map((st, idx) => (
-              <option key={idx} value={st} style={{ background: '#0f172a' }}>
+              <option key={idx} value={st} style={{ background: 'var(--bg-modal)' }}>
                 {st === 'ALL' ? 'ทุกสถานี (All Stations)' : st}
               </option>
             ))}
@@ -127,20 +127,20 @@ export default function CondoExplorer({ condos = [], onSelectCondo }) {
             onChange={(e) => setPetFilter(e.target.value)}
             style={{
               width: '100%',
-              background: 'rgba(15, 23, 42, 0.9)',
+              background: 'var(--bg-glass)',
               border: '1px solid var(--border-color)',
               borderRadius: 10,
               padding: '8px 12px',
-              color: '#ffffff',
+              color: 'var(--text-primary)',
               fontSize: '0.85rem',
               fontFamily: 'var(--font-thai)',
               outline: 'none',
               cursor: 'pointer'
             }}
           >
-            <option value="ALL" style={{ background: '#0f172a' }}>ทั้งหมด (All)</option>
-            <option value="PET" style={{ background: '#0f172a' }}>🐾 เลี้ยงสัตว์ได้ (Pet Friendly)</option>
-            <option value="NO_PET" style={{ background: '#0f172a' }}>🚫 ไม่อนุญาตสัตว์เลี้ยง</option>
+            <option value="ALL" style={{ background: 'var(--bg-modal)' }}>ทั้งหมด (All)</option>
+            <option value="PET" style={{ background: 'var(--bg-modal)' }}>🐾 เลี้ยงสัตว์ได้ (Pet Friendly)</option>
+            <option value="NO_PET" style={{ background: 'var(--bg-modal)' }}>🚫 ไม่อนุญาตสัตว์เลี้ยง</option>
           </select>
         </div>
 
@@ -148,7 +148,7 @@ export default function CondoExplorer({ condos = [], onSelectCondo }) {
         <div>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.78rem', color: 'var(--text-secondary)', marginBottom: 6 }}>
             <span>งบประมาณสูงสุด:</span>
-            <strong style={{ color: '#34d399' }}>฿{maxPrice.toLocaleString()} /ด.</strong>
+            <strong style={{ color: '#10b981' }}>฿{maxPrice.toLocaleString()} /ด.</strong>
           </div>
           <input
             type="range"
@@ -166,7 +166,7 @@ export default function CondoExplorer({ condos = [], onSelectCondo }) {
       {/* Results Count */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
         <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-          แสดงผลลัพธ์ทั้งหมด: <strong style={{ color: '#ffffff' }}>{filteredCondos.length}</strong> จาก {condos.length} โครงการ
+          แสดงผลลัพธ์ทั้งหมด: <strong style={{ color: 'var(--text-heading)' }}>{filteredCondos.length}</strong> จาก {condos.length} โครงการ
         </span>
         {(searchTerm || selectedStation !== 'ALL' || petFilter !== 'ALL' || maxPrice < 100000) && (
           <button

@@ -33,7 +33,7 @@ export default function SearchBar({ query, setQuery, onSearch, isLoading }) {
           className="pulse-glow"
           style={{
             position: 'relative',
-            background: 'rgba(15, 23, 42, 0.85)',
+            background: 'var(--bg-glass)',
             backdropFilter: 'blur(20px)',
             borderRadius: 20,
             border: '1.5px solid rgba(99, 102, 241, 0.4)',
@@ -41,10 +41,10 @@ export default function SearchBar({ query, setQuery, onSearch, isLoading }) {
             alignItems: 'center',
             padding: '8px 12px 8px 20px',
             gap: 12,
-            boxShadow: '0 12px 32px -4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(99, 102, 241, 0.2)'
+            boxShadow: 'var(--shadow-md)'
           }}
         >
-          <div style={{ color: '#818cf8', display: 'flex', alignItems: 'center' }}>
+          <div style={{ color: '#6366f1', display: 'flex', alignItems: 'center' }}>
             <Sparkles size={22} />
           </div>
 
@@ -58,7 +58,7 @@ export default function SearchBar({ query, setQuery, onSearch, isLoading }) {
               background: 'transparent',
               border: 'none',
               outline: 'none',
-              color: '#ffffff',
+              color: 'var(--text-primary)',
               fontSize: '1.05rem',
               fontFamily: 'var(--font-thai)',
               padding: '8px 0'
@@ -70,7 +70,7 @@ export default function SearchBar({ query, setQuery, onSearch, isLoading }) {
               type="button"
               onClick={() => setQuery('')}
               style={{
-                background: 'rgba(255, 255, 255, 0.08)',
+                background: 'var(--bg-subtle)',
                 border: 'none',
                 borderRadius: '50%',
                 width: 28,
@@ -119,8 +119,8 @@ export default function SearchBar({ query, setQuery, onSearch, isLoading }) {
             type="button"
             onClick={() => handleSelectExample(ex.text)}
             style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
+              background: 'var(--bg-subtle)',
+              border: '1px solid var(--border-color)',
               borderRadius: 9999,
               padding: '4px 12px',
               fontSize: '0.78rem',
@@ -132,11 +132,11 @@ export default function SearchBar({ query, setQuery, onSearch, isLoading }) {
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(99, 102, 241, 0.15)'
               e.currentTarget.style.borderColor = 'rgba(99, 102, 241, 0.4)'
-              e.currentTarget.style.color = '#ffffff'
+              e.currentTarget.style.color = 'var(--text-primary)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)'
+              e.currentTarget.style.background = 'var(--bg-subtle)'
+              e.currentTarget.style.borderColor = 'var(--border-color)'
               e.currentTarget.style.color = 'var(--text-secondary)'
             }}
           >

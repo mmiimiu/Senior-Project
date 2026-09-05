@@ -10,6 +10,9 @@ import EvaluationLab from './components/EvaluationLab'
 import CondoExplorer from './components/CondoExplorer'
 
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark'
+  })
   const [activeTab, setActiveTab] = useState('search')
   const [query, setQuery] = useState('หาคอนโดติด BTS เลี้ยงสัตว์ได้ เงียบสงบ งบไม่เกิน 18,000')
   const [nlpResults, setNlpResults] = useState(null)
@@ -18,6 +21,16 @@ export default function App() {
   const [selectedCondo, setSelectedCondo] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+
+  // Handle Theme switching & persistence
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
 
   // Fetch all condos on mount
   useEffect(() => {
@@ -78,6 +91,8 @@ export default function App() {
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
         totalCondos={allCondos.length} 
+        theme={theme}
+        toggleTheme={toggleTheme}
       />
 
       {/* Main Content Area */}
@@ -99,7 +114,7 @@ export default function App() {
             <div style={{ textAlign: 'center', margin: '16px auto 32px auto', maxWidth: 760 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)', padding: '4px 14px', borderRadius: 9999, marginBottom: 14 }}>
                 <Sparkles size={14} color="#818cf8" />
-                <span style={{ fontSize: '0.82rem', color: '#c7d2fe', fontWeight: 600 }}>
+                <span style={{ fontSize: '0.82rem', color: '#6366f1', fontWeight: 600 }}>
                   Thai NLP & Semantic Search Engine
                 </span>
               </div>
@@ -133,7 +148,7 @@ export default function App() {
             <div style={{ marginTop: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 8 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: 0 }}>
                     ผลลัพธ์คอนโดมิเนียมที่แนะนำ
                   </h3>
                   {nlpResults && (
@@ -173,8 +188,8 @@ export default function App() {
                 </div>
               ) : (
                 <div className="glass-panel" style={{ textAlign: 'center', padding: '48px 24px' }}>
-                  <Building size={48} color="#64748b" style={{ margin: '0 auto 16px auto' }} />
-                  <h4 style={{ fontSize: '1.1rem', color: '#f8fafc', marginBottom: 6 }}>ไม่พบคอนโดมิเนียมที่ตรงกับเงื่อนไข</h4>
+                  <Building size={48} color="var(--text-muted)" style={{ margin: '0 auto 16px auto' }} />
+                  <h4 style={{ fontSize: '1.1rem', marginBottom: 6 }}>ไม่พบคอนโดมิเนียมที่ตรงกับเงื่อนไข</h4>
                   <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
                     ลองปรับเปลี่ยนข้อความค้นหา หรือคลิกประโยคตัวอย่างด้านบนเพื่อทดสอบ
                   </p>
@@ -227,10 +242,10 @@ export default function App() {
       />
 
       {/* University & Author Footer */}
-      <footer style={{ borderTop: '1px solid var(--border-color)', background: 'rgba(10, 15, 29, 0.8)', padding: '20px 24px', marginTop: 'auto' }}>
+      <footer style={{ borderTop: '1px solid var(--border-color)', background: 'var(--bg-glass)', padding: '20px 24px', marginTop: 'auto' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, fontSize: '0.82rem', color: 'var(--text-muted)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <GraduationCap size={18} color="#818cf8" />
+            <GraduationCap size={18} color="#6366f1" />
             <span>
               <strong>ปริญญานิพนธ์:</strong> การพัฒนาระบบค้นหาคอนโดมิเนียมจากข้อความภาษาธรรมชาติภาษาไทยตามเงื่อนไขไลฟ์สไตล์
             </span>

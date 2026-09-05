@@ -43,7 +43,7 @@ export default function EvaluationLab({ onTestQuery }) {
             <span className="badge badge-indigo">บทที่ 4: การทดลองและประเมินผล</span>
             <span className="badge badge-cyan">25 Benchmark Queries</span>
           </div>
-          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, margin: '6px 0 0 0', color: '#ffffff' }}>
+          <h2 style={{ fontSize: '1.45rem', fontWeight: 800, margin: '6px 0 0 0', color: 'var(--text-heading)' }}>
             ห้องทดลองประเมินผลประสิทธิภาพระบบ (Evaluation Lab & Benchmark)
           </h2>
           <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0 }}>
@@ -72,14 +72,14 @@ export default function EvaluationLab({ onTestQuery }) {
               ค่าความแม่นยำเฉลี่ย (Average Precision)
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-              <span style={{ fontSize: '2rem', fontWeight: 800, color: '#34d399' }}>
+              <span style={{ fontSize: '2rem', fontWeight: 800, color: '#10b981' }}>
                 {benchmarkData.nlp_system.avg_precision}%
               </span>
-              <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
-                vs Keyword: <strong style={{ color: '#f87171' }}>{benchmarkData.keyword_system.avg_precision}%</strong>
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                vs Keyword: <strong style={{ color: '#f43f5e' }}>{benchmarkData.keyword_system.avg_precision}%</strong>
               </span>
             </div>
-            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.76rem', color: '#34d399' }}>
+            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.76rem', color: '#10b981' }}>
               <TrendingUp size={14} />
               <span>ความแม่นยำของผลลัพธ์สูงกว่าระบบเดิมอย่างมีนัยสำคัญ</span>
             </div>
@@ -91,14 +91,14 @@ export default function EvaluationLab({ onTestQuery }) {
               ค่าความครอบคลุมเฉลี่ย (Average Recall)
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-              <span style={{ fontSize: '2rem', fontWeight: 800, color: '#60a5fa' }}>
+              <span style={{ fontSize: '2rem', fontWeight: 800, color: '#6366f1' }}>
                 {benchmarkData.nlp_system.avg_recall}%
               </span>
-              <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
-                vs Keyword: <strong style={{ color: '#f87171' }}>{benchmarkData.keyword_system.avg_recall}%</strong>
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                vs Keyword: <strong style={{ color: '#f43f5e' }}>{benchmarkData.keyword_system.avg_recall}%</strong>
               </span>
             </div>
-            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.76rem', color: '#60a5fa' }}>
+            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.76rem', color: '#6366f1' }}>
               <TrendingUp size={14} />
               <span>ดึงรายการคอนโดที่ตรงเจตนาได้ครบถ้วนกว่า</span>
             </div>
@@ -110,14 +110,14 @@ export default function EvaluationLab({ onTestQuery }) {
               ค่าความสมดุลเฉลี่ย (Average F1-Score)
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-              <span style={{ fontSize: '2rem', fontWeight: 800, color: '#c084fc' }}>
+              <span style={{ fontSize: '2rem', fontWeight: 800, color: '#a855f7' }}>
                 {benchmarkData.nlp_system.avg_f1_score}%
               </span>
-              <span style={{ fontSize: '0.82rem', color: '#94a3b8' }}>
-                vs Keyword: <strong style={{ color: '#f87171' }}>{benchmarkData.keyword_system.avg_f1_score}%</strong>
+              <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
+                vs Keyword: <strong style={{ color: '#f43f5e' }}>{benchmarkData.keyword_system.avg_f1_score}%</strong>
               </span>
             </div>
-            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.76rem', color: '#c084fc' }}>
+            <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 6, fontSize: '0.76rem', color: '#a855f7' }}>
               <Award size={14} />
               <span>ดัชนีชี้วัดประสิทธิภาพโดยรวม (Overall Performance)</span>
             </div>
@@ -129,7 +129,7 @@ export default function EvaluationLab({ onTestQuery }) {
               ชุดประโยคทดสอบมาตรฐาน (Test Queries)
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-              <span style={{ fontSize: '2rem', fontWeight: 800, color: '#f8fafc' }}>
+              <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-heading)' }}>
                 {benchmarkData.total_benchmark_queries}
               </span>
               <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
@@ -154,7 +154,7 @@ export default function EvaluationLab({ onTestQuery }) {
             key={idx}
             onClick={() => setSelectedCategory(cat)}
             style={{
-              background: selectedCategory === cat ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : 'rgba(255, 255, 255, 0.05)',
+              background: selectedCategory === cat ? 'linear-gradient(135deg, #6366f1, #4f46e5)' : 'var(--bg-subtle)',
               color: selectedCategory === cat ? '#ffffff' : 'var(--text-secondary)',
               border: selectedCategory === cat ? '1px solid #6366f1' : '1px solid var(--border-color)',
               borderRadius: 9999,
@@ -174,15 +174,15 @@ export default function EvaluationLab({ onTestQuery }) {
       <div className="glass-panel" style={{ overflowX: 'auto', padding: 0, marginBottom: 32 }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.85rem' }}>
           <thead>
-            <tr style={{ background: 'rgba(255, 255, 255, 0.04)', borderBottom: '1px solid var(--border-color)' }}>
+            <tr style={{ background: 'var(--bg-subtle)', borderBottom: '1px solid var(--border-color)' }}>
               <th style={{ padding: '14px 16px', color: 'var(--text-muted)', width: 60 }}>#</th>
-              <th style={{ padding: '14px 16px', color: 'var(--text-primary)' }}>ประโยคทดสอบภาษาธรรมชาติ (Test Query)</th>
-              <th style={{ padding: '14px 16px', color: 'var(--text-primary)' }}>หมวดหมู่</th>
-              <th style={{ padding: '14px 16px', color: '#34d399', textAlign: 'center' }}>NLP Precision</th>
-              <th style={{ padding: '14px 16px', color: '#60a5fa', textAlign: 'center' }}>NLP Recall</th>
-              <th style={{ padding: '14px 16px', color: '#c084fc', textAlign: 'center' }}>NLP F1</th>
-              <th style={{ padding: '14px 16px', color: '#f87171', textAlign: 'center' }}>Keyword Search</th>
-              <th style={{ padding: '14px 16px', color: 'var(--text-primary)', textAlign: 'center' }}>การทดลอง</th>
+              <th style={{ padding: '14px 16px', color: 'var(--text-heading)' }}>ประโยคทดสอบภาษาธรรมชาติ (Test Query)</th>
+              <th style={{ padding: '14px 16px', color: 'var(--text-heading)' }}>หมวดหมู่</th>
+              <th style={{ padding: '14px 16px', color: '#10b981', textAlign: 'center' }}>NLP Precision</th>
+              <th style={{ padding: '14px 16px', color: '#6366f1', textAlign: 'center' }}>NLP Recall</th>
+              <th style={{ padding: '14px 16px', color: '#a855f7', textAlign: 'center' }}>NLP F1</th>
+              <th style={{ padding: '14px 16px', color: '#f43f5e', textAlign: 'center' }}>Keyword Search</th>
+              <th style={{ padding: '14px 16px', color: 'var(--text-heading)', textAlign: 'center' }}>การทดลอง</th>
             </tr>
           </thead>
           <tbody>
@@ -190,15 +190,15 @@ export default function EvaluationLab({ onTestQuery }) {
               <tr 
                 key={item.id} 
                 style={{ 
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.04)',
-                  background: idx % 2 === 0 ? 'transparent' : 'rgba(255, 255, 255, 0.01)',
+                  borderBottom: '1px solid var(--border-color)',
+                  background: idx % 2 === 0 ? 'transparent' : 'var(--bg-subtle)',
                   transition: 'background 0.15s ease'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(99, 102, 241, 0.08)'}
-                onMouseLeave={(e) => e.currentTarget.style.background = idx % 2 === 0 ? 'transparent' : 'rgba(255, 255, 255, 0.01)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = idx % 2 === 0 ? 'transparent' : 'var(--bg-subtle)'}
               >
                 <td style={{ padding: '14px 16px', color: 'var(--text-muted)', fontWeight: 600 }}>{item.id.toUpperCase()}</td>
-                <td style={{ padding: '14px 16px', color: '#f8fafc', fontWeight: 500 }}>
+                <td style={{ padding: '14px 16px', color: 'var(--text-heading)', fontWeight: 500 }}>
                   {item.query}
                 </td>
                 <td style={{ padding: '14px 16px' }}>
@@ -206,13 +206,13 @@ export default function EvaluationLab({ onTestQuery }) {
                     {item.category}
                   </span>
                 </td>
-                <td style={{ padding: '14px 16px', textAlign: 'center', color: '#34d399', fontWeight: 700 }}>
+                <td style={{ padding: '14px 16px', textAlign: 'center', color: '#10b981', fontWeight: 700 }}>
                   {item.nlp.precision}%
                 </td>
-                <td style={{ padding: '14px 16px', textAlign: 'center', color: '#60a5fa', fontWeight: 700 }}>
+                <td style={{ padding: '14px 16px', textAlign: 'center', color: '#6366f1', fontWeight: 700 }}>
                   {item.nlp.recall}%
                 </td>
-                <td style={{ padding: '14px 16px', textAlign: 'center', color: '#c084fc', fontWeight: 700 }}>
+                <td style={{ padding: '14px 16px', textAlign: 'center', color: '#a855f7', fontWeight: 700 }}>
                   {item.nlp.f1}%
                 </td>
                 <td style={{ padding: '14px 16px', textAlign: 'center' }}>
@@ -243,24 +243,24 @@ export default function EvaluationLab({ onTestQuery }) {
       </div>
 
       {/* Research Methodology & Findings Card */}
-      <div className="glass-panel" style={{ padding: '24px', border: '1px solid rgba(99, 102, 241, 0.3)' }}>
+      <div className="glass-panel" style={{ padding: '24px', border: '1px solid var(--border-color)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-          <BookOpen size={22} color="#818cf8" />
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+          <BookOpen size={22} color="#6366f1" />
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0, color: 'var(--text-heading)' }}>
             สรุปผลการวิจัยและข้อค้นพบสำคัญ (Key Findings & Conclusion)
           </h3>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 16, fontSize: '0.86rem', color: '#cbd5e1', lineHeight: 1.6 }}>
-          <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '14px 16px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
-            <h4 style={{ fontSize: '0.92rem', color: '#34d399', margin: '0 0 6px 0' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 16, fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+          <div style={{ background: 'var(--bg-subtle)', padding: '14px 16px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
+            <h4 style={{ fontSize: '0.92rem', color: '#10b981', margin: '0 0 6px 0' }}>
               1. ความเหนือกว่าของการสกัด Entity แบบผสมผสาน
             </h4>
             <p style={{ margin: 0 }}>
               ระบบสามารถแยกตัวแปรเชิงปริมาณ (สถานี BTS/MRT, งบประมาณ, เงื่อนไขสัตว์เลี้ยง) ออกจากข้อความภาษาธรรมชาติได้อย่างแม่นยำสูงถึง 90%+ ทำให้ไม่ต้องพึ่งพา Dropdown ซับซ้อน
             </p>
           </div>
-          <div style={{ background: 'rgba(255, 255, 255, 0.02)', padding: '14px 16px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
-            <h4 style={{ fontSize: '0.92rem', color: '#60a5fa', margin: '0 0 6px 0' }}>
+          <div style={{ background: 'var(--bg-subtle)', padding: '14px 16px', borderRadius: 12, border: '1px solid var(--border-color)' }}>
+            <h4 style={{ fontSize: '0.92rem', color: '#6366f1', margin: '0 0 6px 0' }}>
               2. การจับคู่ความหมายเชิงไลฟ์สไตล์ (Semantic Match)
             </h4>
             <p style={{ margin: 0 }}>

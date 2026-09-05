@@ -28,12 +28,12 @@ export default function ComparisonView({
           gap: 14
         }}
       >
-        <Info size={22} color="#818cf8" style={{ flexShrink: 0, marginTop: 2 }} />
+        <Info size={22} color="#6366f1" style={{ flexShrink: 0, marginTop: 2 }} />
         <div>
-          <h4 style={{ fontSize: '0.96rem', fontWeight: 700, margin: '0 0 4px 0', color: '#ffffff' }}>
+          <h4 style={{ fontSize: '0.96rem', fontWeight: 700, margin: '0 0 4px 0', color: 'var(--text-heading)' }}>
             เปรียบเทียบผลลัพธ์: Thai NLP & Semantic Search vs Traditional Keyword-based Search
           </h4>
-          <p style={{ fontSize: '0.84rem', color: '#cbd5e1', margin: 0, lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
             การค้นหาแบบดั้งเดิม (Keyword Matching) บังคับให้ข้อความในฐานข้อมูลต้องมีคำค้นหาตรงตัวครบทุกคำ 
             เมื่อผู้ใช้พิมพ์ประโยคซับซ้อน เช่น <em>"ติด BTS เลี้ยงสัตว์ได้ เงียบสงบ"</em> ระบบดั้งเดิมจะส่งคืน <strong>0 รายการ (ไม่พบข้อมูล)</strong> 
             ในขณะที่ระบบ <strong>Thai NLP & Semantic Search</strong> สามารถสกัด Entity และจับคู่บริบทเชิงความหมายได้อย่างถูกต้องแม่นยำ
@@ -50,8 +50,8 @@ export default function ComparisonView({
           {/* Header */}
           <div 
             style={{
-              background: 'rgba(99, 102, 241, 0.15)',
-              border: '1.5px solid rgba(99, 102, 241, 0.4)',
+              background: 'rgba(99, 102, 241, 0.12)',
+              border: '1.5px solid rgba(99, 102, 241, 0.35)',
               borderRadius: 16,
               padding: '14px 18px',
               display: 'flex',
@@ -64,10 +64,10 @@ export default function ComparisonView({
                 <Sparkles size={18} color="#ffffff" />
               </div>
               <div>
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0, color: 'var(--text-heading)' }}>
                   ระบบ Thai NLP & Semantic Search
                 </h3>
-                <span style={{ fontSize: '0.74rem', color: '#a5b4fc' }}>
+                <span style={{ fontSize: '0.74rem', color: '#6366f1' }}>
                   (ระบบที่พัฒนาขึ้นในโครงงานนี้)
                 </span>
               </div>
@@ -79,8 +79,8 @@ export default function ComparisonView({
 
           {/* NLP Status / Entities */}
           {nlpResults?.entities && (
-            <div style={{ background: 'rgba(255, 255, 255, 0.03)', padding: '12px 14px', borderRadius: 12, border: '1px solid var(--border-color)', fontSize: '0.8rem', color: '#cbd5e1' }}>
-              <div style={{ fontWeight: 600, color: '#a5b4fc', marginBottom: 4 }}>สกัดเงื่อนไขสำเร็จ:</div>
+            <div style={{ background: 'var(--bg-subtle)', padding: '12px 14px', borderRadius: 12, border: '1px solid var(--border-color)', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+              <div style={{ fontWeight: 600, color: '#6366f1', marginBottom: 4 }}>สกัดเงื่อนไขสำเร็จ:</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                 {nlpResults.entities.station && <span className="badge badge-cyan">🚆 {nlpResults.entities.station}</span>}
                 {nlpResults.entities.pet_friendly !== null && (
@@ -113,7 +113,7 @@ export default function ComparisonView({
               ))}
             </div>
           ) : (
-            <div style={{ background: 'rgba(255, 255, 255, 0.02)', border: '1px dashed var(--border-color)', borderRadius: 14, padding: 32, textAlign: 'center', color: 'var(--text-muted)' }}>
+            <div style={{ background: 'var(--bg-subtle)', border: '1px dashed var(--border-color)', borderRadius: 14, padding: 32, textAlign: 'center', color: 'var(--text-muted)' }}>
               ยังไม่มีผลลัพธ์
             </div>
           )}
@@ -126,8 +126,8 @@ export default function ComparisonView({
           {/* Header */}
           <div 
             style={{
-              background: 'rgba(100, 116, 139, 0.15)',
-              border: '1.5px solid rgba(100, 116, 139, 0.3)',
+              background: 'var(--bg-subtle)',
+              border: '1.5px solid var(--border-color)',
               borderRadius: 16,
               padding: '14px 18px',
               display: 'flex',
@@ -136,14 +136,14 @@ export default function ComparisonView({
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-              <div style={{ width: 34, height: 34, borderRadius: 10, background: '#475569', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 34, height: 34, borderRadius: 10, background: '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Database size={18} color="#ffffff" />
               </div>
               <div>
-                <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0, color: 'var(--text-heading)' }}>
                   ระบบ Keyword-Based Search แบบดั้งเดิม
                 </h3>
-                <span style={{ fontSize: '0.74rem', color: '#94a3b8' }}>
+                <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                   (แพลตฟอร์มอสังหาฯ ทั่วไปในปัจจุบัน)
                 </span>
               </div>
@@ -157,8 +157,8 @@ export default function ComparisonView({
           </div>
 
           {/* Keyword Failure Explanation Box */}
-          <div style={{ background: 'rgba(244, 63, 94, 0.06)', padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(244, 63, 94, 0.2)', fontSize: '0.8rem', color: '#fecdd3' }}>
-            <div style={{ fontWeight: 600, color: '#fb7185', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ background: 'rgba(244, 63, 94, 0.08)', padding: '12px 14px', borderRadius: 12, border: '1px solid rgba(244, 63, 94, 0.25)', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+            <div style={{ fontWeight: 600, color: '#e11d48', marginBottom: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
               <AlertTriangle size={14} /> ข้อจำกัดของระบบแบบดั้งเดิม:
             </div>
             <div>
@@ -189,9 +189,9 @@ export default function ComparisonView({
               ))}
             </div>
           ) : (
-            <div style={{ background: 'rgba(15, 23, 42, 0.6)', border: '1px dashed rgba(244, 63, 94, 0.3)', borderRadius: 14, padding: '48px 24px', textAlign: 'center' }}>
+            <div style={{ background: 'var(--bg-card)', border: '1px dashed rgba(244, 63, 94, 0.3)', borderRadius: 14, padding: '48px 24px', textAlign: 'center' }}>
               <XCircle size={36} color="#f43f5e" style={{ margin: '0 auto 12px auto' }} />
-              <h4 style={{ fontSize: '1rem', color: '#f8fafc', marginBottom: 6 }}>ไม่พบข้อมูลคอนโดมิเนียม (0 รายการ)</h4>
+              <h4 style={{ fontSize: '1rem', color: 'var(--text-heading)', marginBottom: 6 }}>ไม่พบข้อมูลคอนโดมิเนียม (0 รายการ)</h4>
               <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', maxWidth: 320, margin: '0 auto' }}>
                 ระบบแบบดั้งเดิมล้มเหลวในการตีความประโยคค้นหาภาษาธรรมชาติที่มีหลายเงื่อนไขรวมกัน
               </p>
