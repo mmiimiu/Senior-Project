@@ -2,6 +2,7 @@ import React from 'react'
 import { Search, Sparkles, X, ArrowRight, CornerDownLeft } from 'lucide-react'
 
 export const EXAMPLE_QUERIES = [
+  { text: 'เงียบสงบ เลี้ยงแมวได้ ใกล้BTS มหาวิทยาลัยเกษตร', label: '🌿 เลี้ยงแมว + BTS ม.เกษตร' },
   { text: 'หาคอนโดติด BTS เลี้ยงสัตว์ได้ เงียบสงบ', label: '🐾 สัตว์เลี้ยง + BTS + สงบ' },
   { text: 'คอนโดใกล้ MRT พระราม 9 เหมาะกับ WFH งบไม่เกิน 20,000', label: '💻 พระราม 9 + WFH + คุมงบ' },
   { text: 'คอนโดเลี้ยงแมวได้ งบไม่เกิน 15,000 ใกล้รถไฟฟ้า', label: '🐱 เลี้ยงแมว + งบประหยัด' },

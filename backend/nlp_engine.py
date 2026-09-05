@@ -18,39 +18,244 @@ from dataset import CONDO_DATASET
 
 # Pre-defined Station Knowledge Base for BTS / MRT / SRT / ARL
 KNOWN_STATIONS = [
-    {"canonical": "BTS อารีย์", "keywords": ["อารีย์", "bts อารีย์", "สถานีอารีย์", "ari"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS หมอชิต", "keywords": ["หมอชิต", "bts หมอชิต", "สถานีหมอชิต", "mochit"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS อุดมสุข", "keywords": ["อุดมสุข", "bts อุดมสุข", "udom suk", "udomsuk"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS บางนา", "keywords": ["บางนา", "bts บางนา", "bang na", "bangna"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS ทองหล่อ", "keywords": ["ทองหล่อ", "bts ทองหล่อ", "thong lor", "thonglor"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS เอกมัย", "keywords": ["เอกมัย", "bts เอกมัย", "ekkamai", "ekamai"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS อ่อนนุช", "keywords": ["อ่อนนุช", "bts อ่อนนุช", "on nut", "onnut"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS ปุณณวิถี", "keywords": ["ปุณณวิถี", "bts ปุณณวิถี", "punnawithi"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS แบริ่ง", "keywords": ["แบริ่ง", "bts แบริ่ง", "bearing"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS พร้อมพงษ์", "keywords": ["พร้อมพงษ์", "bts พร้อมพงษ์", "phrom phong"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS อโศก", "keywords": ["อโศก", "bts อโศก", "asoke", "asok"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS อนุสาวรีย์ชัยสมรภูมิ", "keywords": ["อนุสาวรีย์", "อนุสาวรีย์ชัย", "bts อนุสาวรีย์", "victory monument"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS เสนานิคม", "keywords": ["เสนานิคม", "bts เสนานิคม", "senanikom"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS รัชโยธิน", "keywords": ["รัชโยธิน", "bts รัชโยธิน", "ratchayothin"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS พระโขนง", "keywords": ["พระโขนง", "bts พระโขนง", "phra khanong"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS บางจาก", "keywords": ["บางจาก", "bts บางจาก", "bang chak"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS สายหยุด", "keywords": ["สายหยุด", "bts สายหยุด", "sai yud"], "line": "BTS Sukhumvit"},
-    {"canonical": "BTS สะพานตากสิน", "keywords": ["สะพานตากสิน", "bts สะพานตากสิน", "saphan taksin"], "line": "BTS Silom"},
-    {"canonical": "BTS วงเวียนใหญ่", "keywords": ["วงเวียนใหญ่", "bts วงเวียนใหญ่", "wongwian yai"], "line": "BTS Silom"},
-    {"canonical": "BTS กรุงธนบุรี", "keywords": ["กรุงธนบุรี", "bts กรุงธนบุรี", "krung thon buri"], "line": "BTS Silom"},
-    {"canonical": "MRT พระราม 9", "keywords": ["พระราม 9", "พระรามเก้า", "mrt พระราม 9", "rama 9", "rama ix"], "line": "MRT Blue"},
-    {"canonical": "MRT สามย่าน", "keywords": ["สามย่าน", "mrt สามย่าน", "sam yan", "samyan"], "line": "MRT Blue"},
-    {"canonical": "MRT ลาดพร้าว", "keywords": ["ลาดพร้าว", "mrt ลาดพร้าว", "ladprao", "lat phrao"], "line": "MRT Blue"},
-    {"canonical": "MRT สุขุมวิท", "keywords": ["mrt สุขุมวิท", "สถานีสุขุมวิท"], "line": "MRT Blue"},
-    {"canonical": "MRT ศูนย์วัฒนธรรม", "keywords": ["ศูนย์วัฒนธรรม", "mrt ศูนย์วัฒนธรรม", "cultural centre"], "line": "MRT Blue"},
-    {"canonical": "MRT รัชดาภิเษก", "keywords": ["รัชดาภิเษก", "รัชดา", "mrt รัชดา"], "line": "MRT Blue"},
-    {"canonical": "MRT ภาษีเจริญ", "keywords": ["ภาษีเจริญ", "mrt ภาษีเจริญ", "ซีคอนบางแค"], "line": "MRT Blue"},
-    {"canonical": "MRT พหลโยธิน", "keywords": ["พหลโยธิน", "ห้าแยกลาดพร้าว", "mrt พหลโยธิน", "เซ็นทรัลลาดพร้าว"], "line": "MRT Blue"},
-    {"canonical": "MRT บางโพ", "keywords": ["บางโพ", "mrt บางโพ", "bang pho"], "line": "MRT Blue"},
-    {"canonical": "MRT ห้วยขวาง", "keywords": ["ห้วยขวาง", "mrt ห้วยขวาง", "huai khwang"], "line": "MRT Blue"},
-    {"canonical": "MRT ศรีอุดม", "keywords": ["ศรีอุดม", "mrt ศรีอุดม", "sri udom"], "line": "MRT Yellow"},
-    {"canonical": "ARL รามคำแหง", "keywords": ["รามคำแหง", "arl รามคำแหง", "แอร์พอร์ตลิงก์รามคำแหง"], "line": "Airport Rail Link"},
-    {"canonical": "SRT รังสิต", "keywords": ["รังสิต", "srt รังสิต", "ม.กรุงเทพ", "มธ.รังสิต", "ธรรมศาสตร์"], "line": "SRT Red"}
+    {
+        "canonical": "BTS มหาวิทยาลัยเกษตรศาสตร์", 
+        "keywords": ["มหาวิทยาลัยเกษตรศาสตร์", "มหาวิทยาลัยเกษตร", "ม.เกษตรศาสตร์", "ม.เกษตร", "bts มหาวิทยาลัยเกษตรศาสตร์", "bts มหาวิทยาลัยเกษตร", "bts ม.เกษตร", "เกษตรศาสตร์", "เกษตร", "kasetsart", "kasetsart university", "ม.เกษตรฯ", "สถานีม.เกษตร", "สถานีมหาวิทยาลัยเกษตรศาสตร์", "เกษตร-นวมินทร์"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Kaset-Phahol",
+        "neighbors": ["BTS เสนานิคม", "BTS รัชโยธิน", "BTS สายหยุด", "BTS หมอชิต"]
+    },
+    {
+        "canonical": "BTS เสนานิคม", 
+        "keywords": ["เสนานิคม", "bts เสนานิคม", "senanikom", "พหลโยธิน 34", "เสนา"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Kaset-Phahol",
+        "neighbors": ["BTS มหาวิทยาลัยเกษตรศาสตร์", "BTS รัชโยธิน"]
+    },
+    {
+        "canonical": "BTS รัชโยธิน", 
+        "keywords": ["รัชโยธิน", "bts รัชโยธิน", "ratchayothin", "เมเจอร์รัชโยธิน"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Kaset-Phahol",
+        "neighbors": ["BTS เสนานิคม", "BTS มหาวิทยาลัยเกษตรศาสตร์", "MRT พหลโยธิน"]
+    },
+    {
+        "canonical": "BTS อารีย์", 
+        "keywords": ["อารีย์", "bts อารีย์", "สถานีอารีย์", "ari", "ซอยอารีย์"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Phahol-Ari",
+        "neighbors": ["BTS สะพานควาย", "BTS อนุสาวรีย์ชัยสมรภูมิ", "BTS หมอชิต"]
+    },
+    {
+        "canonical": "BTS หมอชิต", 
+        "keywords": ["หมอชิต", "bts หมอชิต", "สถานีหมอชิต", "mochit", "สวนจตุจักร", "จตุจักร"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Chatuchak",
+        "neighbors": ["BTS สะพานควาย", "BTS ห้าแยกลาดพร้าว", "MRT สวนจตุจักร"]
+    },
+    {
+        "canonical": "BTS อุดมสุข", 
+        "keywords": ["อุดมสุข", "bts อุดมสุข", "udom suk", "udomsuk"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Bangna-Udomsuk",
+        "neighbors": ["BTS บางนา", "BTS ปุณณวิถี", "MRT ศรีอุดม"]
+    },
+    {
+        "canonical": "BTS บางนา", 
+        "keywords": ["บางนา", "bts บางนา", "bang na", "bangna", "เซ็นทรัลบางนา"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Bangna-Udomsuk",
+        "neighbors": ["BTS อุดมสุข", "BTS แบริ่ง"]
+    },
+    {
+        "canonical": "BTS ทองหล่อ", 
+        "keywords": ["ทองหล่อ", "bts ทองหล่อ", "thong lor", "thonglor", "สุขุมวิท 55"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Mid-Sukhumvit",
+        "neighbors": ["BTS เอกมัย", "BTS พร้อมพงษ์"]
+    },
+    {
+        "canonical": "BTS เอกมัย", 
+        "keywords": ["เอกมัย", "bts เอกมัย", "ekkamai", "ekamai", "สุขุมวิท 63"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Mid-Sukhumvit",
+        "neighbors": ["BTS ทองหล่อ", "BTS พระโขนง"]
+    },
+    {
+        "canonical": "BTS อ่อนนุช", 
+        "keywords": ["อ่อนนุช", "bts อ่อนนุช", "on nut", "onnut", "สุขุมวิท 77", "สุขุมวิท 81"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Onnut-Phrakhanong",
+        "neighbors": ["BTS พระโขนง", "BTS บางจาก"]
+    },
+    {
+        "canonical": "BTS ปุณณวิถี", 
+        "keywords": ["ปุณณวิถี", "bts ปุณณวิถี", "punnawithi", "สุขุมวิท 101", "true digital park"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Punnawithi",
+        "neighbors": ["BTS บางจาก", "BTS อุดมสุข"]
+    },
+    {
+        "canonical": "BTS แบริ่ง", 
+        "keywords": ["แบริ่ง", "bts แบริ่ง", "bearing", "สุขุมวิท 107"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Bearing-Samutprakarn",
+        "neighbors": ["BTS บางนา", "BTS สำโรง"]
+    },
+    {
+        "canonical": "BTS พร้อมพงษ์", 
+        "keywords": ["พร้อมพงษ์", "bts พร้อมพงษ์", "phrom phong", "เอ็มควอเทียร์", "เอ็มโพเรียม", "สุขุมวิท 24"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Inner-Sukhumvit",
+        "neighbors": ["BTS อโศก", "BTS ทองหล่อ"]
+    },
+    {
+        "canonical": "BTS อโศก", 
+        "keywords": ["อโศก", "bts อโศก", "asoke", "asok", "terminal 21", "สุขุมวิท 21"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Inner-Sukhumvit",
+        "neighbors": ["BTS นานา", "BTS พร้อมพงษ์", "MRT สุขุมวิท"]
+    },
+    {
+        "canonical": "BTS อนุสาวรีย์ชัยสมรภูมิ", 
+        "keywords": ["อนุสาวรีย์", "อนุสาวรีย์ชัย", "bts อนุสาวรีย์", "victory monument", "ราชวิถี"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Phayathai-Victory",
+        "neighbors": ["BTS พญาไท", "BTS สนามเป้า", "BTS อารีย์"]
+    },
+    {
+        "canonical": "BTS พระโขนง", 
+        "keywords": ["พระโขนง", "bts พระโขนง", "phra khanong", "สุขุมวิท 71"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Onnut-Phrakhanong",
+        "neighbors": ["BTS เอกมัย", "BTS อ่อนนุช"]
+    },
+    {
+        "canonical": "BTS บางจาก", 
+        "keywords": ["บางจาก", "bts บางจาก", "bang chak", "สุขุมวิท 93"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Punnawithi",
+        "neighbors": ["BTS อ่อนนุช", "BTS ปุณณวิถี"]
+    },
+    {
+        "canonical": "BTS สายหยุด", 
+        "keywords": ["สายหยุด", "bts สายหยุด", "sai yud", "พหลโยธิน 50", "พหล 50", "สะพานใหม่"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Upper-Phahol",
+        "neighbors": ["BTS มหาวิทยาลัยเกษตรศาสตร์", "BTS วัดพระศรีมหาธาตุ"]
+    },
+    {
+        "canonical": "BTS สะพานตากสิน", 
+        "keywords": ["สะพานตากสิน", "bts สะพานตากสิน", "saphan taksin", "สาทร", "เจริญกรุง", "shrewsbury"], 
+        "line": "BTS Silom Line",
+        "zone": "Riverside-Silom",
+        "neighbors": ["BTS กรุงธนบุรี", "BTS สุรศักดิ์"]
+    },
+    {
+        "canonical": "BTS วงเวียนใหญ่", 
+        "keywords": ["วงเวียนใหญ่", "bts วงเวียนใหญ่", "wongwian yai", "สมเด็จพระเจ้าตากสิน"], 
+        "line": "BTS Silom Line",
+        "zone": "Thonburi",
+        "neighbors": ["BTS กรุงธนบุรี", "BTS โพธิ์นิมิตร"]
+    },
+    {
+        "canonical": "BTS กรุงธนบุรี", 
+        "keywords": ["กรุงธนบุรี", "bts กรุงธนบุรี", "krung thon buri", "เจริญนคร", "ไอคอนสยาม", "iconsiam"], 
+        "line": "BTS Silom Line",
+        "zone": "Riverside-Silom",
+        "neighbors": ["BTS สะพานตากสิน", "BTS วงเวียนใหญ่"]
+    },
+    {
+        "canonical": "MRT พระราม 9", 
+        "keywords": ["พระราม 9", "พระรามเก้า", "mrt พระราม 9", "rama 9", "rama ix", "ฟอร์จูน", "เซ็นทรัลพระราม 9", "new cbd"], 
+        "line": "MRT Blue Line",
+        "zone": "Rama9-Ratchada",
+        "neighbors": ["MRT ศูนย์วัฒนธรรม", "MRT เพชรบุรี", "ARL มักกะสัน"]
+    },
+    {
+        "canonical": "MRT สามย่าน", 
+        "keywords": ["สามย่าน", "mrt สามย่าน", "sam yan", "samyan", "จุฬา", "จุฬาลงกรณ์", "ม.จุฬา", "จามจุรีสแควร์", "สามย่านมิตรทาวน์"], 
+        "line": "MRT Blue Line",
+        "zone": "Chula-Samyan",
+        "neighbors": ["MRT สีลม", "MRT หัวลำโพง"]
+    },
+    {
+        "canonical": "MRT ลาดพร้าว", 
+        "keywords": ["ลาดพร้าว", "mrt ลาดพร้าว", "ladprao", "lat phrao", "ลาดพร้าว 15"], 
+        "line": "MRT Blue Line",
+        "zone": "Ladprao",
+        "neighbors": ["MRT พหลโยธิน", "MRT รัชดาภิเษก"]
+    },
+    {
+        "canonical": "MRT สุขุมวิท", 
+        "keywords": ["mrt สุขุมวิท", "สถานีสุขุมวิท", "อโศกมนตรี"], 
+        "line": "MRT Blue Line",
+        "zone": "Inner-Sukhumvit",
+        "neighbors": ["MRT เพชรบุรี", "MRT ศูนย์การประชุมแห่งชาติสิริกิติ์"]
+    },
+    {
+        "canonical": "MRT ศูนย์วัฒนธรรม", 
+        "keywords": ["ศูนย์วัฒนธรรม", "mrt ศูนย์วัฒนธรรม", "cultural centre", "เดอะสตรีทรัชดา", "ตลาดนัดรถไฟ"], 
+        "line": "MRT Blue Line",
+        "zone": "Rama9-Ratchada",
+        "neighbors": ["MRT พระราม 9", "MRT ห้วยขวาง"]
+    },
+    {
+        "canonical": "MRT รัชดาภิเษก", 
+        "keywords": ["รัชดาภิเษก", "รัชดา", "mrt รัชดา", "รัชดา 19"], 
+        "line": "MRT Blue Line",
+        "zone": "Ratchada",
+        "neighbors": ["MRT สุทธิสาร", "MRT ลาดพร้าว"]
+    },
+    {
+        "canonical": "MRT ภาษีเจริญ", 
+        "keywords": ["ภาษีเจริญ", "mrt ภาษีเจริญ", "ซีคอนบางแค", "เพชรเกษม"], 
+        "line": "MRT Blue Line",
+        "zone": "Thonburi-Phetkasem",
+        "neighbors": ["MRT บางหว้า", "MRT บางแค"]
+    },
+    {
+        "canonical": "MRT พหลโยธิน", 
+        "keywords": ["พหลโยธิน", "ห้าแยกลาดพร้าว", "mrt พหลโยธิน", "เซ็นทรัลลาดพร้าว", "ยูเนี่ยนมอลล์"], 
+        "line": "MRT Blue Line",
+        "zone": "Ladprao",
+        "neighbors": ["MRT ลาดพร้าว", "MRT สวนจตุจักร", "BTS ห้าแยกลาดพร้าว"]
+    },
+    {
+        "canonical": "MRT บางโพ", 
+        "keywords": ["บางโพ", "mrt บางโพ", "bang pho", "เกตเวย์บางซื่อ", "พระราม 7"], 
+        "line": "MRT Blue Line",
+        "zone": "Bangpho-Riverside",
+        "neighbors": ["MRT เตาปูน", "MRT บางอ้อ"]
+    },
+    {
+        "canonical": "MRT ห้วยขวาง", 
+        "keywords": ["ห้วยขวาง", "mrt ห้วยขวาง", "huai khwang", "รัชดา 18", "ตลาดห้วยขวาง"], 
+        "line": "MRT Blue Line",
+        "zone": "Rama9-Ratchada",
+        "neighbors": ["MRT สุทธิสาร", "MRT ศูนย์วัฒนธรรม"]
+    },
+    {
+        "canonical": "MRT ศรีอุดม", 
+        "keywords": ["ศรีอุดม", "mrt ศรีอุดม", "sri udom", "อุดมสุข-ศรีนครินทร์"], 
+        "line": "MRT Yellow Line",
+        "zone": "Srinakarin",
+        "neighbors": ["MRT สวนหลวง ร.9", "MRT ศรีเอี่ยม"]
+    },
+    {
+        "canonical": "ARL รามคำแหง", 
+        "keywords": ["รามคำแหง", "arl รามคำแหง", "แอร์พอร์ตลิงก์รามคำแหง", "พัฒนาการ", "สุวรรณภูมิ"], 
+        "line": "Airport Rail Link",
+        "zone": "Ramkhamhaeng",
+        "neighbors": ["ARL มักกะสัน", "ARL หัวหมาก"]
+    },
+    {
+        "canonical": "SRT รังสิต", 
+        "keywords": ["รังสิต", "srt รังสิต", "ม.กรุงเทพ", "มธ.รังสิต", "ธรรมศาสตร์", "ม.ธรรมศาสตร์", "มหาวิทยาลัยธรรมศาสตร์", "ฟิวเจอร์พาร์ครังสิต"], 
+        "line": "SRT Red Line",
+        "zone": "Rangsit",
+        "neighbors": ["SRT หลักหก", "SRT ดอนเมือง"]
+    }
 ]
 
 # Lifestyle Keyword Mappings and Clusters
@@ -283,25 +488,43 @@ class ThaiNLPSearchEngine:
                     score += 20.0
                     reasons.append("🚫 ปลอดสัตว์เลี้ยง")
 
-            # B. Mass Transit Proximity (Weight: 30%)
+            # B. Mass Transit & Location Matching (Weight: 35%)
             station_matched = False
+            location_mismatch = False
+            
             if entities["station"]:
-                if entities["station"].lower() in condo["station"].lower() or condo["station"].lower() in entities["station"].lower():
-                    # Distance boost
+                target_station = entities["station"].lower()
+                condo_station = condo["station"].lower()
+                
+                # Direct match with target station
+                if target_station in condo_station or condo_station in target_station:
                     dist = condo["distance_m"]
                     if dist <= 100:
-                        score += 30.0
+                        score += 42.0
                         reasons.append(f"🚆 ติด {condo['station']} ({dist} ม.)")
                     elif dist <= 500:
-                        score += 25.0
+                        score += 35.0
                         reasons.append(f"🚆 ใกล้ {condo['station']} ({dist} ม.)")
                     else:
-                        score += 18.0
+                        score += 26.0
                         reasons.append(f"🚆 ย่าน {condo['station']} ({dist} ม.)")
                     station_matched = True
-                elif entities["line"] and entities["line"] in condo["line"]:
-                    score += 15.0
-                    reasons.append(f"🚆 อยู่ตามแนว {condo['line']}")
+                else:
+                    # Check if condo is in a recognized neighboring station
+                    is_neighbor = False
+                    for st_info in KNOWN_STATIONS:
+                        if st_info["canonical"].lower() == target_station:
+                            neighbors = [n.lower() for n in st_info.get("neighbors", [])]
+                            if any(n in condo_station for n in neighbors):
+                                score += 20.0
+                                reasons.append(f"🚆 ละแวกใกล้เคียง: {condo['station']}")
+                                is_neighbor = True
+                                break
+                    
+                    if not is_neighbor:
+                        # STRICT LOCATION MISMATCH: User specified a specific station/area, but this condo is far away
+                        score -= 60.0
+                        location_mismatch = True
             elif entities["line"]:
                 if entities["line"] in condo["line"] or entities["line"] == "Mass Transit":
                     score += 15.0
@@ -349,9 +572,13 @@ class ThaiNLPSearchEngine:
             # Normalize final Match Score to 0 - 100%
             final_match_pct = max(0, min(100, int(score)))
 
+            # If location mismatch occurred when a specific station was requested, exclude or heavily reduce
+            if location_mismatch:
+                final_match_pct = 0
+
             # If user explicitly specified Pet Friendly and condo is NOT pet friendly, keep match low
             if pet_penalty:
-                final_match_pct = min(final_match_pct, 25)
+                final_match_pct = min(final_match_pct, 20)
 
             # Only include if match score is reasonable
             if final_match_pct > 15:
