@@ -233,10 +233,11 @@ export default function App() {
               )}
             </div>
 
-            {/* Right: compact entity hint panel (only when search active) */}
-            {nlpResults?.entities && (
-              <EntityBadges entities={nlpResults.entities} />
-            )}
+            {/* Right: compact 4-dimension entity guide & extraction panel */}
+            <EntityBadges 
+              entities={nlpResults?.entities} 
+              isSearched={Boolean(nlpResults)} 
+            />
           </div>
 
         </div>
