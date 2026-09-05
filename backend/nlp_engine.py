@@ -373,7 +373,7 @@ KNOWN_STATIONS = [
 # Lifestyle Keyword Mappings and Clusters
 LIFESTYLE_CLUSTERS = {
     "quiet": {
-        "keywords": ["เงียบสงบ", "สงบ", "ไม่พลุกพล่าน", "ไม่วุ่นวาย", "เป็นส่วนตัว", "private", "quiet", "peaceful", "ร่มรื่น"],
+        "keywords": ["เงียบสงบ", "สงบ", "เงียบ", "เงียบๆ", "ไม่พลุกพล่าน", "ไม่วุ่นวาย", "เป็นส่วนตัว", "private", "quiet", "peaceful", "ร่มรื่น", "สงบเงียบ"],
         "tag": "เงียบสงบ/เป็นส่วนตัว"
     },
     "wfh": {
@@ -474,8 +474,8 @@ class ThaiNLPSearchEngine:
                 extracted["line"] = "Mass Transit"
 
         # 2. Pet Policy Extraction
-        pet_positive_kw = ["เลี้ยงสัตว์ได้", "เลี้ยงสัตว์", "เลี้ยงหมา", "เลี้ยงแมว", "pet friendly", "pet-friendly", "สัตว์เลี้ยง", "ทาสแมว", "ทาสหมา", "หมา", "แมว"]
-        pet_negative_kw = ["ห้ามเลี้ยงสัตว์", "ไม่เลี้ยงสัตว์", "ห้ามเลี้ยงหมา", "ห้ามเลี้ยงแมว", "ไม่เอาสัตว์เลี้ยง"]
+        pet_positive_kw = ["เลี้ยงสัตว์ได้", "เลี้ยงสัตว์", "สัตว์เลี้ยง", "เลี้ยงหมา", "เลี้ยงแมว", "pet friendly", "pet-friendly", "petfriendly", "ทาสแมว", "ทาสหมา", "หมา", "แมว", "pet", "pets", "สัตว์"]
+        pet_negative_kw = ["ห้ามเลี้ยงสัตว์", "ไม่เลี้ยงสัตว์", "ห้ามเลี้ยงหมา", "ห้ามเลี้ยงแมว", "ไม่เอาสัตว์เลี้ยง", "no pet", "no pets"]
 
         if any(neg in q_lower for neg in pet_negative_kw):
             extracted["pet_friendly"] = False
@@ -483,19 +483,18 @@ class ThaiNLPSearchEngine:
             extracted["pet_friendly"] = True
 
         # 3. Budget / Price Range Extraction
-        # Parse expressions like "ไม่เกิน 15,000", "งบ 15000", "10k-20k", "ต่ำกว่า 2 หมื่น", "งบหมื่นห้า", "12000-18000"
         price_patterns = [
             # Range: "10,000 - 20,000" or "10000-20000"
             (r'(\d+[\d,]*)\s*(?:-|ถึง|to)\s*(\d+[\d,]*)', 'range'),
             # "ไม่เกิน 15,000" or "ต่ำกว่า 15000" or "งบ 15,000" or "งบไม่เกิน 15,000"
-            (r'(?:ไม่เกิน|ต่ำกว่า|งบไม่เกิน|งบ|งบประมาณ|ราคาไม่เกิน|ราคา|ไม่เกินงบ)\s*(\d+[\d,]*)', 'max'),
+            (r'(?:ไม่เกิน|ต่ำกว่า|งบไม่เกิน|งบ|งบประมาณ|ราคาไม่เกิน|ราคา|ไม่เกินงบ|คุมงบ)\s*(\d+[\d,]*)', 'max'),
             # "มากกว่า 20,000" or "ตั้งแต่ 15000"
             (r'(?:มากกว่า|ตั้งแต่|เกิน)\s*(\d+[\d,]*)', 'min'),
-            # "15k" or "20k"
+            # "15k" or "20k" or "18k"
             (r'(\d+)\s*k\b', 'k_val')
         ]
 
-        # Thai textual numbers handling (เช่น "หมื่นห้า", "สองหมื่น", "เก้าพัน", "หมื่นต้นๆ")
+        # Thai textual numbers handling
         thai_num_map = {
             "หมื่นห้า": 15000,
             "หมื่นต้นๆ": 12000,
@@ -515,10 +514,7 @@ class ThaiNLPSearchEngine:
 
         for th_text, val in thai_num_map.items():
             if th_text in q_lower:
-                if any(w in q_lower for w in ["ไม่เกิน", "ต่ำกว่า", "งบ", "ราคา"]):
-                    extracted["max_price"] = val
-                else:
-                    extracted["max_price"] = val
+                extracted["max_price"] = val
 
         # Regex numeric matching
         if not extracted["max_price"]:
@@ -533,7 +529,6 @@ class ThaiNLPSearchEngine:
                         break
                     elif p_type == 'max':
                         val = int(match.group(1).replace(',', ''))
-                        # Sanity check: price usually > 3000
                         if val >= 3000:
                             extracted["max_price"] = val
                             break
@@ -546,6 +541,15 @@ class ThaiNLPSearchEngine:
                         val = int(match.group(1)) * 1000
                         extracted["max_price"] = val
                         break
+
+        # Standalone numeric matching (e.g., "bts เลี้ยงสัตว์ 18000" or "สัตว์เลี้ยง 18000")
+        if not extracted["max_price"] and not extracted["min_price"]:
+            standalone_nums = re.findall(r'(?<!\d)(\d{4,6})(?!\d)', q_lower.replace(',', ''))
+            for num_str in standalone_nums:
+                num_val = int(num_str)
+                if 3000 <= num_val <= 200000:
+                    extracted["max_price"] = num_val
+                    break
 
         # 4. Lifestyle & Ambience Intention Extraction
         for cluster_id, data in LIFESTYLE_CLUSTERS.items():
