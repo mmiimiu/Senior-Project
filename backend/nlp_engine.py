@@ -174,10 +174,31 @@ KNOWN_STATIONS = [
     },
     {
         "canonical": "MRT สามย่าน", 
-        "keywords": ["สามย่าน", "mrt สามย่าน", "sam yan", "samyan", "จุฬา", "จุฬาลงกรณ์", "ม.จุฬา", "จามจุรีสแควร์", "สามย่านมิตรทาวน์"], 
+        "keywords": ["สามย่าน", "mrt สามย่าน", "sam yan", "samyan", "จุฬา", "แถวจุฬา", "ใกล้จุฬา", "จุฬาลงกรณ์", "ม.จุฬา", "จามจุรีสแควร์", "สามย่านมิตรทาวน์"], 
         "line": "MRT Blue Line",
-        "zone": "Chula-Samyan",
-        "neighbors": ["MRT สีลม", "MRT หัวลำโพง"]
+        "zone": "Chula-Samyan-Siam",
+        "neighbors": ["MRT สีลม", "MRT หัวลำโพง", "BTS สยาม", "BTS สนามกีฬาแห่งชาติ", "BTS ศาลาแดง"]
+    },
+    {
+        "canonical": "BTS สยาม", 
+        "keywords": ["สยาม", "bts สยาม", "siam", "เซ็นทรัลเวิลด์", "สยามพารากอน", "สยามสแควร์", "แถวจุฬา", "ย่านจุฬา", "ใกล้จุฬา"], 
+        "line": "BTS Silom Line",
+        "zone": "Chula-Samyan-Siam",
+        "neighbors": ["BTS ชิดลม", "BTS สนามกีฬาแห่งชาติ", "BTS ราชดำริ", "MRT สามย่าน"]
+    },
+    {
+        "canonical": "BTS สนามกีฬาแห่งชาติ", 
+        "keywords": ["สนามกีฬาแห่งชาติ", "bts สนามกีฬาแห่งชาติ", "national stadium", "เกษมสันต์", "จุฬา", "แถวจุฬา", "ย่านจุฬา", "จุฬาลงกรณ์", "mbk", "มาบุญครอง"], 
+        "line": "BTS Silom Line",
+        "zone": "Chula-Samyan-Siam",
+        "neighbors": ["BTS สยาม", "MRT สามย่าน"]
+    },
+    {
+        "canonical": "BTS ศาลาแดง",
+        "keywords": ["ศาลาแดง", "bts ศาลาแดง", "sala daeng", "สีลม", "silom", "สาทร", "แถวจุฬา"],
+        "line": "BTS Silom Line",
+        "zone": "Chula-Samyan-Siam",
+        "neighbors": ["BTS ช่องนนทรี", "BTS สะพานตากสิน", "MRT สามย่าน", "MRT สีลม"]
     },
     {
         "canonical": "MRT ลาดพร้าว", 
@@ -255,6 +276,98 @@ KNOWN_STATIONS = [
         "line": "SRT Red Line",
         "zone": "Rangsit",
         "neighbors": ["SRT หลักหก", "SRT ดอนเมือง"]
+    },
+    # ===== สถานีเพิ่มเติม ย่านกรุงเทพครอบคลุม =====
+    {
+        "canonical": "BTS ชิดลม",
+        "keywords": ["ชิดลม", "bts ชิดลม", "chidlom", "เซ็นทรัลเวิลด์", "สยาม", "ใกล้ซีดับเบิ้ลดี", "cwdc", "วิทยุ"],
+        "line": "BTS Sukhumvit Line",
+        "zone": "CBD-Chidlom",
+        "neighbors": ["BTS สยาม", "BTS เพลินจิต", "BTS ราชดำริ"]
+    },
+    {
+        "canonical": "BTS เพลินจิต",
+        "keywords": ["เพลินจิต", "bts เพลินจิต", "phloen chit", "เซ็นทรัลเอ็มบาสซี", "ถนนวิทยุ", "สถานทูต"],
+        "line": "BTS Sukhumvit Line",
+        "zone": "CBD-Chidlom",
+        "neighbors": ["BTS ชิดลม", "BTS นานา"]
+    },
+    {
+        "canonical": "BTS นานา",
+        "keywords": ["นานา", "bts นานา", "nana", "สุขุมวิท 3", "สุขุมวิท 5", "arab street"],
+        "line": "BTS Sukhumvit Line",
+        "zone": "Lower-Sukhumvit",
+        "neighbors": ["BTS เพลินจิต", "BTS อโศก"]
+    },
+    {
+        "canonical": "BTS ช่องนนทรี",
+        "keywords": ["ช่องนนทรี", "bts ช่องนนทรี", "chong nonsi", "สาทร", "sathorn", "ย่านสาทร", "silom complex"],
+        "line": "BTS Silom Line",
+        "zone": "Sathorn-Silom",
+        "neighbors": ["BTS ศาลาแดง", "BTS สุรศักดิ์", "BTS เซนต์หลุยส์"]
+    },
+    {
+        "canonical": "MRT ลุมพินี",
+        "keywords": ["ลุมพินี", "mrt ลุมพินี", "lumpini", "สวนลุมพินี", "lumphini park", "พระราม 4"],
+        "line": "MRT Blue Line",
+        "zone": "Sathorn-Lumpini",
+        "neighbors": ["MRT สีลม", "MRT คลองเตย", "BTS ศาลาแดง"]
+    },
+    {
+        "canonical": "MRT สุทธิสาร",
+        "keywords": ["สุทธิสาร", "mrt สุทธิสาร", "sutthisan", "ห้วยขวาง", "รัชดา 19"],
+        "line": "MRT Blue Line",
+        "zone": "Ratchada-Sutthisan",
+        "neighbors": ["MRT รัชดาภิเษก", "MRT ห้วยขวาง"]
+    },
+    {
+        "canonical": "MRT ท่าพระ",
+        "keywords": ["ท่าพระ", "mrt ท่าพระ", "tha phra", "บางขุนนนท์", "จรัญ", "ฝั่งธนบุรีตะวันตก"],
+        "line": "MRT Blue Line",
+        "zone": "Thonburi-Taphra",
+        "neighbors": ["MRT บางไผ่", "MRT จรัญสนิทวงศ์ 13", "MRT จรัญสนิทวงศ์ 3"]
+    },
+    {
+        "canonical": "MRT จรัญสนิทวงศ์ 13",
+        "keywords": ["จรัญสนิทวงศ์", "จรัญ", "mrt จรัญ", "charan sanit wong", "บางขุนนนท์", "ฝั่งธน"],
+        "line": "MRT Blue Line",
+        "zone": "Thonburi-Taphra",
+        "neighbors": ["MRT ท่าพระ", "MRT บางยี่ขัน"]
+    },
+    {
+        "canonical": "MRT เตาปูน",
+        "keywords": ["เตาปูน", "mrt เตาปูน", "taopoon", "บางซื่อ", "จุดตัดสายม่วง-น้ำเงิน"],
+        "line": "MRT Blue Line",
+        "zone": "Bangsue-Taopoon",
+        "neighbors": ["MRT บางโพ", "MRT สวนจตุจักร"]
+    },
+    {
+        "canonical": "MRT เพชรบุรี",
+        "keywords": ["เพชรบุรี", "mrt เพชรบุรี", "phetchaburi", "มักกะสัน", "arl มักกะสัน"],
+        "line": "MRT Blue Line",
+        "zone": "Phetchaburi-Makkasan",
+        "neighbors": ["MRT สุขุมวิท", "MRT พระราม 9", "ARL มักกะสัน"]
+    },
+    {
+        "canonical": "BTS สะพานควาย",
+        "keywords": ["สะพานควาย", "bts สะพานควาย", "saphan khwai", "พหลโยธิน 35", "อารีย์เหนือ"],
+        "line": "BTS Sukhumvit Line",
+        "zone": "Phahol-Ari",
+        "neighbors": ["BTS อารีย์", "BTS หมอชิต"]
+    },
+    {
+        "canonical": "BTS วุฒากาศ",
+        "keywords": ["วุฒากาศ", "bts วุฒากาศ", "wutthakat", "ราษฎร์บูรณะ", "ถนนสุขสวัสดิ์"],
+        "line": "BTS Silom Line",
+        "zone": "Thonburi-South",
+        "neighbors": ["BTS โพธิ์นิมิตร", "BTS วงเวียนใหญ่"]
+    },
+    {
+        "canonical": "MRT สีลม",
+        "keywords": ["mrt สีลม", "สีลม", "silom", "บางรัก", "bang rak"],
+        "line": "MRT Blue Line",
+        "zone": "Sathorn-Silom",
+        "neighbors": ["MRT ลุมพินี", "MRT สามย่าน", "BTS ศาลาแดง"]
     }
 ]
 
@@ -491,12 +604,28 @@ class ThaiNLPSearchEngine:
             # B. Mass Transit & Location Matching (Weight: 35%)
             station_matched = False
             location_mismatch = False
-            
+
             if entities["station"]:
                 target_station = entities["station"].lower()
                 condo_station = condo["station"].lower()
-                
-                # Direct match with target station
+
+                # Find zone of target station
+                target_zone = None
+                target_neighbors = []
+                for st_info in KNOWN_STATIONS:
+                    if st_info["canonical"].lower() == target_station:
+                        target_zone = st_info.get("zone")
+                        target_neighbors = [n.lower() for n in st_info.get("neighbors", [])]
+                        break
+
+                # Find zone of condo's station
+                condo_zone = None
+                for st_info in KNOWN_STATIONS:
+                    if st_info["canonical"].lower() == condo_station or condo_station in st_info["canonical"].lower():
+                        condo_zone = st_info.get("zone")
+                        break
+
+                # Direct match
                 if target_station in condo_station or condo_station in target_station:
                     dist = condo["distance_m"]
                     if dist <= 100:
@@ -509,22 +638,20 @@ class ThaiNLPSearchEngine:
                         score += 26.0
                         reasons.append(f"🚆 ย่าน {condo['station']} ({dist} ม.)")
                     station_matched = True
+                # Neighbor match
+                elif any(n in condo_station for n in target_neighbors):
+                    score += 20.0
+                    reasons.append(f"🚆 ละแวกใกล้เคียง: {condo['station']}")
+                    station_matched = True
+                # Same zone match (e.g., BTS แถวจุฬา → zone Chula-Samyan-Siam)
+                elif target_zone and condo_zone and target_zone == condo_zone:
+                    score += 18.0
+                    reasons.append(f"🚆 ย่านเดียวกัน ({condo_zone}): {condo['station']}")
+                    station_matched = True
                 else:
-                    # Check if condo is in a recognized neighboring station
-                    is_neighbor = False
-                    for st_info in KNOWN_STATIONS:
-                        if st_info["canonical"].lower() == target_station:
-                            neighbors = [n.lower() for n in st_info.get("neighbors", [])]
-                            if any(n in condo_station for n in neighbors):
-                                score += 20.0
-                                reasons.append(f"🚆 ละแวกใกล้เคียง: {condo['station']}")
-                                is_neighbor = True
-                                break
-                    
-                    if not is_neighbor:
-                        # STRICT LOCATION MISMATCH: User specified a specific station/area, but this condo is far away
-                        score -= 60.0
-                        location_mismatch = True
+                    # STRICT LOCATION MISMATCH
+                    score -= 60.0
+                    location_mismatch = True
             elif entities["line"]:
                 if entities["line"] in condo["line"] or entities["line"] == "Mass Transit":
                     score += 15.0
