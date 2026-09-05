@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { BarChart3, Play, Sparkles, CheckCircle2, XCircle, TrendingUp, HelpCircle, ArrowUpRight, Award, BookOpen } from 'lucide-react'
+import { Play, TrendingUp, ArrowUpRight, Award, BookOpen } from 'lucide-react'
 
 export default function EvaluationLab({ onTestQuery }) {
   const [benchmarkData, setBenchmarkData] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('ALL')
-  const [selectedQueryDetail, setSelectedQueryDetail] = useState(null)
 
   const fetchBenchmark = async () => {
     setIsLoading(true)

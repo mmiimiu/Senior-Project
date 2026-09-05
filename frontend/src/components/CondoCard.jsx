@@ -1,5 +1,5 @@
 import React from 'react'
-import { Train, Heart, DollarSign, Check, MapPin, Sparkles, ExternalLink, ShieldCheck } from 'lucide-react'
+import { Train, Sparkles, ExternalLink, ShieldCheck } from 'lucide-react'
 
 export default function CondoCard({ condo, onSelect, searchType = 'nlp' }) {
   const matchScore = condo.match_score || 0

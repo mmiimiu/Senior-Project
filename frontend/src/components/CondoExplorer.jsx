@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react'
-import { Building2, Search, Filter, Train, Heart, DollarSign, Sparkles } from 'lucide-react'
+import { Search } from 'lucide-react'
 import CondoCard from './CondoCard'
 
 export default function CondoExplorer({ condos = [], onSelectCondo }) {

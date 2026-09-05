@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { X, Train, Heart, DollarSign, Sparkles, CheckCircle2, MapPin, Building, Shield, ExternalLink } from 'lucide-react'
+import { X, Train, Sparkles, CheckCircle2, MapPin, Building, Shield, ExternalLink } from 'lucide-react'
 
 export default function CondoModal({ condo, onClose }) {
   useEffect(() => {

@@ -1,10 +1,8 @@
 import React from 'react'
-import { Train, Heart, DollarSign, Sparkles, Tags, CheckCircle2, AlertCircle } from 'lucide-react'
+import { Train, Heart, DollarSign, Sparkles, Tags } from 'lucide-react'
 
-export default function EntityBadges({ entities, searchType = 'nlp' }) {
+export default function EntityBadges({ entities }) {
   if (!entities || Object.keys(entities).length === 0) return null
-
-  const hasAnyEntity = entities.station || entities.line || entities.pet_friendly !== null || entities.max_price || entities.min_price || (entities.lifestyle_tags_matched && entities.lifestyle_tags_matched.length > 0)
 
   return (
     <div 

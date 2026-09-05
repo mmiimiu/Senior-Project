@@ -1,5 +1,5 @@
 import React from 'react'
-import { Search, Sparkles, X, ArrowRight, CornerDownLeft } from 'lucide-react'
+import { Sparkles, X, ArrowRight } from 'lucide-react'
 
 export const EXAMPLE_QUERIES = [
   { text: 'เงียบสงบ เลี้ยงแมวได้ ใกล้BTS มหาวิทยาลัยเกษตร', label: '🌿 เลี้ยงแมว + BTS ม.เกษตร' },

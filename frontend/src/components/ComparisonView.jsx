@@ -1,5 +1,5 @@
 import React from 'react'
-import { Sparkles, Database, CheckCircle, XCircle, ArrowRight, AlertTriangle, Info } from 'lucide-react'
+import { Sparkles, Database, XCircle, AlertTriangle, Info } from 'lucide-react'
 import CondoCard from './CondoCard'
 
 export default function ComparisonView({ 

@@ -8,8 +8,7 @@ Supports 4 core dimensions:
 """
 
 import re
-import numpy as np
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List
 from pythainlp.tokenize import word_tokenize
 from pythainlp.corpus import thai_stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer

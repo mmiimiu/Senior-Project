@@ -6,11 +6,11 @@ Based on Lifestyle Criteria
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Optional, List, Dict, Any
+from typing import Optional
 
 from dataset import CONDO_DATASET
 from nlp_engine import nlp_engine, KNOWN_STATIONS
-from benchmark_data import run_benchmark_evaluation, BENCHMARK_QUERIES
+from benchmark_data import run_benchmark_evaluation
 
 app = FastAPI(
     title="Thai NLP Condominium Search API",
