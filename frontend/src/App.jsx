@@ -249,13 +249,6 @@ export default function App() {
         onClose={() => setSelectedCondo(null)} 
       />
 
-      {/* Author Footer */}
-      <footer style={{ borderTop: '1px solid var(--border-color)', background: 'var(--bg-glass)', padding: '14px 24px', marginTop: 'auto' }}>
-        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.78rem', color: 'var(--text-muted)' }}>
-          ผู้จัดทำ: <strong style={{ margin: '0 4px' }}>นางสาว วาธิณีย์ วรรณกิจ (6707225)</strong> • ที่ปรึกษา: <strong style={{ margin: '0 4px' }}>อ.สุมนา เกษมสวัสดิ์</strong> • มหาวิทยาลัยรังสิต
-        </div>
-      </footer>
-
     </div>
   )
 }
