@@ -107,46 +107,44 @@ export default function App() {
           </div>
         )}
 
-        <div className="animate-fade-in">
+        <div className="animate-fade-in" style={{ display: 'flex', gap: 24, alignItems: 'flex-start', marginTop: 8 }}>
           
-          {/* Real Estate Portal Hero Section */}
-          <div style={{ textAlign: 'center', margin: '16px auto 32px auto', maxWidth: 800 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)', padding: '4px 14px', borderRadius: 9999, marginBottom: 14 }}>
-              <Sparkles size={14} color="#818cf8" />
-              <span style={{ fontSize: '0.82rem', color: '#6366f1', fontWeight: 600 }}>
-                Thai NLP Condominium Search Platform
-              </span>
-            </div>
-            
-            <h2 style={{ fontSize: '2.2rem', fontWeight: 800, margin: '0 0 10px 0', lineHeight: 1.25, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, var(--text-heading), #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              ค้นหาคอนโดมิเนียมตามไลฟ์สไตล์ที่คุณต้องการ
-            </h2>
-            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', margin: '0 auto', maxWidth: 650, lineHeight: 1.5 }}>
-              ค้นหาคอนโดตามแนวรถไฟฟ้า BTS/MRT พร้อมระบุเงื่อนไขสัตว์เลี้ยง งบประมาณ และไลฟ์สไตล์ที่ต้องการได้อย่างอิสระ
-            </p>
-          </div>
-
-          {/* Natural Language Search Input */}
-          <SearchBar 
-            query={query}
-            setQuery={setQuery}
-            onSearch={handleSearch}
-            isLoading={isLoading}
+          {/* Top-Left under Navbar: 4-Dimension Entity Guide / Extraction Panel */}
+          <EntityBadges 
+            entities={nlpResults?.entities} 
+            isSearched={Boolean(nlpResults)} 
           />
 
+          {/* Main Area: Hero, Search Bar, and Condo Listings */}
+          <div style={{ flex: 1, minWidth: 0 }}>
+            
+            {/* Real Estate Portal Hero Section */}
+            <div style={{ textAlign: 'center', margin: '8px auto 24px auto', maxWidth: 750 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)', padding: '4px 14px', borderRadius: 9999, marginBottom: 12 }}>
+                <Sparkles size={14} color="#818cf8" />
+                <span style={{ fontSize: '0.82rem', color: '#6366f1', fontWeight: 600 }}>
+                  Thai NLP Condominium Search Platform
+                </span>
+              </div>
+              
+              <h2 style={{ fontSize: '2rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: 1.25, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, var(--text-heading), #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                ค้นหาคอนโดมิเนียมตามไลฟ์สไตล์ที่คุณต้องการ
+              </h2>
+              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: '0 auto', maxWidth: 600, lineHeight: 1.5 }}>
+                ค้นหาคอนโดตามแนวรถไฟฟ้า BTS/MRT พร้อมระบุเงื่อนไขสัตว์เลี้ยง งบประมาณ และไลฟ์สไตล์ที่ต้องการได้อย่างอิสระ
+              </p>
+            </div>
 
-
-          {/* Content Layout: Left EntityBadges Sidebar + Right Main Condo Grid */}
-          <div style={{ marginTop: 28, display: 'flex', gap: 20, alignItems: 'flex-start' }}>
-
-            {/* Left: compact 4-dimension entity guide & extraction panel */}
-            <EntityBadges 
-              entities={nlpResults?.entities} 
-              isSearched={Boolean(nlpResults)} 
+            {/* Natural Language Search Input */}
+            <SearchBar 
+              query={query}
+              setQuery={setQuery}
+              onSearch={handleSearch}
+              isLoading={isLoading}
             />
 
-            {/* Right: Main column: header + grid */}
-            <div style={{ flex: 1, minWidth: 0 }}>
+            {/* Condo Listings Header & Sorting */}
+            <div style={{ marginTop: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: 'var(--text-heading)' }}>
@@ -195,7 +193,7 @@ export default function App() {
                 </div>
               ) : sortedCondos.length > 0 ? (
                 <>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 20 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 20 }}>
                     {displayedCondos.map((condo) => (
                       <CondoCard 
                         key={condo.id}
