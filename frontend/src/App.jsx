@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Sparkles, Building, GitCompare, AlertCircle, GraduationCap } from 'lucide-react'
+import React, { useState, useEffect, useMemo } from 'react'
+import { Sparkles, Building, GitCompare, AlertCircle, GraduationCap, ArrowUpDown } from 'lucide-react'
 import Navbar from './components/Navbar'
 import SearchBar from './components/SearchBar'
 import EntityBadges from './components/EntityBadges'
@@ -15,6 +15,7 @@ export default function App() {
   })
   const [activeTab, setActiveTab] = useState('search')
   const [query, setQuery] = useState('หาคอนโดติด BTS เลี้ยงสัตว์ได้ เงียบสงบ งบไม่เกิน 18,000')
+  const [sortBy, setSortBy] = useState('match')
   const [nlpResults, setNlpResults] = useState(null)
   const [keywordResults, setKeywordResults] = useState(null)
   const [allCondos, setAllCondos] = useState([])
@@ -83,6 +84,14 @@ export default function App() {
     setActiveTab('compare') // switch to comparison view to see test result
   }
 
+  const sortedCondos = useMemo(() => {
+    const list = [...(nlpResults?.results || [])]
+    if (sortBy === 'price_asc') return list.sort((a, b) => a.price_per_month - b.price_per_month)
+    if (sortBy === 'price_desc') return list.sort((a, b) => b.price_per_month - a.price_per_month)
+    if (sortBy === 'distance') return list.sort((a, b) => (a.distance_m || 0) - (b.distance_m || 0))
+    return list.sort((a, b) => (b.match_score || 0) - (a.match_score || 0))
+  }, [nlpResults, sortBy])
+
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
@@ -110,21 +119,20 @@ export default function App() {
         {activeTab === 'search' && (
           <div className="animate-fade-in">
             
-            {/* Hero Section */}
-            <div style={{ textAlign: 'center', margin: '16px auto 32px auto', maxWidth: 760 }}>
+            {/* Real Estate Portal Hero Section */}
+            <div style={{ textAlign: 'center', margin: '16px auto 32px auto', maxWidth: 800 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(99, 102, 241, 0.12)', border: '1px solid rgba(99, 102, 241, 0.3)', padding: '4px 14px', borderRadius: 9999, marginBottom: 14 }}>
                 <Sparkles size={14} color="#818cf8" />
                 <span style={{ fontSize: '0.82rem', color: '#6366f1', fontWeight: 600 }}>
-                  Thai NLP & Semantic Search Engine
+                  Smart Real-Estate NLP Portal
                 </span>
               </div>
               
-              <h2 style={{ fontSize: '2.1rem', fontWeight: 800, margin: '0 0 10px 0', lineHeight: 1.25, letterSpacing: '-0.02em' }}>
+              <h2 style={{ fontSize: '2.2rem', fontWeight: 800, margin: '0 0 10px 0', lineHeight: 1.25, letterSpacing: '-0.02em', background: 'linear-gradient(135deg, var(--text-heading), #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 ค้นหาคอนโดมิเนียมตามไลฟ์สไตล์ที่คุณต้องการ
               </h2>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', margin: 0, lineHeight: 1.5 }}>
-                พิมพ์ความต้องการเป็นภาษาธรรมชาติ เช่น <em>"ติด BTS เลี้ยงแมวได้ เงียบสงบ งบไม่เกิน 15,000"</em> 
-                ระบบจะวิเคราะห์เงื่อนไข 4 มิติและค้นหาห้องพักที่ตรงใจที่สุดโดยอัตโนมัติ
+              <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', margin: '0 auto', maxWidth: 650, lineHeight: 1.5 }}>
+                ค้นหาคอนโดตามแนวรถไฟฟ้า BTS/MRT พร้อมระบุเงื่อนไขสัตว์เลี้ยง งบประมาณ และไลฟ์สไตล์ที่ต้องการได้อย่างอิสระ
               </p>
             </div>
 
@@ -140,16 +148,15 @@ export default function App() {
             {nlpResults?.entities && (
               <EntityBadges 
                 entities={nlpResults.entities} 
-                searchType="nlp" 
               />
             )}
 
             {/* Search Results Section */}
             <div style={{ marginTop: 24 }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 8 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: 0 }}>
-                    ผลลัพธ์คอนโดมิเนียมที่แนะนำ
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 12 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, margin: 0, color: 'var(--text-heading)' }}>
+                    รายการคอนโดที่ตรงกับเงื่อนไข
                   </h3>
                   {nlpResults && (
                     <span className="badge badge-indigo">
@@ -158,14 +165,32 @@ export default function App() {
                   )}
                 </div>
 
-                <button
-                  onClick={() => setActiveTab('compare')}
-                  className="btn btn-outline-primary"
-                  style={{ fontSize: '0.82rem', padding: '6px 14px' }}
-                >
-                  <GitCompare size={14} />
-                  <span>เปรียบเทียบกับระบบเดิม (Keyword Search)</span>
-                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+                  {/* Sorting Controls */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', borderRadius: 10, padding: '4px 10px' }}>
+                    <ArrowUpDown size={14} color="var(--text-muted)" />
+                    <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>จัดเรียง:</span>
+                    <select
+                      value={sortBy}
+                      onChange={(e) => setSortBy(e.target.value)}
+                      style={{ background: 'transparent', border: 'none', color: 'var(--text-primary)', fontSize: '0.82rem', outline: 'none', cursor: 'pointer', fontFamily: 'var(--font-thai)' }}
+                    >
+                      <option value="match" style={{ background: 'var(--bg-modal)' }}>🌟 ความตรงใจสูงสุด (% Match)</option>
+                      <option value="price_asc" style={{ background: 'var(--bg-modal)' }}>💰 ราคา: ต่ำ ➔ สูง</option>
+                      <option value="price_desc" style={{ background: 'var(--bg-modal)' }}>💎 ราคา: สูง ➔ ต่ำ</option>
+                      <option value="distance" style={{ background: 'var(--bg-modal)' }}>🚆 ใกล้รถไฟฟ้าที่สุด</option>
+                    </select>
+                  </div>
+
+                  <button
+                    onClick={() => setActiveTab('compare')}
+                    className="btn btn-outline-primary"
+                    style={{ fontSize: '0.82rem', padding: '6px 14px' }}
+                  >
+                    <GitCompare size={14} />
+                    <span>เปรียบเทียบกับระบบเดิม</span>
+                  </button>
+                </div>
               </div>
 
               {/* Grid of Ranked Condo Cards */}
@@ -175,9 +200,9 @@ export default function App() {
                   <p>กำลังวิเคราะห์ประโยคภาษาธรรมชาติและจับคู่คอนโดมิเนียม...</p>
                   <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
                 </div>
-              ) : nlpResults?.results?.length > 0 ? (
+              ) : sortedCondos.length > 0 ? (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 20 }}>
-                  {nlpResults.results.map((condo) => (
+                  {sortedCondos.map((condo) => (
                     <CondoCard 
                       key={condo.id}
                       condo={condo}
