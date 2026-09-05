@@ -8,7 +8,7 @@ export default function Navbar({ totalCondos = 0, theme, toggleTheme }) {
         
         {/* Brand — CONDO wordmark with Thesis Subtitle */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
             <h1 style={{
               margin: 0,
               fontSize: '1.6rem',
@@ -21,17 +21,6 @@ export default function Navbar({ totalCondos = 0, theme, toggleTheme }) {
             }}>
               CONDO
             </h1>
-            <span style={{
-              fontSize: '0.72rem',
-              padding: '2px 8px',
-              borderRadius: 6,
-              background: 'rgba(99, 102, 241, 0.12)',
-              color: 'var(--accent-primary)',
-              border: '1px solid rgba(99, 102, 241, 0.25)',
-              fontWeight: 600,
-            }}>
-              Senior Project
-            </span>
           </div>
           <p style={{
             margin: 0,
