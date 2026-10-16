@@ -1,7 +1,31 @@
-// Data Source Part 2: คอนโดมิเนียม BTS สายสีเขียว (คูคต - เคหะฯ) [โซนราชเทวี - อโศก - ทองหล่อ - อ่อนนุช] (id 11-30)
+// Data Source Part 2: คอนโดมิเนียม BTS สายสีเขียว [โซนสะพานควาย - พญาไท - ราชเทวี - ชิดลม - อโศก - พร้อมพงษ์] (id 21-40)
 const CONDO_DATASET_2 = [
   {
-    id: 11,
+    id: 21,
+    name: "The Signature by Urbano",
+    station: "BTS สะพานควาย",
+    transitType: "BTS",
+    distance: "10 ม.",
+    price: 19500,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "วิวเมืองสวย", "เดินทางสะดวก"],
+    desc: "คอนโดติดบันได BTS สะพานควาย วิวเมืองมุมสูง สระว่ายน้ำลอยฟ้า สวนส่วนกลางร่มรื่น เชื่อมต่อเข้าสู่อารีย์และหมอชิตเพียง 1 สถานี รายล้อมด้วยร้านอาหารชื่อดัง",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 22,
+    name: "Rhythm Phahon-Ari",
+    station: "BTS สะพานควาย",
+    transitType: "BTS",
+    distance: "500 ม.",
+    price: 18000,
+    petFriendly: false,
+    lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "เป็นส่วนตัว"],
+    desc: "คอนโด High-Rise บนถนนพหลโยธิน ระหว่าง BTS สะพานควาย และ BTS อารีย์ สระว่ายน้ำและฟิตเนสชั้น 53 ชมวิวเมืองกรุงเทพฯ แบบ 360 องศา พร้อม Co-working space เงียบสงบ",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 23,
     name: "The Address Siam-Ratchathewi",
     station: "BTS ราชเทวี",
     transitType: "BTS",
@@ -10,10 +34,34 @@ const CONDO_DATASET_2 = [
     petFriendly: false,
     lifestyle: ["วิวเมืองสวย", "เป็นส่วนตัว", "เดินทางสะดวก"],
     desc: "คอนโดระดับ Prestige ติด BTS ราชเทวี เพียง 1 สถานีถึงสยามพารากอน ห้องพักเพดานสูง 3 เมตร พร้อมทัศนียภาพเมืองใจกลางกรุงเทพ สระว่ายน้ำลอยฟ้าวิว 360 องศา",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 12,
+    id: 24,
+    name: "Villa Rachatewi",
+    station: "BTS ราชเทวี",
+    transitType: "BTS",
+    distance: "180 ม.",
+    price: 22000,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "เดินทางสะดวก"],
+    desc: "คอนโดทำเลเยี่ยมใจกลางเมือง อยู่ระหว่าง BTS ราชเทวี และ BTS พญาไท เดินทางไปสยามและจุฬาฯ ได้รวดเร็ว ห้องพักกว้างขวาง สระว่ายน้ำและฟิตเนสครบครัน",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 25,
+    name: "Conner Ratchathewi",
+    station: "BTS ราชเทวี",
+    transitType: "BTS",
+    distance: "300 ม.",
+    price: 29000,
+    petFriendly: false,
+    lifestyle: ["เป็นส่วนตัว", "เหมาะกับ WFH", "วิวเมืองสวย"],
+    desc: "คอนโดลักชัวรีมุมถนนราชเทวี ใกล้ BTS ราชเทวี ห้องแบบ Loft สองชั้น เพดานสูง ป่าแนวตั้ง Vertical Forest ร่มรื่น เงียบสงบใจกลางย่านการศึกษาและธุรกิจ",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 26,
     name: "Park Origin Phayathai",
     station: "BTS พญาไท",
     transitType: "BTS",
@@ -25,7 +73,31 @@ const CONDO_DATASET_2 = [
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 13,
+    id: 27,
+    name: "The Reserve Kasemsan 3",
+    station: "BTS สนามกีฬาแห่งชาติ",
+    transitType: "BTS",
+    distance: "350 ม.",
+    price: 28000,
+    petFriendly: false,
+    lifestyle: ["เงียบสงบ", "เป็นส่วนตัว", "ร่มรื่น"],
+    desc: "คอนโด Low-Rise ในซอยเกษมสันต์ 3 ใกล้ BTS สยาม และ สนามกีฬาแห่งชาติ สไตล์ Colonial เรียบหรู เงียบสงบเหมือนบ้านเดี่ยวใจกลางสยาม เหมาะกับผู้ที่ต้องการความสงบ",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 28,
+    name: "Wish Signature Midtown Siam",
+    station: "BTS ราชเทวี",
+    transitType: "BTS",
+    distance: "350 ม.",
+    price: 24000,
+    petFriendly: false,
+    lifestyle: ["วิวเมืองสวย", "เหมาะกับ WFH", "เป็นส่วนตัว"],
+    desc: "คอนโดหรูพร้อมลิฟต์ส่วนตัวทุกยูนิต ใกล้ BTS ราชเทวี และ สยามพารากอน สระว่ายน้ำลอยฟ้าแบบ Infinity Edge Pool บนชั้นสูงสุด พร้อมสกายเลานจ์ชมวิวกรุงเทพฯ",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 29,
     name: "28 Chidlom",
     station: "BTS ชิดลม",
     transitType: "BTS",
@@ -37,7 +109,19 @@ const CONDO_DATASET_2 = [
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 14,
+    id: 30,
+    name: "The Chidlom",
+    station: "BTS ชิดลม",
+    transitType: "BTS",
+    distance: "350 ม.",
+    price: 36000,
+    petFriendly: false,
+    lifestyle: ["เป็นส่วนตัว", "เหมาะกับ WFH", "วิวเมืองสวย"],
+    desc: "คอนโดสไตล์คลาสสิกใจกลางย่านชิดลม ใกล้เซ็นทรัลชิดลมและโรงพยาบาลบำรุงราษฎร์ บรรยากาศสงบและเป็นส่วนตัวสูง พร้อมพื้นที่ส่วนกลางมาตรฐานโรงแรมหรู",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 31,
     name: "Noble Ploenchit",
     station: "BTS เพลินจิต",
     transitType: "BTS",
@@ -49,7 +133,19 @@ const CONDO_DATASET_2 = [
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 15,
+    id: 32,
+    name: "One Wireless",
+    station: "BTS เพลินจิต",
+    transitType: "BTS",
+    distance: "400 ม.",
+    price: 42000,
+    petFriendly: false,
+    lifestyle: ["ร่มรื่น", "เป็นส่วนตัว", "วิวเมืองสวย"],
+    desc: "คอนโดหรูบนถนนวิทยุ ใกล้ BTS เพลินจิต สถาปัตยกรรมสไตล์ Art Deco ล้อมรอบด้วยต้นจามจุรีขนาดใหญ่ร่มรื่น สระว่ายน้ำลอยฟ้าวิวสวนสถานทูต",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 33,
     name: "Hyde Sukhumvit 11",
     station: "BTS นานา",
     transitType: "BTS",
@@ -61,7 +157,19 @@ const CONDO_DATASET_2 = [
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 16,
+    id: 34,
+    name: "Q Sukhumvit",
+    station: "BTS นานา",
+    transitType: "BTS",
+    distance: "0 ม.",
+    price: 55000,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "เป็นส่วนตัว", "วิวเมืองสวย"],
+    desc: "คอนโด Super Luxury ติดทางขึ้น BTS นานา พร้อม Skywalk ลิฟต์ส่วนตัวทุกยูนิต สวนลอยฟ้าและเลานจ์ชมวิวใจกลางสุขุมวิท ออกแบบเพื่อความเป็นส่วนตัวสูงสุด",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 35,
     name: "Ashton Asoke",
     station: "BTS อโศก",
     transitType: "BTS",
@@ -73,7 +181,43 @@ const CONDO_DATASET_2 = [
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 17,
+    id: 36,
+    name: "Edge Sukhumvit 23",
+    station: "BTS อโศก",
+    transitType: "BTS",
+    distance: "280 ม.",
+    price: 26000,
+    petFriendly: false,
+    lifestyle: ["วิวเมืองสวย", "เหมาะกับ WFH", "เดินทางสะดวก"],
+    desc: "คอนโดสไตล์คนเมืองในซอยสุขุมวิท 23 ใกล้ BTS อโศก และ Terminal 21 สระว่ายน้ำกระจกใสยื่นออกจากตัวอาคาร พร้อมฟิตเนสและพื้นที่ทำงาน Co-working วิวระฟ้า",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 37,
+    name: "The Esse Asoke",
+    station: "BTS อโศก",
+    transitType: "BTS",
+    distance: "550 ม.",
+    price: 35000,
+    petFriendly: false,
+    lifestyle: ["เป็นส่วนตัว", "วิวเมืองสวย", "เหมาะกับ WFH"],
+    desc: "คอนโดหรูสูงที่สุดบนถนนอโศกมนตรี ใกล้ BTS อโศก ออกแบบด้วยคอนเซ็ปต์ Live Highest Live Finest สระว่ายน้ำ Sky Panoramic Pool และ Golf Simulator ระดับพรีเมียม",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 38,
+    name: "The Lofts Asoke",
+    station: "BTS อโศก",
+    transitType: "BTS",
+    distance: "600 ม.",
+    price: 32000,
+    petFriendly: false,
+    lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "เป็นส่วนตัว"],
+    desc: "คอนโดสไตล์ Industrial Loft เพดานสูง โปร่ง โล่ง ใกล้ BTS อโศก และ MRT เพชรบุรี มีพื้นที่ Co-working space 2 ชั้น สวนลอยฟ้า และสระว่ายน้ำระบบเกลือ",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 39,
     name: "The Marque Sukhumvit",
     station: "BTS พร้อมพงษ์",
     transitType: "BTS",
@@ -85,160 +229,16 @@ const CONDO_DATASET_2 = [
     image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80"
   },
   {
-    id: 18,
-    name: "The Strand Thonglor",
-    station: "BTS ทองหล่อ",
-    transitType: "BTS",
-    distance: "30 ม.",
-    price: 48000,
-    petFriendly: true,
-    lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "เป็นส่วนตัว"],
-    desc: "คอนโดระดับ Ultra Luxury ต้นซอยทองหล่อ ห่างสถานี BTS ทองหล่อเพียงก้าวเดียว เป็นมิตรต่อสัตว์เลี้ยง (Pet-Friendly) พร้อมพื้นที่สวนสำหรับสัตว์เลี้ยงและ Co-working space พรีเมียม",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 19,
-    name: "Rhythm Ekkamai Estate",
-    station: "BTS เอกมัย",
-    transitType: "BTS",
-    distance: "350 ม.",
-    price: 28000,
-    petFriendly: false,
-    lifestyle: ["ร่มรื่น", "เหมาะกับ WFH", "เป็นส่วนตัว"],
-    desc: "คอนโดสไตล์บ้านเดี่ยวใจกลางเอกมัย ล้อมรอบด้วยธรรมชาติอันร่มรื่น ใกล้ Gateway เอกมัย และ BTS เอกมัย บรรยากาศเงียบสงบแต่เดินทางสะดวก เหมาะสำหรับผู้ที่ต้องการความสงบในเมือง",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 20,
-    name: "Life Sukhumvit 48",
-    station: "BTS พระโขนง",
-    transitType: "BTS",
-    distance: "600 ม.",
-    price: 15000,
-    petFriendly: false,
-    lifestyle: ["ราคาประหยัด", "วิวเมืองสวย", "เหมาะกับ WFH"],
-    desc: "คอนโดราคาสบายกระเป๋าในย่านสุขุมวิทตอนกลาง ใกล้ BTS พระโขนง สระว่ายน้ำ Rooftop ชั้นบนสุดมองเห็นวิวแม่น้ำเจ้าพระยาและวิวเมือง พร้อมห้องออกกำลังกายและสวนลอยฟ้า",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 21,
-    name: "The President Sukhumvit",
-    station: "BTS อ่อนนุช",
-    transitType: "BTS",
-    distance: "50 ม.",
-    price: 13500,
-    petFriendly: false,
-    lifestyle: ["ติดรถไฟฟ้า", "ราคาประหยัด", "เดินทางสะดวก"],
-    desc: "คอนโดติดบันได BTS อ่อนนุช และห้างโลตัสสุขุมวิท 50 ทำเลยอดนิยมของคนทำงานสายสีเขียว นั่งตรงถึงอโศกและสยามได้สะดวกสบาย ค่าครองชีพย่อมเยา ร้านอาหารเพียบพร้อม",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 22,
-    name: "Ideo Mobi Sukhumvit",
-    station: "BTS อ่อนนุช",
-    transitType: "BTS",
-    distance: "40 ม.",
-    price: 14000,
-    petFriendly: false,
-    lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "เดินทางสะดวก"],
-    desc: "คอนโดติดถนนใหญ่สุขุมวิท ห่าง BTS อ่อนนุช เพียง 40 เมตร ใต้ตึกมี MaxValu และร้านกาแฟ Co-working space ครบครัน เดินทางเข้าสู่โซนธุรกิจสีลม-สยามสะดวกมาก",
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 23,
-    name: "Tidy Thonglor 17",
-    station: "BTS ทองหล่อ",
-    transitType: "BTS",
-    distance: "700 ม.",
-    price: 22000,
-    petFriendly: true,
-    lifestyle: ["เป็นส่วนตัว", "เงียบสงบ", "ร่มรื่น"],
-    desc: "คอนโด Low-Rise ในซอยทองหล่อ 17 อนุญาตเลี้ยงสุนัขและแมว (Pet-Friendly) บรรยากาศเงียบสงบเป็นส่วนตัว ใกล้ The Commons ทองหล่อ และร้านอาหารชั้นนำมากมาย",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 24,
-    name: "Celes Asoke",
-    station: "BTS อโศก",
-    transitType: "BTS",
-    distance: "150 ม.",
-    price: 39000,
-    petFriendly: false,
-    lifestyle: ["วิวเมืองสวย", "เป็นส่วนตัว", "ติดรถไฟฟ้า"],
-    desc: "คอนโดหรูหราใจกลางอโศก ทำเล Prime Area ติดแนวรถไฟฟ้า BTS อโศก และ MRT สุขุมวิท ออกแบบตกแต่งด้วยวัสดุนำเข้าระดับพรีเมียม สระว่ายน้ำชมวิวระฟ้า",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 25,
-    name: "The Crest Sukhumvit 34",
-    station: "BTS ทองหล่อ",
+    id: 40,
+    name: "Vittorio Sukhumvit 39",
+    station: "BTS พร้อมพงษ์",
     transitType: "BTS",
     distance: "120 ม.",
-    price: 27000,
+    price: 85000,
     petFriendly: false,
-    lifestyle: ["ติดรถไฟฟ้า", "เป็นส่วนตัว", "วิวเมืองสวย"],
-    desc: "คอนโดสไตล์ Modern Art Deco ปากซอยสุขุมวิท 34 ใกล้สถานี BTS ทองหล่อ เหมาะสำหรับคนทำงานที่มองหาที่พักระดับพรีเมียมในย่านสุขุมวิทตอนกลาง",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 26,
-    name: "HQ by Sansiri",
-    station: "BTS ทองหล่อ",
-    transitType: "BTS",
-    distance: "450 ม.",
-    price: 36000,
-    petFriendly: false,
-    lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "เป็นส่วนตัว"],
-    desc: "คอนโดคุณภาพใจกลางซอยทองหล่อ สังคมมีระดับ สระว่ายน้ำวิวพาโนรามาและฟิตเนสกระจกบานใหญ่ มองเห็นเส้นขอบฟ้าของกรุงเทพฯ ยูนิตออกแบบโปร่งสบาย",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 27,
-    name: "WYNE by Sansiri",
-    station: "BTS พระโขนง",
-    transitType: "BTS",
-    distance: "300 ม.",
-    price: 15500,
-    petFriendly: false,
-    lifestyle: ["ราคาประหยัด", "วิวเมืองสวย", "เดินทางสะดวก"],
-    desc: "คอนโด High-Rise ติดถนนใหญ่สุขุมวิท ใกล้ BTS พระโขนง ออกแบบสะท้อนความสนุกสนานและชีวิตคนเมือง ส่วนกลางครบครันพร้อมพื้นที่สันทนาการและห้องอ่านหนังสือ",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 28,
-    name: "The Room Sukhumvit 79",
-    station: "BTS อ่อนนุช",
-    transitType: "BTS",
-    distance: "150 ม.",
-    price: 17000,
-    petFriendly: false,
-    lifestyle: ["ร่มรื่น", "เงียบสงบ", "เป็นส่วนตัว"],
-    desc: "คอนโดสไตล์รีสอร์ตท่ามกลางสวนป่าขนาดใหญ่ในซอยสุขุมวิท 79 ห่างสถานี BTS อ่อนนุช เพียง 150 เมตร ร่มรื่น เงียบสงบเหมือนไม่ได้อยู่ใจกลางเมือง",
+    lifestyle: ["เป็นส่วนตัว", "วิวเมืองสวย", "ติดรถไฟฟ้า"],
+    desc: "คอนโดมิเนียมระดับมาสเตอร์พีซ ซอยสุขุมวิท 39 ใกล้ BTS พร้อมพงษ์ สถาปัตยกรรมหรูหราดั่งพิพิธภัณฑ์ศิลปะอิตาลี ลิฟต์ส่วนตัวทุกยูนิต บรรยากาศสงบและเป็นส่วนตัวขั้นสูงสุด",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 29,
-    name: "Q Chidlom-Phetchaburi",
-    station: "BTS ชิดลม",
-    transitType: "BTS",
-    distance: "550 ม.",
-    price: 21000,
-    petFriendly: false,
-    lifestyle: ["วิวเมืองสวย", "เหมาะกับ WFH"],
-    desc: "คอนโด High-Rise ดีไซน์โมเดิร์น ย่านชิดลม ใกล้เซ็นทรัลชิดลมและเกษรวิลเลจ ส่วนกลางลอยฟ้าสไตล์โรงแรม 5 ดาว เหมาะกับไลฟ์สไตล์คนทำงานรุ่นใหม่",
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 30,
-    name: "Siam Paragon Suites Phayathai",
-    station: "BTS สยาม",
-    transitType: "BTS",
-    distance: "350 ม.",
-    price: 36000,
-    petFriendly: false,
-    lifestyle: ["ติดรถไฟฟ้า", "วิวเมืองสวย", "เดินทางสะดวก"],
-    desc: "คอนโดใจกลางสยาม ศูนย์กลางระบบขนส่งมวลชน BTS กรุงเทพฯ เดินไปสยามพารากอน สยามสแควร์ และจุฬาลงกรณ์มหาวิทยาลัยได้สะดวกสบายที่สุดในสายสีเขียว",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
   }
 ];
 

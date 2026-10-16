@@ -1,0 +1,247 @@
+// Data Source Part 4: คอนโดมิเนียม BTS สายสีเขียว [โซนบางนา - แบริ่ง - สำโรง - ปู่เจ้า - ช้างเอราวัณ - ปากน้ำ - แพรกษา - เคหะฯ] (id 61-80)
+const CONDO_DATASET_4 = [
+  {
+    id: 61,
+    name: "Ideo Mobi Sukhumvit Eastgate",
+    station: "BTS บางนา",
+    transitType: "BTS",
+    distance: "150 ม.",
+    price: 12000,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "วิวเมืองสวย"],
+    desc: "คอนโด High-Rise ติด BTS บางนา ใกล้ BITEC บางนา และทางด่วนบางนา ส่วนกลางสไตล์ Futuristic พร้อมสระว่ายน้ำระบบเกลือความยาวโอลิมปิก 50 เมตร ชมวิวพาโนรามาโค้งน้ำบางกระเจ้า",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 62,
+    name: "The Coast Bangkok",
+    station: "BTS บางนา",
+    transitType: "BTS",
+    distance: "100 ม.",
+    price: 14500,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "วิวเมืองสวย", "เดินทางสะดวก"],
+    desc: "คอนโดมิเนียมคอมเพล็กซ์ มี Skywalk เชื่อมตรงเข้าสู่ BTS บางนา ด้านล่างมี Community Mall ร้านอาหารและร้านกาแฟแบรนด์ดัง เดินทางไปศูนย์นิทรรศการไบเทคบางนาได้ทันที",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 63,
+    name: "The Gallery Bearing",
+    station: "BTS แบริ่ง",
+    transitType: "BTS",
+    distance: "300 ม.",
+    price: 9500,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เงียบสงบ", "เป็นส่วนตัว"],
+    desc: "คอนโดราคาสบายกระเป๋า สุขุมวิท 107 ใกล้สถานี BTS แบริ่ง บรรยากาศเงียบสงบ เหมาะกับการพักผ่อนและการทำงานที่บ้าน สระว่ายน้ำ Infinity Edge Pool บนชั้นดาดฟ้า",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 64,
+    name: "Lumpini Ville Sukhumvit 109 - Bearing",
+    station: "BTS แบริ่ง",
+    transitType: "BTS",
+    distance: "700 ม.",
+    price: 6500,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เงียบสงบ", "ร่มรื่น"],
+    desc: "คอนโดชุมชนน่าอยู่ ราคาย่อมเยาในซอยสุขุมวิท 109 ใกล้ BTS แบริ่ง นิติบุคคลดูแลดี มีรถตู้รับ-ส่งสถานีรถไฟฟ้า สวนหย่อมร่มรื่น เหมาะสำหรับคนเริ่มต้นทำงานและนักศึกษา",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 65,
+    name: "Notting Hill Sukhumvit 105",
+    station: "BTS แบริ่ง",
+    transitType: "BTS",
+    distance: "400 ม.",
+    price: 9000,
+    petFriendly: true,
+    lifestyle: ["เหมาะกับ WFH", "ราคาประหยัด", "เป็นส่วนตัว"],
+    desc: "คอนโดสไตล์อังกฤษในซอยลาซาล ใกล้ BTS แบริ่ง อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) ฟังก์ชันห้องเป็นสัดส่วน พร้อมคลับเฮาส์ 3 ชั้น สระว่ายน้ำ และพื้นที่ทำงาน",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 66,
+    name: "Niche Mono Sukhumvit-Bearing",
+    station: "BTS แบริ่ง",
+    transitType: "BTS",
+    distance: "250 ม.",
+    price: 11000,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "วิวเมืองสวย"],
+    desc: "คอนโดร่วมทุนญี่ปุ่น เสนา ฮันคิว ใกล้ BTS แบริ่ง 250 ม. ออกแบบด้วยหลัก Geo fit+ ใส่ใจทุกฟังก์ชัน ส่วนกลางลอยฟ้า 3 ชั้น สระว่ายน้ำ Infinity Edge และฟิตเนสมุมกว้าง",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 67,
+    name: "Unio Sukhumvit 72",
+    station: "BTS แบริ่ง",
+    transitType: "BTS",
+    distance: "600 ม.",
+    price: 7000,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "ร่มรื่น", "เงียบสงบ"],
+    desc: "คอนโด Low-Rise บรรยากาศรีสอร์ตท่ามกลางสวนส่วนกลางขนาดใหญ่ในซอยสุขุมวิท 72 ใกล้ BTS แบริ่ง มีสระว่ายน้ำยาวและทางวิ่งจ๊อกกิ้ง เหมาะกับคนชอบความเงียบสงบ",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 68,
+    name: "Metropolis Samrong Interchange",
+    station: "BTS สำโรง",
+    transitType: "BTS",
+    distance: "10 ม.",
+    price: 10500,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "ราคาประหยัด", "เดินทางสะดวก"],
+    desc: "คอนโดติดบันไดสถานีอินเตอร์เชนจ์ BTS สำโรง เชื่อมต่อสายสีเหลืองและสายสีเขียว สะดวกสบายที่สุดในโซนสมุทรปราการ ใกล้อิมพีเรียลสำโรงและตลาดสดสำโรง",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 69,
+    name: "Cityville Condo Thepharak",
+    station: "BTS สำโรง",
+    transitType: "BTS",
+    distance: "650 ม.",
+    price: 6000,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เงียบสงบ"],
+    desc: "คอนโดราคาประหยัดย่านเทพารักษ์ ใกล้จุดตัด BTS สำโรง และ MRT สายสีเหลือง เข้าสู่ใจกลางเมืองสายสุขุมวิทได้รวดเร็ว ราคาสบายกระเป๋า ค่าส่วนกลางย่อมเยา",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 70,
+    name: "B-Loft Sukhumvit 115",
+    station: "BTS ปู่เจ้า",
+    transitType: "BTS",
+    distance: "400 ม.",
+    price: 7500,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เหมาะกับ WFH", "ติดรถไฟฟ้า"],
+    desc: "คอนโดสไตล์ New York Loft ซอยสุขุมวิท 115 ใกล้สถานี BTS ปู่เจ้า และห้างบิ๊กซีสมุทรปราการ ตกแต่งครบพร้อมเฟอร์นิเจอร์ เดินทางเข้าสู่สยามและอโศกได้โดยตรง",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 71,
+    name: "The Trust Condo @ BTS Erawan",
+    station: "BTS ช้างเอราวัณ",
+    transitType: "BTS",
+    distance: "0 ม.",
+    price: 8500,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "วิวเมืองสวย", "ราคาประหยัด"],
+    desc: "คอนโดวิวแม่น้ำเจ้าพระยา ติดสถานี BTS ช้างเอราวัณ เพียงก้าวเดียวถึงรถไฟฟ้าสายสีเขียว สระว่ายน้ำวิวแม่น้ำและพิพิธภัณฑ์ช้างเอราวัณ ราคาสบายกระเป๋าไม่ถึงหมื่น",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 72,
+    name: "Aspire Erawan Prime",
+    station: "BTS ช้างเอราวัณ",
+    transitType: "BTS",
+    distance: "30 ม.",
+    price: 9500,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "วิวเมืองสวย"],
+    desc: "คอนโดใหม่พร้อมอยู่ ติด BTS ช้างเอราวัณ ส่วนกลางจัดเต็ม 30 รายการ สระว่ายน้ำวิวแม่น้ำเจ้าพระยา โคเวิร์คกิ้งสเปซขนาดใหญ่ และสกายเลานจ์ชมวิวพระอาทิตย์ตก",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 73,
+    name: "The Parkland Lite Sukhumvit-Paknam",
+    station: "BTS ปากน้ำ",
+    transitType: "BTS",
+    distance: "200 ม.",
+    price: 7000,
+    petFriendly: false,
+    lifestyle: ["วิวเมืองสวย", "ราคาประหยัด", "ติดรถไฟฟ้า"],
+    desc: "คอนโดวิวแม่น้ำและปากอ่าวไทย ใกล้สถานี BTS ปากน้ำ บนสายสีเขียว สระว่ายน้ำ Tropical Lagoon ขนาดใหญ่ ลมพัดเย็นสบายตลอดทั้งปี ราคาสบายกระเป๋าเริ่มต้นเพียง 7,000 บาท",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 74,
+    name: "Notting Hill Praksa",
+    station: "BTS แพรกษา",
+    transitType: "BTS",
+    distance: "100 ม.",
+    price: 6800,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "ราคาประหยัด", "วิวเมืองสวย"],
+    desc: "คอนโด High-Rise สูง 35 ชั้น ติด BTS แพรกษา และห้างโรบินสันสมุทรปราการ วิวแม่น้ำเจ้าพระยาและทะเลอ่าวไทยแบบ 360 องศา ส่วนกลางหรูหราพร้อมสวนลอยฟ้า",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 75,
+    name: "B-Loft Lite Sukhumvit 115",
+    station: "BTS ปู่เจ้า",
+    transitType: "BTS",
+    distance: "350 ม.",
+    price: 7200,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เงียบสงบ", "เป็นส่วนตัว"],
+    desc: "คอนโด Low-Rise ในซอยสุขุมวิท 115 บรรยากาศเงียบสงบ ยูนิตน้อยไม่พลุกพล่าน ใกล้ BTS ปู่เจ้า และบิ๊กซีจัมโบ้ เหมาะกับการพักอาศัยที่ต้องการความสงบ",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 76,
+    name: "Kensington Sukhumvit-Theparak",
+    station: "BTS สำโรง",
+    transitType: "BTS",
+    distance: "750 ม.",
+    price: 7000,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "ร่มรื่น", "เหมาะกับ WFH"],
+    desc: "คอนโดติดถนนเทพารักษ์ ใกล้สถานีเชื่อมต่อ BTS สำโรง สไตล์อังกฤษส่วนกลางร่มรื่น สระว่ายน้ำขนาดยาวและสวนอังกฤษ Double Volume Lobby หรูหรา",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 77,
+    name: "Pause Sukhumvit 115",
+    station: "BTS ปู่เจ้า",
+    transitType: "BTS",
+    distance: "250 ม.",
+    price: 8000,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เหมาะกับ WFH", "ติดรถไฟฟ้า"],
+    desc: "คอนโดดีไซน์มินิมอล ซอยสุขุมวิท 115 ใกล้ BTS ปู่เจ้า เดินเพียง 3 นาทีถึงสถานี สระว่ายน้ำ Infinity Edge Pool บนดาดฟ้า และฟิตเนสพร้อมอุปกรณ์ครบครัน",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 78,
+    name: "Unio Town Sukhumvit 117",
+    station: "BTS ปู่เจ้า",
+    transitType: "BTS",
+    distance: "600 ม.",
+    price: 7800,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เงียบสงบ", "เป็นส่วนตัว"],
+    desc: "โครงการในซอยสุขุมวิท 117 ใกล้สถานี BTS ปู่เจ้า และ BTS ช้างเอราวัณ สภาพแวดล้อมน่าอยู่ เงียบสงบ ปลอดภัย มีระบบรักษาความปลอดภัย 24 ชม.",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 79,
+    name: "Sailuad City Condo",
+    station: "BTS สายลวด",
+    transitType: "BTS",
+    distance: "300 ม.",
+    price: 6200,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "วิวเมืองสวย", "เงียบสงบ"],
+    desc: "คอนโดติดถนนสายลวด ใกล้ BTS สายลวด เข้าเมืองสะดวกสบาย ราคาย่อมเยาที่สุดในย่านสมุทรปราการ ใกล้ตลาดและโรงพยาบาลสมุทรปราการ",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 80,
+    name: "Miami Bangpu Condominium",
+    station: "BTS เคหะฯ",
+    transitType: "BTS",
+    distance: "800 ม.",
+    price: 5500,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "วิวเมืองสวย", "เงียบสงบ", "ร่มรื่น"],
+    desc: "คอนโดสไตล์รีสอร์ตริมทะเลบางปู ใกล้สถานีปลายทาง BTS เคหะฯ (เคหะสมุทรปราการ) บรรยากาศธรรมชาติ ลมทะเลเย็นสบาย ใกล้สถานตากอากาศบางปู งบประมาณเริ่มต้นเพียง 5,500 บาท",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
+if (typeof window !== "undefined") {
+  window.CONDO_DATASET_4 = CONDO_DATASET_4;
+}

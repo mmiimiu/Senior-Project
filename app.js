@@ -23,7 +23,8 @@ let showAll = false;
 const getAllCondos = () => [
   ...(window.CONDO_DATASET || []),
   ...(window.CONDO_DATASET_2 || []),
-  ...(window.CONDO_DATASET_3 || [])
+  ...(window.CONDO_DATASET_3 || []),
+  ...(window.CONDO_DATASET_4 || [])
 ];
 
 const toggleModal = (id, show) => {

@@ -1,4 +1,4 @@
-// Data Source Part 1: คอนโดมิเนียม BTS สายสีเขียว (คูคต - เคหะฯ) [โซนคูคต - สะพานใหม่ - พหลโยธิน - อารีย์] (id 1-10)
+// Data Source Part 1: คอนโดมิเนียม BTS สายสีเขียว [โซนคูคต - สะพานใหม่ - ม.เกษตร - รัชโยธิน - ลาดพร้าว - อารีย์] (id 1-20)
 const CONDO_DATASET = [
   {
     id: 1,
@@ -50,27 +50,27 @@ const CONDO_DATASET = [
   },
   {
     id: 5,
-    name: "Noble Around Ari",
-    station: "BTS อารีย์",
+    name: "Miti Chiva Kaset",
+    station: "BTS มหาวิทยาลัยเกษตรศาสตร์",
     transitType: "BTS",
-    distance: "90 ม.",
-    price: 26000,
+    distance: "150 ม.",
+    price: 15000,
     petFriendly: false,
-    lifestyle: ["เหมาะกับ WFH", "เป็นส่วนตัว", "วิวเมืองสวย", "เดินทางสะดวก"],
-    desc: "คอนโดระดับลักชัวรีใจกลางย่านอารีย์ ห่างสถานี BTS อารีย์เพียง 90 เมตร ใกล้ La Villa Ari และคาเฟ่ชั้นนำมากมาย บรรยากาศเงียบสงบ เป็นส่วนตัวสูง พร้อมพื้นที่ทำงาน Co-working หรูหรา",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+    lifestyle: ["ติดรถไฟฟ้า", "เป็นส่วนตัว", "วิวเมืองสวย"],
+    desc: "คอนโด High-Rise เพดานสูง 3 เมตร ใกล้ BTS มหาวิทยาลัยเกษตรศาสตร์ และแยกเกษตร ยูนิตน้อยเป็นส่วนตัวสูง พร้อมพื้นที่ทำงาน Sky Lounge ชมวิวเมืองเปิดกว้าง",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   },
   {
     id: 6,
-    name: "The Monument Sanampao",
-    station: "BTS สนามเป้า",
+    name: "The Muve Kaset",
+    station: "BTS เสนานิคม",
     transitType: "BTS",
-    distance: "150 ม.",
-    price: 38000,
-    petFriendly: true,
-    lifestyle: ["เป็นส่วนตัว", "วิวเมืองสวย", "เงียบสงบ"],
-    desc: "คอนโดซูเปอร์ลักชัวรี High-Rise ติดแนว BTS สนามเป้า ยูนิตน้อยมีความเป็นส่วนตัวสูงสุด อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) บรรยากาศสงบ ไม่วุ่นวาย เชื่อมต่อสู่ใจกลางเมืองในไม่กี่นาที",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80"
+    distance: "400 ม.",
+    price: 11500,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เหมาะกับ WFH", "เป็นส่วนตัว"],
+    desc: "คอนโดแนวคิดใหม่จากแสนสิริ ใกล้ BTS เสนานิคม และ ม.เกษตรศาสตร์ ออกแบบเพื่อคนทำงานรุ่นใหม่และนักศึกษา ฟังก์ชันห้องปรับเปลี่ยนได้ตามการใช้งาน พร้อมพื้นที่ทำงานสงบเงียบ",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
     id: 7,
@@ -82,30 +82,30 @@ const CONDO_DATASET = [
     petFriendly: false,
     lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "เดินทางสะดวก"],
     desc: "คอนโดวิวพาโนรามา ตรงข้ามเซ็นทรัลลาดพร้าว ติด BTS ห้าแยกลาดพร้าว และเชื่อมต่อ MRT พหลโยธิน ทำเลศักยภาพสูงสุดของกรุงเทพตอนเหนือ ส่วนกลางขนาดใหญ่พร้อม Co-working space สองชั้น",
-    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
     id: 8,
-    name: "Origin Plug & Play Phahol-Saphanmai",
-    station: "BTS สะพานใหม่",
+    name: "The Crest Park Residences",
+    station: "BTS ห้าแยกลาดพร้าว",
     transitType: "BTS",
     distance: "80 ม.",
-    price: 9000,
+    price: 28000,
     petFriendly: false,
-    lifestyle: ["ราคาประหยัด", "ติดรถไฟฟ้า", "เหมาะกับ WFH"],
-    desc: "คอนโดสไตล์ Duo Space ห้องสองชั้น เพดานสูง โปร่งโล่ง ใกล้ BTS สะพานใหม่ และตลาดสะพานใหม่ ราคาสบายกระเป๋าไม่เกินหมื่น เหมาะกับคนรุ่นใหม่ที่ต้องการความคล่องตัวบนแนวสายสีเขียว",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+    lifestyle: ["วิวเมืองสวย", "ร่มรื่น", "เป็นส่วนตัว", "ติดรถไฟฟ้า"],
+    desc: "คอนโดระดับ Luxury วิวสวนจตุจักรกว่า 700 ไร่ ติด BTS ห้าแยกลาดพร้าว ตกแต่งสไตล์โมเดิร์นคลาสสิก ส่วนกลางเหนือระดับ ลิฟต์ส่วนตัว สังคมคุณภาพ",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
   },
   {
     id: 9,
-    name: "The Muve Kaset",
-    station: "BTS เสนานิคม",
+    name: "M Ladprao",
+    station: "BTS ห้าแยกลาดพร้าว",
     transitType: "BTS",
-    distance: "400 ม.",
-    price: 11500,
-    petFriendly: false,
-    lifestyle: ["ราคาประหยัด", "เหมาะกับ WFH", "เป็นส่วนตัว"],
-    desc: "คอนโดแนวคิดใหม่จากแสนสิริ ใกล้ BTS เสนานิคม และ ม.เกษตรศาสตร์ ออกแบบเพื่อคนทำงานรุ่นใหม่และนักศึกษา ฟังก์ชันห้องปรับเปลี่ยนได้ตามการใช้งาน พร้อมพื้นที่ทำงานสงบเงียบ",
+    distance: "120 ม.",
+    price: 19000,
+    petFriendly: true,
+    lifestyle: ["ติดรถไฟฟ้า", "วิวเมืองสวย"],
+    desc: "คอนโดตรงข้ามเซ็นทรัลลาดพร้าว ใกล้ BTS ห้าแยกลาดพร้าว อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) สระว่ายน้ำลอยฟ้า Sky Pool และฟิตเนสมุมสูงชมวิวเมือง",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -119,6 +119,126 @@ const CONDO_DATASET = [
     lifestyle: ["ราคาประหยัด", "เงียบสงบ"],
     desc: "คอนโดราคาประหยัดใกล้สถานีปลายทาง BTS คูคต ต้นสายสีเขียว นั่งยาวเข้าเมืองได้แบบไม่ต้องต่อสาย ห้องกว้าง บรรยากาศเงียบสงบ ที่จอดรถสะดวกสบาย งบประมาณเริ่มต้นเพียงหกพันบาท",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 11,
+    name: "Origin Plug & Play Phahol-Saphanmai",
+    station: "BTS สะพานใหม่",
+    transitType: "BTS",
+    distance: "80 ม.",
+    price: 9000,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "ติดรถไฟฟ้า", "เหมาะกับ WFH"],
+    desc: "คอนโดสไตล์ Duo Space ห้องสองชั้น เพดานสูง โปร่งโล่ง ใกล้ BTS สะพานใหม่ และตลาดสะพานใหม่ ราคาสบายกระเป๋าไม่เกินหมื่น เหมาะกับคนรุ่นใหม่ที่ต้องการความคล่องตัวบนแนวสายสีเขียว",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 12,
+    name: "Plum Condo Saphanmai Station",
+    station: "BTS สะพานใหม่",
+    transitType: "BTS",
+    distance: "450 ม.",
+    price: 8000,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "เงียบสงบ", "เหมาะกับ WFH"],
+    desc: "คอนโดแต่งครบพร้อมอยู่ ใกล้ BTS สะพานใหม่ ซอยพหลโยธิน 52 พร้อมสระว่ายน้ำ ฟิตเนส Co-working space สงบ สบาย ราคาย่อมเยา",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 13,
+    name: "Modiz Launch Kaset",
+    station: "BTS มหาวิทยาลัยเกษตรศาสตร์",
+    transitType: "BTS",
+    distance: "200 ม.",
+    price: 13500,
+    petFriendly: false,
+    lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "ติดรถไฟฟ้า"],
+    desc: "คอนโดใหม่สไตล์โมเดิร์น ใกล้ BTS มหาวิทยาลัยเกษตรศาสตร์ ส่วนกลางครบครัน Co-working space 24 ชม. สระว่ายน้ำชมวิวเปิดโล่ง เหมาะกับนักศึกษา ม.เกษตร",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 14,
+    name: "Supalai Park Kaset",
+    station: "BTS มหาวิทยาลัยเกษตรศาสตร์",
+    transitType: "BTS",
+    distance: "400 ม.",
+    price: 9500,
+    petFriendly: false,
+    lifestyle: ["ราคาประหยัด", "ร่มรื่น", "เงียบสงบ"],
+    desc: "คอนโดพื้นที่สีเขียวขนาดใหญ่แยกเกษตร ใกล้ BTS ม.เกษตรศาสตร์ ห้องกว้างขวาง ลมโกรกโปร่งสบาย พร้อมสิ่งอำนวยความสะดวกครบครัน สระว่ายน้ำขนาดใหญ่",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 15,
+    name: "Centric Ratchayothin",
+    station: "BTS รัชโยธิน",
+    transitType: "BTS",
+    distance: "150 ม.",
+    price: 17000,
+    petFriendly: false,
+    lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "เดินทางสะดวก"],
+    desc: "คอนโดหรูดีไซน์พรีเมียม ใกล้ BTS รัชโยธิน ตรงข้ามตึกช้าง ใกล้เมเจอร์รัชโยธิน ส่วนกลาง Triple Volume สระว่ายน้ำไร้ขอบวิวพระอาทิตย์ตก",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 16,
+    name: "Maru Ladprao 15",
+    station: "BTS ห้าแยกลาดพร้าว",
+    transitType: "BTS",
+    distance: "400 ม.",
+    price: 18000,
+    petFriendly: true,
+    lifestyle: ["เหมาะกับ WFH", "เป็นส่วนตัว"],
+    desc: "คอนโดระดับพรีเมียม ย่านลาดพร้าว-พหลโยธิน อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) มีโซนสวนและสนามหญ้าสำหรับสัตว์เลี้ยงโดยเฉพาะ พร้อม Co-working Space สวยงาม",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 17,
+    name: "The Privacy Phahol-Kaset",
+    station: "BTS มหาวิทยาลัยเกษตรศาสตร์",
+    transitType: "BTS",
+    distance: "600 ม.",
+    price: 11000,
+    petFriendly: false,
+    lifestyle: ["เป็นส่วนตัว", "เงียบสงบ", "เหมาะกับ WFH"],
+    desc: "คอนโด Low-Rise ในซอยพหลโยธิน ใกล้ BTS ม.เกษตรศาสตร์ เงียบสงบเป็นส่วนตัว ไม่พลุกพล่าน สระว่ายน้ำกลางสวน เหมาะสำหรับผู้ที่ต้องการสมาธิในการอ่านหนังสือและทำงาน",
+    image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 18,
+    name: "Silk Phaholyothin 9",
+    station: "BTS อารีย์",
+    transitType: "BTS",
+    distance: "450 ม.",
+    price: 16000,
+    petFriendly: false,
+    lifestyle: ["เงียบสงบ", "เป็นส่วนตัว", "ร่มรื่น"],
+    desc: "คอนโด Low-Rise ในซอยพหลโยธิน 9 ย่านอารีย์ บรรยากาศร่มรื่น เงียบสงบ ปลอดภัย ใกล้คาเฟ่และร้านอาหารชื่อดังของอารีย์",
+    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 19,
+    name: "Noble Around Ari",
+    station: "BTS อารีย์",
+    transitType: "BTS",
+    distance: "90 ม.",
+    price: 26000,
+    petFriendly: false,
+    lifestyle: ["เหมาะกับ WFH", "เป็นส่วนตัว", "วิวเมืองสวย", "เดินทางสะดวก"],
+    desc: "คอนโดระดับลักชัวรีใจกลางย่านอารีย์ ห่างสถานี BTS อารีย์เพียง 90 เมตร ใกล้ La Villa Ari และคาเฟ่ชั้นนำมากมาย บรรยากาศเงียบสงบ เป็นส่วนตัวสูง พร้อมพื้นที่ทำงาน Co-working หรูหรา",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 20,
+    name: "The Monument Sanampao",
+    station: "BTS สนามเป้า",
+    transitType: "BTS",
+    distance: "150 ม.",
+    price: 38000,
+    petFriendly: true,
+    lifestyle: ["เป็นส่วนตัว", "วิวเมืองสวย", "เงียบสงบ"],
+    desc: "คอนโดซูเปอร์ลักชัวรี High-Rise ติดแนว BTS สนามเป้า ยูนิตน้อยมีความเป็นส่วนตัวสูงสุด อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) บรรยากาศสงบ ไม่วุ่นวาย เชื่อมต่อสู่ใจกลางเมืองในไม่กี่นาที",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80"
   }
 ];
 
