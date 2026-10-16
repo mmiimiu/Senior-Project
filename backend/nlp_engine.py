@@ -7,16 +7,44 @@ Supports 4 core dimensions:
 4. Lifestyle & Ambience (Semantic matching & Cosine similarity)
 """
 
+import sys
+import os
 import re
 from typing import Dict, Any, List
-from pythainlp.tokenize import word_tokenize
-from pythainlp.corpus import thai_stopwords
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
-from dataset import CONDO_DATASET
+
+# Ensure local backend modules can be imported without error
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from pythainlp.tokenize import word_tokenize  # type: ignore
+    from pythainlp.corpus import thai_stopwords   # type: ignore
+except ImportError:
+    def word_tokenize(text: str, **kwargs) -> List[str]:
+        return [w for w in re.split(r'(\s+|[^\u0e00-\u0e7fa-zA-Z0-9])', text) if w and not w.isspace()]
+    def thai_stopwords() -> set:
+        return set()
+
+try:
+    from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore
+    from sklearn.metrics.pairwise import cosine_similarity       # type: ignore
+except ImportError:
+    TfidfVectorizer = None
+    cosine_similarity = None
+
+try:
+    from dataset import CONDO_DATASET  # type: ignore
+except ImportError:
+    from .dataset import CONDO_DATASET  # type: ignore
 
 # Pre-defined Station Knowledge Base for BTS / MRT / SRT / ARL
 KNOWN_STATIONS = [
+    {
+        "canonical": "BTS วัดพระศรีมหาธาตุ (บางเขน)", 
+        "keywords": ["วัดพระศรีมหาธาตุ", "วัดพระศรี", "บางเขน", "bts วัดพระศรีมหาธาตุ", "bts บางเขน", "วงเวียนบางเขน", "พหลโยธิน 59"], 
+        "line": "BTS Sukhumvit Line",
+        "zone": "Bangkhen-Saphanmai",
+        "neighbors": ["BTS สะพานใหม่", "BTS พหลโยธิน 59", "BTS กรมทหารราบที่ 11", "BTS มหาวิทยาลัยเกษตรศาสตร์"]
+    },
     {
         "canonical": "BTS มหาวิทยาลัยเกษตรศาสตร์", 
         "keywords": ["มหาวิทยาลัยเกษตรศาสตร์", "มหาวิทยาลัยเกษตร", "ม.เกษตรศาสตร์", "ม.เกษตร", "bts มหาวิทยาลัยเกษตรศาสตร์", "bts มหาวิทยาลัยเกษตร", "bts ม.เกษตร", "เกษตรศาสตร์", "เกษตร", "kasetsart", "kasetsart university", "ม.เกษตรฯ", "สถานีม.เกษตร", "สถานีมหาวิทยาลัยเกษตรศาสตร์", "เกษตร-นวมินทร์"], 
@@ -426,8 +454,12 @@ class ThaiNLPSearchEngine:
             filtered_tokens = [t for t in tokens if t not in self.stop_words and len(t.strip()) > 1]
             corpus.append(" ".join(filtered_tokens))
         
-        self.vectorizer = TfidfVectorizer(ngram_range=(1, 2))
-        self.tfidf_matrix = self.vectorizer.fit_transform(corpus)
+        if TfidfVectorizer:
+            self.vectorizer = TfidfVectorizer(ngram_range=(1, 2))
+            self.tfidf_matrix = self.vectorizer.fit_transform(corpus)
+        else:
+            self.vectorizer = None
+            self.tfidf_matrix = None
 
     def extract_entities(self, query: str) -> Dict[str, Any]:
         """
@@ -616,8 +648,11 @@ class ThaiNLPSearchEngine:
         filtered_q = [t for t in query_tokens if t not in self.stop_words and len(t.strip()) > 1]
         q_vec_str = " ".join(filtered_q) if filtered_q else query
         
-        query_vec = self.vectorizer.transform([q_vec_str])
-        cosine_sims = cosine_similarity(query_vec, self.tfidf_matrix).flatten()
+        if self.vectorizer and cosine_similarity and self.tfidf_matrix is not None:
+            query_vec = self.vectorizer.transform([q_vec_str])
+            cosine_sims = cosine_similarity(query_vec, self.tfidf_matrix).flatten()
+        else:
+            cosine_sims = [0.0] * len(self.dataset)
 
         scored_results = []
 
