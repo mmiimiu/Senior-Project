@@ -7,9 +7,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "150 ม.",
     price: 12000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "วิวเมืองสวย"],
-    desc: "คอนโด High-Rise ติด BTS บางนา ใกล้ BITEC บางนา และทางด่วนบางนา ส่วนกลางสไตล์ Futuristic พร้อมสระว่ายน้ำระบบเกลือความยาวโอลิมปิก 50 เมตร ชมวิวพาโนรามาโค้งน้ำบางกระเจ้า",
+    desc: "คอนโด High-Rise ติด BTS บางนา ใกล้ BITEC บางนา และทางด่วนบางนา ต้อนรับสัตว์เลี้ยง (Pet-Friendly) ส่วนกลางสไตล์ Futuristic พร้อมสระว่ายน้ำระบบเกลือความยาวโอลิมปิก 50 เมตร ชมวิวพาโนรามาโค้งน้ำบางกระเจ้า",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -31,9 +31,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "300 ม.",
     price: 9500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "เงียบสงบ", "เป็นส่วนตัว"],
-    desc: "คอนโดราคาสบายกระเป๋า สุขุมวิท 107 ใกล้สถานี BTS แบริ่ง บรรยากาศเงียบสงบ เหมาะกับการพักผ่อนและการทำงานที่บ้าน สระว่ายน้ำ Infinity Edge Pool บนชั้นดาดฟ้า",
+    desc: "คอนโดราคาสบายกระเป๋า สุขุมวิท 107 ใกล้สถานี BTS แบริ่ง อนุญาตเลี้ยงสัตว์ (Pet-Friendly) บรรยากาศเงียบสงบ เหมาะกับการพักผ่อนและการทำงานที่บ้าน สระว่ายน้ำ Infinity Edge Pool บนชั้นดาดฟ้า",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -79,9 +79,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "600 ม.",
     price: 7000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "ร่มรื่น", "เงียบสงบ"],
-    desc: "คอนโด Low-Rise บรรยากาศรีสอร์ตท่ามกลางสวนส่วนกลางขนาดใหญ่ในซอยสุขุมวิท 72 ใกล้ BTS แบริ่ง มีสระว่ายน้ำยาวและทางวิ่งจ๊อกกิ้ง เหมาะกับคนชอบความเงียบสงบ",
+    desc: "คอนโด Low-Rise บรรยากาศรีสอร์ตท่ามกลางสวนส่วนกลางขนาดใหญ่ในซอยสุขุมวิท 72 ใกล้ BTS แบริ่ง อนุญาตเลี้ยงสัตว์ (Pet-Friendly) มีพื้นที่สวนกว้างขวาง สระว่ายน้ำยาวและทางวิ่งจ๊อกกิ้ง",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -115,9 +115,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "400 ม.",
     price: 7500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "เหมาะกับ WFH", "ติดรถไฟฟ้า"],
-    desc: "คอนโดสไตล์ New York Loft ซอยสุขุมวิท 115 ใกล้สถานี BTS ปู่เจ้า และห้างบิ๊กซีสมุทรปราการ ตกแต่งครบพร้อมเฟอร์นิเจอร์ เดินทางเข้าสู่สยามและอโศกได้โดยตรง",
+    desc: "คอนโดสไตล์ New York Loft ซอยสุขุมวิท 115 ใกล้สถานี BTS ปู่เจ้า และห้างบิ๊กซีสมุทรปราการ โครงการ Pet-Friendly เป็นมิตรต่อสัตว์เลี้ยง ตกแต่งครบพร้อมเฟอร์นิเจอร์ เดินทางเข้าสู่สยามและอโศกได้โดยตรง",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -139,9 +139,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "30 ม.",
     price: 9500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "วิวเมืองสวย"],
-    desc: "คอนโดใหม่พร้อมอยู่ ติด BTS ช้างเอราวัณ ส่วนกลางจัดเต็ม 30 รายการ สระว่ายน้ำวิวแม่น้ำเจ้าพระยา โคเวิร์คกิ้งสเปซขนาดใหญ่ และสกายเลานจ์ชมวิวพระอาทิตย์ตก",
+    desc: "คอนโดใหม่พร้อมอยู่ ติด BTS ช้างเอราวัณ อนุญาตเลี้ยงสัตว์ (Pet-Friendly) ส่วนกลางจัดเต็ม 30 รายการ สระว่ายน้ำวิวแม่น้ำเจ้าพระยา โคเวิร์คกิ้งสเปซขนาดใหญ่ และสกายเลานจ์ชมวิวพระอาทิตย์ตก",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -175,9 +175,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "350 ม.",
     price: 7200,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "เงียบสงบ", "เป็นส่วนตัว"],
-    desc: "คอนโด Low-Rise ในซอยสุขุมวิท 115 บรรยากาศเงียบสงบ ยูนิตน้อยไม่พลุกพล่าน ใกล้ BTS ปู่เจ้า และบิ๊กซีจัมโบ้ เหมาะกับการพักอาศัยที่ต้องการความสงบ",
+    desc: "คอนโด Low-Rise ในซอยสุขุมวิท 115 บรรยากาศเงียบสงบ อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) ยูนิตน้อยไม่พลุกพล่าน ใกล้ BTS ปู่เจ้า และบิ๊กซีจัมโบ้ เหมาะกับการพักอาศัยที่ต้องการความสงบ",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -199,9 +199,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "250 ม.",
     price: 8000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "เหมาะกับ WFH", "ติดรถไฟฟ้า"],
-    desc: "คอนโดดีไซน์มินิมอล ซอยสุขุมวิท 115 ใกล้ BTS ปู่เจ้า เดินเพียง 3 นาทีถึงสถานี สระว่ายน้ำ Infinity Edge Pool บนดาดฟ้า และฟิตเนสพร้อมอุปกรณ์ครบครัน",
+    desc: "คอนโดดีไซน์มินิมอล ซอยสุขุมวิท 115 ใกล้ BTS ปู่เจ้า เดินเพียง 3 นาทีถึงสถานี ต้อนรับสัตว์เลี้ยง (Pet-Friendly) สระว่ายน้ำ Infinity Edge Pool บนดาดฟ้า และฟิตเนสพร้อมอุปกรณ์ครบครัน",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -235,9 +235,9 @@ const CONDO_DATASET_4 = [
     transitType: "BTS",
     distance: "800 ม.",
     price: 5500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "วิวเมืองสวย", "เงียบสงบ", "ร่มรื่น"],
-    desc: "คอนโดสไตล์รีสอร์ตริมทะเลบางปู ใกล้สถานีปลายทาง BTS เคหะฯ (เคหะสมุทรปราการ) บรรยากาศธรรมชาติ ลมทะเลเย็นสบาย ใกล้สถานตากอากาศบางปู งบประมาณเริ่มต้นเพียง 5,500 บาท",
+    desc: "คอนโดสไตล์รีสอร์ตริมทะเลบางปู ใกล้สถานีปลายทาง BTS เคหะฯ (เคหะสมุทรปราการ) อนุญาตเลี้ยงสัตว์ (Pet-Friendly) บรรยากาศธรรมชาติ ลมทะเลเย็นสบาย มีลานเดินเล่นสำหรับสัตว์เลี้ยง งบประหยัดเริ่มต้นเพียง 5,500 บาท",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   }
 ];

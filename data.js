@@ -7,9 +7,9 @@ const CONDO_DATASET = [
     transitType: "BTS",
     distance: "30 ม.",
     price: 11000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "วิวเมืองสวย", "เดินทางสะดวก"],
-    desc: "คอนโดติดบันได BTS สายหยุด บนถนนพหลโยธิน เดินทางเข้าเมืองสะดวกรวดเร็ว ใกล้ตลาดยิ่งเจริญและสะพานใหม่ ส่วนกลางสไตล์ Modern Loft พร้อมฟิตเนสวิวเปิด 360 องศา",
+    desc: "คอนโดติดบันได BTS สายหยุด บนถนนพหลโยธิน อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) เดินทางเข้าเมืองสะดวกรวดเร็ว ใกล้ตลาดยิ่งเจริญและสะพานใหม่ ส่วนกลางสไตล์ Modern Loft พร้อมฟิตเนสวิวเปิด 360 องศา",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -33,7 +33,7 @@ const CONDO_DATASET = [
     price: 24000,
     petFriendly: true,
     lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "เป็นส่วนตัว", "ติดรถไฟฟ้า"],
-    desc: "คอนโด Duo Space เพดานสูง 4.2 เมตร ติดสถานี BTS รัชโยธิน วิวเมืองมุมสูงโปร่งโล่ง เหมาะกับคนทำงาน WFH ยูนิตเป็นมิตรต่อสัตว์เลี้ยง (Pet-Friendly) ใกล้ Major Cineplex รัชโยธิน",
+    desc: "คอนโด Duo Space เพดานสูง 4.2 เมตร ติดสถานี BTS รัชโยธิน วิวเมืองมุมสูงโปร่งโล่ง เหมาะกับคนทำงาน WFH ยูนิตเป็นมิตรต่อสัตว์เลี้ยง (Pet-Friendly) ต้อนรับสุนัขและแมว ใกล้ Major Cineplex รัชโยธิน",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -43,9 +43,9 @@ const CONDO_DATASET = [
     transitType: "BTS",
     distance: "350 ม.",
     price: 12500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["เหมาะกับ WFH", "ราคาประหยัด", "เดินทางสะดวก"],
-    desc: "คอนโดแต่งครบสไตล์คนรุ่นใหม่ ใกล้มหาวิทยาลัยเกษตรศาสตร์ (ม.เกษตร) มี Co-working space ครบวงจร เหมาะกับนักศึกษาและคนทำงานในย่านพหลโยธิน เดินทางด้วย BTS สายสีเขียวสะดวกมาก",
+    desc: "คอนโดแต่งครบสไตล์คนรุ่นใหม่ ใกล้มหาวิทยาลัยเกษตรศาสตร์ (ม.เกษตร) อนุญาตเลี้ยงสัตว์ (Pet-Friendly) มี Co-working space ครบวงจร เหมาะกับนักศึกษาและคนทำงานในย่านพหลโยธิน",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -67,9 +67,9 @@ const CONDO_DATASET = [
     transitType: "BTS",
     distance: "400 ม.",
     price: 11500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "เหมาะกับ WFH", "เป็นส่วนตัว"],
-    desc: "คอนโดแนวคิดใหม่จากแสนสิริ ใกล้ BTS เสนานิคม และ ม.เกษตรศาสตร์ ออกแบบเพื่อคนทำงานรุ่นใหม่และนักศึกษา ฟังก์ชันห้องปรับเปลี่ยนได้ตามการใช้งาน พร้อมพื้นที่ทำงานสงบเงียบ",
+    desc: "คอนโดแนวคิดใหม่จากแสนสิริ ใกล้ BTS เสนานิคม และ ม.เกษตรศาสตร์ เป็นมิตรต่อสัตว์เลี้ยง (Pet-Friendly) ต้อนรับน้องหมาน้องแมว ฟังก์ชันห้องปรับเปลี่ยนได้ตามการใช้งาน พร้อมพื้นที่ทำงานสงบเงียบ",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -105,7 +105,7 @@ const CONDO_DATASET = [
     price: 19000,
     petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "วิวเมืองสวย"],
-    desc: "คอนโดตรงข้ามเซ็นทรัลลาดพร้าว ใกล้ BTS ห้าแยกลาดพร้าว อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) สระว่ายน้ำลอยฟ้า Sky Pool และฟิตเนสมุมสูงชมวิวเมือง",
+    desc: "คอนโดตรงข้ามเซ็นทรัลลาดพร้าว ใกล้ BTS ห้าแยกลาดพร้าว โครงการ Pet-Friendly อนุญาตเลี้ยงสัตว์เต็มรูปแบบ มีพื้นที่สวนสำหรับพาสัตว์เลี้ยงเดินเล่น สระว่ายน้ำลอยฟ้า Sky Pool",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -127,9 +127,9 @@ const CONDO_DATASET = [
     transitType: "BTS",
     distance: "80 ม.",
     price: 9000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "ติดรถไฟฟ้า", "เหมาะกับ WFH"],
-    desc: "คอนโดสไตล์ Duo Space ห้องสองชั้น เพดานสูง โปร่งโล่ง ใกล้ BTS สะพานใหม่ และตลาดสะพานใหม่ ราคาสบายกระเป๋าไม่เกินหมื่น เหมาะกับคนรุ่นใหม่ที่ต้องการความคล่องตัวบนแนวสายสีเขียว",
+    desc: "คอนโดสไตล์ Duo Space ห้องสองชั้น เพดานสูง โปร่งโล่ง ใกล้ BTS สะพานใหม่ โครงการคอนโดเลี้ยงสัตว์ได้ (Pet-Friendly) มีสิ่งอำนวยความสะดวกสำหรับคนรักสัตว์ ราคาสบายกระเป๋าไม่เกินหมื่น",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -151,9 +151,9 @@ const CONDO_DATASET = [
     transitType: "BTS",
     distance: "200 ม.",
     price: 13500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "ติดรถไฟฟ้า"],
-    desc: "คอนโดใหม่สไตล์โมเดิร์น ใกล้ BTS มหาวิทยาลัยเกษตรศาสตร์ ส่วนกลางครบครัน Co-working space 24 ชม. สระว่ายน้ำชมวิวเปิดโล่ง เหมาะกับนักศึกษา ม.เกษตร",
+    desc: "คอนโดใหม่สไตล์โมเดิร์น ใกล้ BTS มหาวิทยาลัยเกษตรศาสตร์ อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) ส่วนกลางครบครัน Co-working space 24 ชม. สระว่ายน้ำชมวิวเปิดโล่ง เหมาะกับนักศึกษา ม.เกษตร",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -211,9 +211,9 @@ const CONDO_DATASET = [
     transitType: "BTS",
     distance: "450 ม.",
     price: 16000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["เงียบสงบ", "เป็นส่วนตัว", "ร่มรื่น"],
-    desc: "คอนโด Low-Rise ในซอยพหลโยธิน 9 ย่านอารีย์ บรรยากาศร่มรื่น เงียบสงบ ปลอดภัย ใกล้คาเฟ่และร้านอาหารชื่อดังของอารีย์",
+    desc: "คอนโด Low-Rise ในซอยพหลโยธิน 9 ย่านอารีย์ อนุญาตเลี้ยงสัตว์เลี้ยงขนาดเล็ก (Pet-Friendly) บรรยากาศร่มรื่น เงียบสงบ ปลอดภัย ใกล้คาเฟ่และร้านอาหารชื่อดังของอารีย์",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {

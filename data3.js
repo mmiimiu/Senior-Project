@@ -31,9 +31,9 @@ const CONDO_DATASET_3 = [
     transitType: "BTS",
     distance: "120 ม.",
     price: 27000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เป็นส่วนตัว", "วิวเมืองสวย"],
-    desc: "คอนโดสไตล์ Modern Art Deco ปากซอยสุขุมวิท 34 ใกล้สถานี BTS ทองหล่อ เหมาะสำหรับคนทำงานที่มองหาที่พักระดับพรีเมียมในย่านสุขุมวิทตอนกลาง",
+    desc: "คอนโดสไตล์ Modern Art Deco ปากซอยสุขุมวิท 34 ใกล้สถานี BTS ทองหล่อ อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) เหมาะสำหรับคนทำงานที่มองหาที่พักระดับพรีเมียมในย่านสุขุมวิทตอนกลาง",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -67,9 +67,9 @@ const CONDO_DATASET_3 = [
     transitType: "BTS",
     distance: "350 ม.",
     price: 28000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ร่มรื่น", "เหมาะกับ WFH", "เป็นส่วนตัว"],
-    desc: "คอนโดสไตล์บ้านเดี่ยวใจกลางเอกมัย ล้อมรอบด้วยธรรมชาติอันร่มรื่น ใกล้ Gateway เอกมัย และ BTS เอกมัย บรรยากาศเงียบสงบแต่เดินทางสะดวก เหมาะสำหรับผู้ที่ต้องการความสงบในเมือง",
+    desc: "คอนโดสไตล์บ้านเดี่ยวใจกลางเอกมัย ล้อมรอบด้วยธรรมชาติอันร่มรื่น อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) ใกล้ Gateway เอกมัย และ BTS เอกมัย บรรยากาศเงียบสงบแต่เดินทางสะดวก เหมาะสำหรับผู้ที่ต้องการความสงบในเมือง",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -79,9 +79,9 @@ const CONDO_DATASET_3 = [
     transitType: "BTS",
     distance: "200 ม.",
     price: 26000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "วิวเมืองสวย"],
-    desc: "คอนโดสไตล์โมเดิร์นลอฟท์ ซอยสุขุมวิท 65 ใกล้ BTS เอกมัย เพดานสูง โปร่ง โล่ง สบาย สระว่ายน้ำแบบ Infinity Edge Pool บนชั้นดาดฟ้า",
+    desc: "คอนโดสไตล์โมเดิร์นลอฟท์ ซอยสุขุมวิท 65 ใกล้ BTS เอกมัย เป็นมิตรต่อสัตว์เลี้ยง (Pet-Friendly) เพดานสูง โปร่ง โล่ง สบาย สระว่ายน้ำแบบ Infinity Edge Pool บนชั้นดาดฟ้า",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -115,9 +115,9 @@ const CONDO_DATASET_3 = [
     transitType: "BTS",
     distance: "300 ม.",
     price: 15500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "วิวเมืองสวย", "เดินทางสะดวก"],
-    desc: "คอนโด High-Rise ติดถนนใหญ่สุขุมวิท ใกล้ BTS พระโขนง ออกแบบสะท้อนความสนุกสนานและชีวิตคนเมือง ส่วนกลางครบครันพร้อมพื้นที่สันทนาการและห้องอ่านหนังสือ",
+    desc: "คอนโด High-Rise ติดถนนใหญ่สุขุมวิท ใกล้ BTS พระโขนง ต้อนรับสัตว์เลี้ยง (Pet-Friendly) ออกแบบสะท้อนความสนุกสนานและชีวิตคนเมือง ส่วนกลางครบครันพร้อมพื้นที่สันทนาการและห้องอ่านหนังสือ",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -163,9 +163,9 @@ const CONDO_DATASET_3 = [
     transitType: "BTS",
     distance: "230 ม.",
     price: 16000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เงียบสงบ", "เป็นส่วนตัว"],
-    desc: "คอนโด Low-Rise ในซอยสุขุมวิท 81 ห่างสถานี BTS อ่อนนุช เพียง 230 เมตร สไตล์บ้านพักตากอากาศ เงียบสงบ ไม่พลุกพล่าน มีความเป็นส่วนตัวสูงพร้อมสระว่ายน้ำระบบเกลือ",
+    desc: "คอนโด Low-Rise ในซอยสุขุมวิท 81 ห่างสถานี BTS อ่อนนุช เพียง 230 เมตร อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) สไตล์บ้านพักตากอากาศ เงียบสงบ ไม่พลุกพล่าน มีความเป็นส่วนตัวสูงพร้อมสระว่ายน้ำระบบเกลือ",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -187,9 +187,9 @@ const CONDO_DATASET_3 = [
     transitType: "BTS",
     distance: "15 ม.",
     price: 15000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "เดินทางสะดวก"],
-    desc: "คอนโดติดบันได BTS บางจาก ทางเชื่อมสกายวอล์กสะดวกสบาย มีร้านกาแฟสตาร์บัคส์และ 7-Eleven ใต้โครงการ สระว่ายน้ำ 2 สระ และลู่วิ่งกลางแจ้ง Multi-sport court",
+    desc: "คอนโดติดบันได BTS บางจาก ทางเชื่อมสกายวอล์กสะดวกสบาย อนุญาตเลี้ยงสัตว์ (Pet-Friendly) มีร้านกาแฟสตาร์บัคส์และ 7-Eleven ใต้โครงการ สระว่ายน้ำ 2 สระ และลู่วิ่งกลางแจ้ง",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -235,9 +235,9 @@ const CONDO_DATASET_3 = [
     transitType: "BTS",
     distance: "500 ม.",
     price: 8500,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ราคาประหยัด", "เงียบสงบ", "เหมาะกับ WFH"],
-    desc: "คอนโดแนวคิด Slow Life ในซอยอุดมสุข 7 ใกล้ BTS อุดมสุข ออกแบบเรียบง่าย สบายตา เหมาะกับคนทำงานที่ต้องการพักผ่อนอย่างแท้จริง รายล้อมด้วยแหล่งของกินชื่อดัง",
+    desc: "คอนโดแนวคิด Slow Life ในซอยอุดมสุข 7 ใกล้ BTS อุดมสุข อนุญาตเลี้ยงสัตว์ขนาดเล็ก (Pet-Friendly) ออกแบบเรียบง่าย สบายตา เหมาะกับคนทำงานที่ต้องการพักผ่อนอย่างแท้จริง รายล้อมด้วยแหล่งของกินชื่อดัง",
     image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=600&q=80"
   }
 ];

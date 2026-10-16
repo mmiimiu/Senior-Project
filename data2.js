@@ -19,9 +19,9 @@ const CONDO_DATASET_2 = [
     transitType: "BTS",
     distance: "500 ม.",
     price: 18000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "เป็นส่วนตัว"],
-    desc: "คอนโด High-Rise บนถนนพหลโยธิน ระหว่าง BTS สะพานควาย และ BTS อารีย์ สระว่ายน้ำและฟิตเนสชั้น 53 ชมวิวเมืองกรุงเทพฯ แบบ 360 องศา พร้อม Co-working space เงียบสงบ",
+    desc: "คอนโด High-Rise บนถนนพหลโยธิน ระหว่าง BTS สะพานควาย และ BTS อารีย์ เป็นมิตรต่อสัตว์เลี้ยง (Pet-Friendly) สระว่ายน้ำและฟิตเนสชั้น 53 ชมวิวเมืองกรุงเทพฯ แบบ 360 องศา พร้อม Co-working space เงียบสงบ",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -43,9 +43,9 @@ const CONDO_DATASET_2 = [
     transitType: "BTS",
     distance: "180 ม.",
     price: 22000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["ติดรถไฟฟ้า", "เหมาะกับ WFH", "เดินทางสะดวก"],
-    desc: "คอนโดทำเลเยี่ยมใจกลางเมือง อยู่ระหว่าง BTS ราชเทวี และ BTS พญาไท เดินทางไปสยามและจุฬาฯ ได้รวดเร็ว ห้องพักกว้างขวาง สระว่ายน้ำและฟิตเนสครบครัน",
+    desc: "คอนโดทำเลเยี่ยมใจกลางเมือง อยู่ระหว่าง BTS ราชเทวี และ BTS พญาไท อนุญาตเลี้ยงสัตว์ (Pet-Friendly) เดินทางไปสยามและจุฬาฯ ได้รวดเร็ว ห้องพักกว้างขวาง สระว่ายน้ำและฟิตเนสครบครัน",
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -79,9 +79,9 @@ const CONDO_DATASET_2 = [
     transitType: "BTS",
     distance: "350 ม.",
     price: 28000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["เงียบสงบ", "เป็นส่วนตัว", "ร่มรื่น"],
-    desc: "คอนโด Low-Rise ในซอยเกษมสันต์ 3 ใกล้ BTS สยาม และ สนามกีฬาแห่งชาติ สไตล์ Colonial เรียบหรู เงียบสงบเหมือนบ้านเดี่ยวใจกลางสยาม เหมาะกับผู้ที่ต้องการความสงบ",
+    desc: "คอนโด Low-Rise ในซอยเกษมสันต์ 3 ใกล้ BTS สยาม และ สนามกีฬาแห่งชาติ อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) สไตล์ Colonial เรียบหรู เงียบสงบเหมือนบ้านเดี่ยวใจกลางสยาม",
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -115,9 +115,9 @@ const CONDO_DATASET_2 = [
     transitType: "BTS",
     distance: "350 ม.",
     price: 36000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["เป็นส่วนตัว", "เหมาะกับ WFH", "วิวเมืองสวย"],
-    desc: "คอนโดสไตล์คลาสสิกใจกลางย่านชิดลม ใกล้เซ็นทรัลชิดลมและโรงพยาบาลบำรุงราษฎร์ บรรยากาศสงบและเป็นส่วนตัวสูง พร้อมพื้นที่ส่วนกลางมาตรฐานโรงแรมหรู",
+    desc: "คอนโดสไตล์คลาสสิกใจกลางย่านชิดลม ใกล้เซ็นทรัลชิดลมและโรงพยาบาลบำรุงราษฎร์ โครงการ Pet-Friendly รองรับสัตว์เลี้ยง บรรยากาศสงบและเป็นส่วนตัวสูง พร้อมพื้นที่ส่วนกลางมาตรฐานโรงแรมหรู",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -151,9 +151,9 @@ const CONDO_DATASET_2 = [
     transitType: "BTS",
     distance: "400 ม.",
     price: 23000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["วิวเมืองสวย", "เดินทางสะดวก"],
-    desc: "คอนโดหรูดีไซน์ล้ำสมัยในซอยสุขุมวิท 11 ใกล้ BTS นานา ใจกลางย่านไลฟ์สไตล์และร้านอาหารนานาชาติ มี Rooftop Lounge ชมวิวเมืองกรุงเทพยามค่ำคืนได้อย่างงดงาม",
+    desc: "คอนโดหรูดีไซน์ล้ำสมัยในซอยสุขุมวิท 11 ใกล้ BTS นานา อนุญาตเลี้ยงสัตว์เลี้ยง (Pet-Friendly) ใจกลางย่านไลฟ์สไตล์และร้านอาหารนานาชาติ มี Rooftop Lounge ชมวิวเมืองกรุงเทพยามค่ำคืนได้อย่างงดงาม",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -187,9 +187,9 @@ const CONDO_DATASET_2 = [
     transitType: "BTS",
     distance: "280 ม.",
     price: 26000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["วิวเมืองสวย", "เหมาะกับ WFH", "เดินทางสะดวก"],
-    desc: "คอนโดสไตล์คนเมืองในซอยสุขุมวิท 23 ใกล้ BTS อโศก และ Terminal 21 สระว่ายน้ำกระจกใสยื่นออกจากตัวอาคาร พร้อมฟิตเนสและพื้นที่ทำงาน Co-working วิวระฟ้า",
+    desc: "คอนโดสไตล์คนเมืองในซอยสุขุมวิท 23 ใกล้ BTS อโศก และ Terminal 21 เป็นมิตรต่อสัตว์เลี้ยง (Pet-Friendly) สระว่ายน้ำกระจกใสยื่นออกจากตัวอาคาร พร้อมฟิตเนสและพื้นที่ทำงาน Co-working วิวระฟ้า",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -211,9 +211,9 @@ const CONDO_DATASET_2 = [
     transitType: "BTS",
     distance: "600 ม.",
     price: 32000,
-    petFriendly: false,
+    petFriendly: true,
     lifestyle: ["เหมาะกับ WFH", "วิวเมืองสวย", "เป็นส่วนตัว"],
-    desc: "คอนโดสไตล์ Industrial Loft เพดานสูง โปร่ง โล่ง ใกล้ BTS อโศก และ MRT เพชรบุรี มีพื้นที่ Co-working space 2 ชั้น สวนลอยฟ้า และสระว่ายน้ำระบบเกลือ",
+    desc: "คอนโดสไตล์ Industrial Loft เพดานสูง โปร่ง โล่ง ใกล้ BTS อโศก และ MRT เพชรบุรี อนุญาตเลี้ยงสุนัขและแมว (Pet-Friendly) มีพื้นที่ Co-working space 2 ชั้น สวนลอยฟ้า และสระว่ายน้ำระบบเกลือ",
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80"
   },
   {
