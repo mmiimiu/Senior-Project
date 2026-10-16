@@ -1,5 +1,5 @@
 // Thai NLP & Lifestyle Condominium Search Engine Prototype (<= 150 lines)
-const STATIONS = ["พระราม 9", "อารีย์", "อ่อนนุช", "ทองหล่อ", "อุดมสุข", "เอกมัย", "พหลโยธิน", "สามย่าน", "แบริ่ง", "ปุณณวิถี", "อโศก", "สุขุมวิท", "ลาดพร้าว"];
+const STATIONS = ["พระราม 9", "อารีย์", "อ่อนนุช", "ทองหล่อ", "อุดมสุข", "เอกมัย", "พหลโยธิน", "สามย่าน", "แบริ่ง", "ปุณณวิถี", "อโศก", "สุขุมวิท", "ลาดพร้าว", "เพชรบุรี", "ราชเทวี", "ช่องนนทรี", "ห้วยขวาง", "วงเวียนใหญ่", "บางหว้า", "สะพานใหม่", "สำโรง", "บางซ่อน", "กรุงธนบุรี", "สุทธิสาร", "ลุมพินี", "ช้างเอราวัณ", "ลำสาลี", "ท่าพระ", "เพลินจิต", "บางโพ"];
 const LIFESTYLE_MAP = [
   { key: "เหมาะกับ WFH", terms: ["wfh", "ทำงาน", "work from home", "co-working"] },
   { key: "เงียบสงบ", terms: ["เงียบ", "สงบ", "ไม่วุ่นวาย"] },
@@ -23,7 +23,10 @@ window.resetToHome = () => {
 window.toggleShowAll = () => { showAll = !showAll; if (window._performSearch) window._performSearch(false); };
 window.openCondoDetail = (id) => {
   const m = document.getElementById("condoModal"), content = document.getElementById("condoModalContent");
-  const data = window.CONDO_DATASET || (typeof CONDO_DATASET !== "undefined" ? CONDO_DATASET : []);
+  const d1 = window.CONDO_DATASET || (typeof CONDO_DATASET !== "undefined" ? CONDO_DATASET : []);
+  const d2 = window.CONDO_DATASET_2 || (typeof CONDO_DATASET_2 !== "undefined" ? CONDO_DATASET_2 : []);
+  const d3 = window.CONDO_DATASET_3 || (typeof CONDO_DATASET_3 !== "undefined" ? CONDO_DATASET_3 : []);
+  const data = [...d1, ...d2, ...d3];
   const c = data.find(item => item.id === Number(id));
   if (!c || !m || !content) return;
   content.innerHTML = `
@@ -79,7 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const entities = extractEntities(query);
     updateEntityUI(entities, query);
     if (isExplicit && submitBtn) { submitBtn.textContent = "กำลังค้นหา..."; setTimeout(() => { submitBtn.textContent = "ค้นหา"; }, 350); }
-    const data = window.CONDO_DATASET || (typeof CONDO_DATASET !== "undefined" ? CONDO_DATASET : []);
+    const d1 = window.CONDO_DATASET || (typeof CONDO_DATASET !== "undefined" ? CONDO_DATASET : []);
+    const d2 = window.CONDO_DATASET_2 || (typeof CONDO_DATASET_2 !== "undefined" ? CONDO_DATASET_2 : []);
+    const d3 = window.CONDO_DATASET_3 || (typeof CONDO_DATASET_3 !== "undefined" ? CONDO_DATASET_3 : []);
+    const data = [...d1, ...d2, ...d3];
     let list = data;
 
     if (query) {
