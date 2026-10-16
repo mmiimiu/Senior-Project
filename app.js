@@ -7,6 +7,7 @@ const STATIONS = [
   "ทองหล่อ", "เอกมัย", "พระโขนง", "อ่อนนุช", "บางจาก", "ปุณณวิถี", "อุดมสุข", "บางนา", "แบริ่ง", "สำโรง", "ปู่เจ้า",
   "ช้างเอราวัณ", "โรงเรียนนายเรือ", "ปากน้ำ", "ศรีนครินทร์", "แพรกษา", "สายลวด", "เคหะฯ", "เคหะ"
 ];
+
 const LIFESTYLE_MAP = [
   { key: "เหมาะกับ WFH", terms: ["wfh", "ทำงาน", "work from home", "co-working"] },
   { key: "เงียบสงบ", terms: ["เงียบ", "สงบ", "ไม่วุ่นวาย"] },
@@ -17,25 +18,40 @@ const LIFESTYLE_MAP = [
 ];
 
 let showAll = false;
-window.openResearchModal = () => { const m = document.getElementById("researchModal"); if (m) m.style.display = "flex"; };
-window.closeResearchModal = () => { const m = document.getElementById("researchModal"); if (m) m.style.display = "none"; };
-window.closeCondoModal = () => { const m = document.getElementById("condoModal"); if (m) m.style.display = "none"; };
+
+// Helpers: Data & Modal Management
+const getAllCondos = () => [
+  ...(window.CONDO_DATASET || []),
+  ...(window.CONDO_DATASET_2 || []),
+  ...(window.CONDO_DATASET_3 || [])
+];
+
+const toggleModal = (id, show) => {
+  const m = document.getElementById(id);
+  if (m) m.style.display = show ? "flex" : "none";
+};
+
+window.openResearchModal = () => toggleModal("researchModal", true);
+window.closeResearchModal = () => toggleModal("researchModal", false);
+window.closeCondoModal = () => toggleModal("condoModal", false);
+
 window.resetToHome = () => {
   const input = document.getElementById("searchInput");
   if (input) input.value = "";
   showAll = false;
-  if (window._performSearch) window._performSearch(false);
+  if (window._performSearch) window._performSearch();
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
-window.toggleShowAll = () => { showAll = !showAll; if (window._performSearch) window._performSearch(false); };
+
+window.toggleShowAll = () => {
+  showAll = !showAll;
+  if (window._performSearch) window._performSearch();
+};
+
 window.openCondoDetail = (id) => {
-  const m = document.getElementById("condoModal"), content = document.getElementById("condoModalContent");
-  const d1 = window.CONDO_DATASET || (typeof CONDO_DATASET !== "undefined" ? CONDO_DATASET : []);
-  const d2 = window.CONDO_DATASET_2 || (typeof CONDO_DATASET_2 !== "undefined" ? CONDO_DATASET_2 : []);
-  const d3 = window.CONDO_DATASET_3 || (typeof CONDO_DATASET_3 !== "undefined" ? CONDO_DATASET_3 : []);
-  const data = [...d1, ...d2, ...d3];
-  const c = data.find(item => item.id === Number(id));
-  if (!c || !m || !content) return;
+  const content = document.getElementById("condoModalContent");
+  const c = getAllCondos().find(item => item.id === Number(id));
+  if (!c || !content) return;
   content.innerHTML = `
     <img src="${c.image}" class="condo-detail-img" alt="${c.name}">
     <h2 style="font-size:1.3rem;margin-bottom:4px;color:#fff;">${c.name}</h2>
@@ -46,21 +62,30 @@ window.openCondoDetail = (id) => {
       ${c.lifestyle.map(t => `<span class="lifestyle-tag highlight">${t}</span>`).join('')}
     </div>
     <div class="author-card"><strong>รายละเอียดโครงการ:</strong><p style="color:#cbd5e1;font-size:0.88rem;line-height:1.6;margin-top:6px;">${c.desc}</p></div>`;
-  m.style.display = "flex";
+  toggleModal("condoModal", true);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const searchInput = document.getElementById("searchInput"), clearBtn = document.getElementById("clearSearchBtn"), submitBtn = document.getElementById("submitSearchBtn");
-  const condoGrid = document.getElementById("condoGrid"), resultsCount = document.getElementById("resultsCount"), resultsHeading = document.getElementById("resultsHeading");
-  const matchScoreBadge = document.getElementById("matchScoreBadge"), loadMoreBox = document.getElementById("loadMoreBox"), loadMoreBtn = document.getElementById("loadMoreBtn");
+  const searchInput = document.getElementById("searchInput");
+  const clearBtn = document.getElementById("clearSearchBtn");
+  const submitBtn = document.getElementById("submitSearchBtn");
+  const condoGrid = document.getElementById("condoGrid");
+  const resultsCount = document.getElementById("resultsCount");
+  const resultsHeading = document.getElementById("resultsHeading");
+  const matchScoreBadge = document.getElementById("matchScoreBadge");
+  const loadMoreBox = document.getElementById("loadMoreBox");
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  const searchForm = document.getElementById("searchForm");
 
+  // Thai NLP & Fuzzy Normalization
   const normTh = s => (s || "").toLowerCase().replace(/[\u0e47-\u0e4c\s\-]/g, "");
+
   const lev = (a, b) => {
-    const dp = Array.from({length: a.length + 1}, (_, i) => [i, ...Array(b.length).fill(0)]);
+    const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
     for (let j = 0; j <= b.length; j++) dp[0][j] = j;
     for (let i = 1; i <= a.length; i++) {
       for (let j = 1; j <= b.length; j++) {
-        dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+        dp[i][j] = a[i - 1] === b[j - 1] ? dp[i - 1][j - 1] : 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
       }
     }
     return dp[a.length][b.length];
@@ -88,14 +113,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!q) return { transit: null, specificStation: null, pet: null, lifestyles: [], maxPrice: null };
     const nq = normTh(q);
     const specificStation = findStation(q);
-    let transit = specificStation;
-    if (!transit) transit = (nq.includes("bts") || nq.includes("สายสีเขียว") || nq.includes("รถไฟ")) ? "BTS สายสีเขียว (คูคต-เคหะฯ)" : null;
+    const transit = specificStation || ((nq.includes("bts") || nq.includes("สายสีเขียว") || nq.includes("รถไฟ")) ? "BTS สายสีเขียว (คูคต-เคหะฯ)" : null);
     const isNegPet = /ห้าม|ไม่(ให้|อนุญาต)?/.test(q) && /สัตว์|หมา|แมว|pet/.test(q);
     const pet = isNegPet ? false : (/สัตว|หมา|แมว|สุนัข|pet|dog|cat|เลียง/.test(nq) ? true : null);
     const lifestyles = LIFESTYLE_MAP.filter(i => i.terms.some(t => nq.includes(normTh(t)))).map(i => i.key);
     let maxPrice = null;
     const pMatch = q.match(/(?:งบ|ไม่เกิน|ราคา|ต่ำกว่า)?\s*([0-9]{1,2}(?:,[0-9]{3})+|[0-9]{4,5})\s*(?:บาท)?/);
-    if (pMatch && pMatch[1]) { const p = parseInt(pMatch[1].replace(/,/g, ""), 10); if (p >= 5000) maxPrice = p; }
+    if (pMatch && pMatch[1]) {
+      const p = parseInt(pMatch[1].replace(/,/g, ""), 10);
+      if (p >= 5000) maxPrice = p;
+    }
     return { transit, specificStation, pet, lifestyles, maxPrice };
   }
 
@@ -119,11 +146,12 @@ document.addEventListener("DOMContentLoaded", () => {
     clearBtn.style.display = query ? "block" : "none";
     const entities = extractEntities(query);
     updateEntityUI(entities, query);
-    if (isExplicit && submitBtn) { submitBtn.textContent = "กำลังค้นหา..."; setTimeout(() => { submitBtn.textContent = "ค้นหา"; }, 350); }
-    const d1 = window.CONDO_DATASET || (typeof CONDO_DATASET !== "undefined" ? CONDO_DATASET : []);
-    const d2 = window.CONDO_DATASET_2 || (typeof CONDO_DATASET_2 !== "undefined" ? CONDO_DATASET_2 : []);
-    const d3 = window.CONDO_DATASET_3 || (typeof CONDO_DATASET_3 !== "undefined" ? CONDO_DATASET_3 : []);
-    const data = [...d1, ...d2, ...d3];
+    if (isExplicit && submitBtn) {
+      submitBtn.textContent = "กำลังค้นหา...";
+      setTimeout(() => { submitBtn.textContent = "ค้นหา"; }, 300);
+    }
+
+    const data = getAllCondos();
     let list = data;
 
     if (query) {
@@ -163,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderCondos(condos, entities) {
     if (!condos.length) {
-      condoGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);"><p style="font-size: 1.1rem;">🔍 ไม่พบคอนโดมิเนียมที่ตรงกับย่านหรือเงื่อนไขที่พิมพ์</p><p style="font-size: 0.85rem; margin-top: 6px;">ลองพิมพ์ชื่อสถานีอื่น หรือปรับช่วงงบประมาณ</p></div>`;
+      condoGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);"><p style="font-size: 1.1rem;">🔍 ไม่พบคอนโดมิเนียมที่ตรงกับเงื่อนไขที่พิมพ์</p><p style="font-size: 0.85rem; margin-top: 6px;">ลองพิมพ์ชื่อสถานีอื่นบนสายสีเขียว หรือปรับช่วงงบประมาณ</p></div>`;
       return;
     }
     condoGrid.innerHTML = condos.map(c => `
@@ -185,11 +213,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window._performSearch = performSearch;
   searchInput.addEventListener("input", () => performSearch(false));
-  searchInput.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); performSearch(true); } });
-  if (submitBtn) submitBtn.addEventListener("click", e => { e.preventDefault(); performSearch(true); });
-  const form = document.getElementById("searchForm");
-  if (form) form.addEventListener("submit", e => { e.preventDefault(); performSearch(true); });
-  clearBtn.addEventListener("click", () => { searchInput.value = ""; performSearch(true); searchInput.focus(); });
-  document.querySelectorAll(".prompt-chip").forEach(chip => chip.addEventListener("click", () => { searchInput.value = chip.dataset.query; performSearch(true); }));
+  if (searchForm) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      performSearch(true);
+    });
+  }
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    performSearch(true);
+    searchInput.focus();
+  });
+  document.querySelectorAll(".prompt-chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      searchInput.value = chip.dataset.query;
+      performSearch(true);
+    });
+  });
+
   performSearch(false);
 });
