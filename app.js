@@ -47,14 +47,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const condoGrid = document.getElementById("condoGrid"), resultsCount = document.getElementById("resultsCount"), resultsHeading = document.getElementById("resultsHeading");
   const matchScoreBadge = document.getElementById("matchScoreBadge"), loadMoreBox = document.getElementById("loadMoreBox"), loadMoreBtn = document.getElementById("loadMoreBtn");
 
+  const normTh = s => (s || "").toLowerCase().replace(/[\u0e47-\u0e4c\s\-]/g, "");
+  const lev = (a, b) => {
+    const dp = Array.from({length: a.length + 1}, (_, i) => [i, ...Array(b.length).fill(0)]);
+    for (let j = 0; j <= b.length; j++) dp[0][j] = j;
+    for (let i = 1; i <= a.length; i++) {
+      for (let j = 1; j <= b.length; j++) {
+        dp[i][j] = a[i-1] === b[j-1] ? dp[i-1][j-1] : 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);
+      }
+    }
+    return dp[a.length][b.length];
+  };
+
+  function findStation(q) {
+    const nq = normTh(q);
+    for (const st of STATIONS) if (q.toLowerCase().includes(st.toLowerCase()) || nq.includes(normTh(st))) return st;
+    for (const st of STATIONS) {
+      const nst = normTh(st);
+      if (nst.length >= 3) {
+        for (let l = nst.length - 1; l <= nst.length + 1; l++) {
+          if (l < 2) continue;
+          for (let i = 0; i <= nq.length - l; i++) {
+            if (lev(nq.substr(i, l), nst) <= 1) return st;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
   function extractEntities(text) {
     const q = text.toLowerCase().trim();
     if (!q) return { transit: null, specificStation: null, pet: null, lifestyles: [], maxPrice: null };
-    const specificStation = STATIONS.find(st => q.includes(st.toLowerCase())) || null;
+    const nq = normTh(q);
+    const specificStation = findStation(q);
     let transit = specificStation;
-    if (!transit) transit = q.includes("mrt") ? "MRT (ทุกสถานี)" : q.includes("bts") ? "BTS (ทุกสถานี)" : q.includes("รถไฟฟ้า") ? "ติดรถไฟฟ้า" : null;
-    const pet = /เลี้ยงสัตว์|เลี้ยงหมา|เลี้ยงแมว|สัตว์เลี้ยง|pet/.test(q) ? true : null;
-    const lifestyles = LIFESTYLE_MAP.filter(i => i.terms.some(t => q.includes(t))).map(i => i.key);
+    if (!transit) transit = nq.includes("mrt") ? "MRT (ทุกสถานี)" : nq.includes("bts") ? "BTS (ทุกสถานี)" : nq.includes("รถไฟ") ? "ติดรถไฟฟ้า" : null;
+    const isNegPet = /ห้าม|ไม่(ให้|อนุญาต)?/.test(q) && /สัตว์|หมา|แมว|pet/.test(q);
+    const pet = isNegPet ? false : (/สัตว|หมา|แมว|สุนัข|pet|dog|cat|เลียง/.test(nq) ? true : null);
+    const lifestyles = LIFESTYLE_MAP.filter(i => i.terms.some(t => nq.includes(normTh(t)))).map(i => i.key);
     let maxPrice = null;
     const pMatch = q.match(/(?:งบ|ไม่เกิน|ราคา|ต่ำกว่า)?\s*([0-9]{1,2}(?:,[0-9]{3})+|[0-9]{4,5})\s*(?:บาท)?/);
     if (pMatch && pMatch[1]) { const p = parseInt(pMatch[1].replace(/,/g, ""), 10); if (p >= 5000) maxPrice = p; }
@@ -90,16 +121,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (query) {
       resultsHeading.textContent = "ผลการค้นหาคอนโดมิเนียม";
+      const nq = normTh(query);
       if (entities.specificStation) {
-        list = list.filter(c => c.station.toLowerCase().includes(entities.specificStation.toLowerCase()) || c.desc.toLowerCase().includes(entities.specificStation.toLowerCase()) || c.name.toLowerCase().includes(entities.specificStation.toLowerCase()));
+        const nst = normTh(entities.specificStation);
+        list = list.filter(c => normTh(c.station).includes(nst) || normTh(c.desc).includes(nst) || normTh(c.name).includes(nst));
       } else if (entities.transit) {
         if (entities.transit.includes("BTS")) list = list.filter(c => c.transitType === "BTS" || c.station.includes("BTS"));
         else if (entities.transit.includes("MRT")) list = list.filter(c => c.transitType === "MRT" || c.station.includes("MRT"));
       }
       if (entities.pet === true) list = list.filter(c => c.petFriendly);
+      if (entities.lifestyles.length > 0) {
+        const lsFiltered = list.filter(c => c.lifestyle.some(tag => entities.lifestyles.includes(tag)));
+        if (lsFiltered.length > 0) list = lsFiltered;
+      }
       if (entities.maxPrice) {
         const withinBudget = list.filter(c => c.price <= entities.maxPrice);
         if (withinBudget.length > 0) list = withinBudget;
+      }
+      if (!entities.specificStation && !entities.transit && entities.pet === null && entities.lifestyles.length === 0 && !entities.maxPrice) {
+        list = list.filter(c => normTh(c.name).includes(nq) || normTh(c.desc).includes(nq) || normTh(c.station).includes(nq));
       }
       if (loadMoreBox) loadMoreBox.style.display = "none";
       resultsCount.textContent = `${list.length} โครงการ`;

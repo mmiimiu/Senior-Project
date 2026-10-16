@@ -454,32 +454,67 @@ class ThaiNLPSearchEngine:
         tokens = word_tokenize(query, engine="newmm", keep_whitespace=False)
         extracted["tokens"] = tokens
 
-        # 1. Mass Transit Extraction
+        def norm_th(s: str) -> str:
+            return re.sub(r"[\u0e47-\u0e4c\s\-]", "", (s or "").lower())
+
+        nq = norm_th(query)
+
+        # 1. Mass Transit Extraction - exact or normalized keyword match
         for st in KNOWN_STATIONS:
             for kw in st["keywords"]:
-                if kw in q_lower:
+                if kw in q_lower or norm_th(kw) in nq:
                     extracted["station"] = st["canonical"]
                     extracted["line"] = st["line"]
                     break
             if extracted["station"]:
                 break
         
+        # Fuzzy station matching for typos / edit distance <= 1
+        if not extracted["station"]:
+            def lev(a: str, b: str) -> int:
+                m, n = len(a), len(b)
+                dp = [[0]*(n+1) for _ in range(m+1)]
+                for i in range(m+1): dp[i][0] = i
+                for j in range(n+1): dp[0][j] = j
+                for i in range(1, m+1):
+                    for j in range(1, n+1):
+                        dp[i][j] = dp[i-1][j-1] if a[i-1] == b[j-1] else 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])
+                return dp[m][n]
+
+            for st in KNOWN_STATIONS:
+                for kw in st["keywords"]:
+                    nkw = norm_th(kw)
+                    if len(nkw) >= 3:
+                        for l in [len(nkw)-1, len(nkw), len(nkw)+1]:
+                            if l < 2: continue
+                            for i in range(0, max(0, len(nq) - l + 1)):
+                                if lev(nq[i:i+l], nkw) <= 1:
+                                    extracted["station"] = st["canonical"]
+                                    extracted["line"] = st["line"]
+                                    break
+                            if extracted["station"]:
+                                break
+                    if extracted["station"]:
+                        break
+                if extracted["station"]:
+                    break
+        
         # Generic transit mentions if specific station not detected
         if not extracted["station"]:
-            if any(k in q_lower for k in ["bts", "บีทีเอส", "สายสีเขียว"]):
+            if any(k in q_lower or norm_th(k) in nq for k in ["bts", "บีทีเอส", "สายสีเขียว"]):
                 extracted["line"] = "BTS Sukhumvit Line"
-            elif any(k in q_lower for k in ["mrt", "เอ็มอาร์ที", "สายสีน้ำเงิน", "รถไฟใต้ดิน"]):
+            elif any(k in q_lower or norm_th(k) in nq for k in ["mrt", "เอ็มอาร์ที", "สายสีน้ำเงิน", "รถไฟใต้ดิน"]):
                 extracted["line"] = "MRT Blue Line"
-            elif "รถไฟฟ้า" in q_lower:
+            elif "รถไฟ" in nq:
                 extracted["line"] = "Mass Transit"
 
-        # 2. Pet Policy Extraction
-        pet_positive_kw = ["เลี้ยงสัตว์ได้", "เลี้ยงสัตว์", "สัตว์เลี้ยง", "เลี้ยงหมา", "เลี้ยงแมว", "pet friendly", "pet-friendly", "petfriendly", "ทาสแมว", "ทาสหมา", "หมา", "แมว", "pet", "pets", "สัตว์"]
-        pet_negative_kw = ["ห้ามเลี้ยงสัตว์", "ไม่เลี้ยงสัตว์", "ห้ามเลี้ยงหมา", "ห้ามเลี้ยงแมว", "ไม่เอาสัตว์เลี้ยง", "no pet", "no pets"]
+        # 2. Pet Policy Extraction with typo & partial match tolerance
+        pet_positive_kw = ["เลี้ยงสัตว์ได้", "เลี้ยงสัตว์", "สัตว์เลี้ยง", "เลี้ยงหมา", "เลี้ยงแมว", "pet friendly", "pet-friendly", "petfriendly", "ทาสแมว", "ทาสหมา", "หมา", "แมว", "pet", "pets", "สัตว์", "สุนัข", "เลียง"]
+        pet_negative_kw = ["ห้ามเลี้ยงสัตว์", "ไม่เลี้ยงสัตว์", "ห้ามเลี้ยงหมา", "ห้ามเลี้ยงแมว", "ไม่เอาสัตว์เลี้ยง", "no pet", "no pets", "ห้ามเลี้ยง", "ไม่เลี้ยง"]
 
-        if any(neg in q_lower for neg in pet_negative_kw):
+        if any(neg in q_lower or norm_th(neg) in nq for neg in pet_negative_kw):
             extracted["pet_friendly"] = False
-        elif any(pos in q_lower for pos in pet_positive_kw):
+        elif any(pos in q_lower or norm_th(pos) in nq for pos in pet_positive_kw):
             extracted["pet_friendly"] = True
 
         # 3. Budget / Price Range Extraction
