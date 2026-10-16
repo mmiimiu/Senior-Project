@@ -1,5 +1,12 @@
-// Thai NLP & Lifestyle Condominium Search Engine Prototype (<= 150 lines)
-const STATIONS = ["พระราม 9", "อารีย์", "อ่อนนุช", "ทองหล่อ", "อุดมสุข", "เอกมัย", "พหลโยธิน", "สามย่าน", "แบริ่ง", "ปุณณวิถี", "อโศก", "สุขุมวิท", "ลาดพร้าว", "เพชรบุรี", "ราชเทวี", "ช่องนนทรี", "ห้วยขวาง", "วงเวียนใหญ่", "บางหว้า", "สะพานใหม่", "สำโรง", "บางซ่อน", "กรุงธนบุรี", "สุทธิสาร", "ลุมพินี", "ช้างเอราวัณ", "ลำสาลี", "ท่าพระ", "เพลินจิต", "บางโพ"];
+// Thai NLP & Lifestyle Condominium Search Engine Prototype (BTS สายสีเขียว คูคต - เคหะฯ)
+const STATIONS = [
+  "คูคต", "แยก คปอ.", "พิพิธภัณฑ์กองทัพอากาศ", "โรงพยาบาลภูมิพลอดุลยเดช", "สะพานใหม่", "สายหยุด", "พหลโยธิน 59",
+  "วัดพระศรีมหาธาตุ", "บางเขน", "กรมทหารราบที่ 11", "บางบัว", "กรมป่าไม้", "มหาวิทยาลัยเกษตรศาสตร์", "ม.เกษตร",
+  "เสนานิคม", "รัชโยธิน", "พหลโยธิน 24", "ห้าแยกลาดพร้าว", "หมอชิต", "สะพานควาย", "อารีย์", "สนามเป้า",
+  "อนุสาวรีย์ชัยสมรภูมิ", "อนุสาวรีย์", "พญาไท", "ราชเทวี", "สยาม", "ชิดลม", "เพลินจิต", "นานา", "อโศก", "พร้อมพงษ์",
+  "ทองหล่อ", "เอกมัย", "พระโขนง", "อ่อนนุช", "บางจาก", "ปุณณวิถี", "อุดมสุข", "บางนา", "แบริ่ง", "สำโรง", "ปู่เจ้า",
+  "ช้างเอราวัณ", "โรงเรียนนายเรือ", "ปากน้ำ", "ศรีนครินทร์", "แพรกษา", "สายลวด", "เคหะฯ", "เคหะ"
+];
 const LIFESTYLE_MAP = [
   { key: "เหมาะกับ WFH", terms: ["wfh", "ทำงาน", "work from home", "co-working"] },
   { key: "เงียบสงบ", terms: ["เงียบ", "สงบ", "ไม่วุ่นวาย"] },
@@ -82,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nq = normTh(q);
     const specificStation = findStation(q);
     let transit = specificStation;
-    if (!transit) transit = nq.includes("mrt") ? "MRT (ทุกสถานี)" : nq.includes("bts") ? "BTS (ทุกสถานี)" : nq.includes("รถไฟ") ? "ติดรถไฟฟ้า" : null;
+    if (!transit) transit = (nq.includes("bts") || nq.includes("สายสีเขียว") || nq.includes("รถไฟ")) ? "BTS สายสีเขียว (คูคต-เคหะฯ)" : null;
     const isNegPet = /ห้าม|ไม่(ให้|อนุญาต)?/.test(q) && /สัตว์|หมา|แมว|pet/.test(q);
     const pet = isNegPet ? false : (/สัตว|หมา|แมว|สุนัข|pet|dog|cat|เลียง/.test(nq) ? true : null);
     const lifestyles = LIFESTYLE_MAP.filter(i => i.terms.some(t => nq.includes(normTh(t)))).map(i => i.key);
@@ -94,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateEntityUI(entities, queryText) {
     const map = [
-      { id: "entityTransit", val: entities.transit || (queryText ? "ไม่จำกัดสถานี" : "ทั้งหมด"), active: !!entities.transit },
+      { id: "entityTransit", val: entities.transit || (queryText ? "สายสีเขียว (ทุกสถานี)" : "ทั้งหมด"), active: !!entities.transit },
       { id: "entityPet", val: entities.pet ? "✅ อนุญาตเลี้ยงสัตว์" : (queryText ? "ทั่วไป" : "ไม่ระบุ"), active: !!entities.pet },
       { id: "entityLifestyle", val: entities.lifestyles.join(", ") || (queryText ? "ทั่วไป" : "ไม่ระบุ"), active: entities.lifestyles.length > 0 },
       { id: "entityBudget", val: entities.maxPrice ? `≤ ${entities.maxPrice.toLocaleString()} บ./ด.` : "ไม่จำกัด", active: !!entities.maxPrice }
@@ -126,8 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const nst = normTh(entities.specificStation);
         list = list.filter(c => normTh(c.station).includes(nst) || normTh(c.desc).includes(nst) || normTh(c.name).includes(nst));
       } else if (entities.transit) {
-        if (entities.transit.includes("BTS")) list = list.filter(c => c.transitType === "BTS" || c.station.includes("BTS"));
-        else if (entities.transit.includes("MRT")) list = list.filter(c => c.transitType === "MRT" || c.station.includes("MRT"));
+        list = list.filter(c => c.transitType === "BTS" || normTh(c.station).includes("bts"));
       }
       if (entities.pet === true) list = list.filter(c => c.petFriendly);
       if (entities.lifestyles.length > 0) {
