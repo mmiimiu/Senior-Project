@@ -224,9 +224,18 @@ document.addEventListener("DOMContentLoaded", () => {
         ? "BTS สายสีเขียว (คูคต-เคหะฯ)"
         : null);
 
-    // ตรวจจับเงื่อนไขสัตว์เลี้ยง
-    const isNegPet = /ห้าม|ไม่(ให้|อนุญาต)?/.test(q) && /สัตว์|หมา|แมว|pet/.test(q);
-    const pet = isNegPet ? false : /สัตว|หมา|แมว|สุนัข|pet|dog|cat|เลียง/.test(nq) ? true : null;
+    // ตรวจจับเงื่อนไขปฏิเสธสัตว์เลี้ยง (เช่น ห้ามเลี้ยง, ไม่ให้เลี้ยง, ไม่อนุญาตให้เลี้ยงสัตว์, no pet)
+    const isNegPet =
+      /ห้าม(?:ให้)?เลี้ยง|ไม่(?:ให้|อนุญาตให้|อนุญาต)?เลี้ยง|ไม่รับสัตว์|ไม่เอาสัตว์|ห้าม(?:มี)?สัตว์|no\s*pets?/i.test(q) ||
+      /หาม(?:ให)?เลี?ยง|ไม(?:ให|อนญาตให|อนญาต)?เลี?ยง|ไมรบสตว|ไมเอาสตว|หาม(?:ม)?สตว/i.test(nq);
+
+    // ตรวจจับเงื่อนไขต้องการเลี้ยงสัตว์ (เช่น เลี้ยงสัตว์, เลี้ยงหมา, เลี้ยงแมว, สัตว์เลี้ยง, pet, dog, cat)
+    const isPosPet =
+      !isNegPet &&
+      (/เลี?ยง(?:สัตว์|หมา|แมว|สุนัข)?|สัตว์เลี้ยง|สุนัข|หมา|แมว|pet-friendly|pet\b|dog\b|cat\b/i.test(q) ||
+        /เลี?ยง(?:สตว|หมา|แมว|สนข)?|สตวเลี?ยง|สนข|หมา|แมว/i.test(nq));
+
+    const pet = isNegPet ? false : isPosPet ? true : null;
 
     // ตรวจจับไลฟ์สไตล์
     const lifestyles = LIFESTYLE_MAP
@@ -282,8 +291,15 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         id: "entityPet",
-        val: entities.pet ? "✅ อนุญาตเลี้ยงสัตว์" : queryText ? "ทั่วไป" : "ไม่ระบุ",
-        active: !!entities.pet
+        val:
+          entities.pet === true
+            ? "✅ อนุญาตเลี้ยงสัตว์"
+            : entities.pet === false
+            ? "❌ ไม่อนุญาตเลี้ยงสัตว์"
+            : queryText
+            ? "ทั่วไป"
+            : "ไม่ระบุ",
+        active: entities.pet !== null
       },
       {
         id: "entityLifestyle",
@@ -359,6 +375,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // 2. กรองตามเงื่อนไขสัตว์เลี้ยง
       if (entities.pet === true) {
         list = list.filter((c) => c.petFriendly);
+      } else if (entities.pet === false) {
+        list = list.filter((c) => !c.petFriendly);
       }
 
       // 3. กรองตามงบประมาณ (บังคับใช้อย่างเคร่งครัดตามงบที่ระบุ ห้ามแสดงห้องที่ราคาเกินงบเด็ดขาด)
