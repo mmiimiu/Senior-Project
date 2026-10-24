@@ -26,6 +26,7 @@ const STATIONS = [
   "หมอชิต",
   "สะพานควาย",
   "อารีย์",
+  "อารี",
   "สนามเป้า",
   "อนุสาวรีย์ชัยสมรภูมิ",
   "อนุสาวรีย์",
@@ -459,14 +460,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // ค้นหาตัวเลือกแนะนำบน BTS สายสีเขียวในงบใกล้เคียง
+      // ค้นหาตัวเลือกแนะนำบน BTS สายสีเขียวในงบที่ระบุอย่างเข้มงวด (ห้ามเกินงบเด็ดขาด)
       let suggestionCondos = [];
       if (entities.maxPrice) {
         suggestionCondos = getAllCondos()
           .filter(
             (c) =>
-              c.price <= entities.maxPrice + 1500 &&
-              (entities.pet ? c.petFriendly : true)
+              c.price <= entities.maxPrice &&
+              (entities.pet === true ? c.petFriendly : entities.pet === false ? !c.petFriendly : true)
           )
           .slice(0, 4);
       }
@@ -488,8 +489,8 @@ document.addEventListener("DOMContentLoaded", () => {
               ? `
             <div style="margin-top: 28px; text-align: left;">
               <h4 style="color: #a5b4fc; font-size: 0.95rem; margin-bottom: 12px; text-align: center;">
-                ✨ โครงการแนะนำบน BTS สายสีเขียว ในงบประมาณใกล้เคียง ${
-                  entities.pet ? "(อนุญาตเลี้ยงสัตว์)" : ""
+                ✨ โครงการแนะนำบน BTS สายสีเขียว ในงบไม่เกิน ฿${entities.maxPrice.toLocaleString()} บ./ด. ${
+                  entities.pet === true ? "(อนุญาตเลี้ยงสัตว์)" : ""
                 }:
               </h4>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; max-width: 900px; margin: 0 auto;">
