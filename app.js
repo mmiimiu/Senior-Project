@@ -233,17 +233,43 @@ document.addEventListener("DOMContentLoaded", () => {
       .filter((i) => i.terms.some((t) => nq.includes(normTh(t))))
       .map((i) => i.key);
 
-    // ตรวจจับงบประมาณราคา
+    // ตรวจจับงบประมาณราคา (รองรับ: ไม่เกิน 7000, 7000 บาท, งบ 5000-8000, 7k, 7 พัน, 1.5 หมื่น)
+    let minPrice = null;
     let maxPrice = null;
-    const pMatch = q.match(/(?:งบ|ไม่เกิน|ราคา|ต่ำกว่า)?\s*([0-9]{1,2}(?:,[0-9]{3})+|[0-9]{4,5})\s*(?:บาท)?/);
-    if (pMatch && pMatch[1]) {
-      const p = parseInt(pMatch[1].replace(/,/g, ""), 10);
-      if (p >= 5000) {
-        maxPrice = p;
+
+    // 1. ตรวจจับช่วงราคา เช่น "5000-8000", "5,000 - 8,000", "5000 ถึง 8000"
+    const rangeMatch = q.match(/([0-9]{1,2}(?:,[0-9]{3})+|[0-9]{4,5})\s*(?:-|ถึง|to)\s*([0-9]{1,2}(?:,[0-9]{3})+|[0-9]{4,5})/);
+    if (rangeMatch) {
+      const p1 = parseInt(rangeMatch[1].replace(/,/g, ""), 10);
+      const p2 = parseInt(rangeMatch[2].replace(/,/g, ""), 10);
+      if (p1 >= 2500 && p2 >= 2500) {
+        minPrice = Math.min(p1, p2);
+        maxPrice = Math.max(p1, p2);
+      }
+    } else {
+      // 2. คำไทย/หน่วยย่อ เช่น "7k", "7 พัน", "1.5 หมื่น"
+      const kMatch = q.match(/(?:งบ(?:ประมาณ)?|ไม่เกิน|ราคา|ต่ำกว่า|คุมงบ)?\s*([0-9]+(?:\.[0-9]+)?)\s*(?:k|พัน)\b/);
+      const mMatch = q.match(/(?:งบ(?:ประมาณ)?|ไม่เกิน|ราคา|ต่ำกว่า|คุมงบ)?\s*([0-9]+(?:\.[0-9]+)?)\s*(?:หมื่น)\b/);
+
+      if (kMatch) {
+        const val = Math.round(parseFloat(kMatch[1]) * 1000);
+        if (val >= 2500) maxPrice = val;
+      } else if (mMatch) {
+        const val = Math.round(parseFloat(mMatch[1]) * 10000);
+        if (val >= 2500) maxPrice = val;
+      } else {
+        // 3. รูปแบบตัวเลขทั่วไป เช่น "ไม่เกิน7000", "งบ 7,000", "ราคา 8000", "7000 บาท"
+        const pMatch = q.match(/(?:งบ(?:ประมาณ)?|ไม่เกิน|ราคา|ต่ำกว่า|คุมงบ|งบไม่เกิน|ราคาไม่เกิน)?\s*([0-9]{1,2}(?:,[0-9]{3})+|[0-9]{4,5})\s*(?:บาท|บ\.|/ด)?/);
+        if (pMatch && pMatch[1]) {
+          const p = parseInt(pMatch[1].replace(/,/g, ""), 10);
+          if (p >= 2500) {
+            maxPrice = p;
+          }
+        }
       }
     }
 
-    return { transit, specificStation, pet, lifestyles, maxPrice };
+    return { transit, specificStation, pet, lifestyles, minPrice, maxPrice };
   }
 
   // อัปเดตการแสดงผล Badge เงื่อนไขที่สกัดได้
@@ -266,8 +292,15 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         id: "entityBudget",
-        val: entities.maxPrice ? `≤ ${entities.maxPrice.toLocaleString()} บ./ด.` : "ไม่จำกัด",
-        active: !!entities.maxPrice
+        val:
+          entities.minPrice && entities.maxPrice
+            ? `${entities.minPrice.toLocaleString()} - ${entities.maxPrice.toLocaleString()} บ./ด.`
+            : entities.maxPrice
+            ? `≤ ${entities.maxPrice.toLocaleString()} บ./ด.`
+            : entities.minPrice
+            ? `≥ ${entities.minPrice.toLocaleString()} บ./ด.`
+            : "ไม่จำกัด",
+        active: !!(entities.maxPrice || entities.minPrice)
       }
     ];
 
@@ -279,7 +312,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    const count = [entities.transit, entities.pet, entities.lifestyles.length, entities.maxPrice].filter(Boolean).length;
+    const count = [
+      entities.transit,
+      entities.pet,
+      entities.lifestyles.length,
+      entities.maxPrice || entities.minPrice
+    ].filter(Boolean).length;
     matchScoreBadge.textContent = count > 0 ? `สกัดได้ ${count} มิติเงื่อนไข` : "พร้อมวิเคราะห์";
   }
 
@@ -305,7 +343,7 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsHeading.textContent = "ผลการค้นหาคอนโดมิเนียม";
       const nq = normTh(query);
 
-      // กรองตามสถานี
+      // 1. กรองตามสถานี
       if (entities.specificStation) {
         const nst = normTh(entities.specificStation);
         list = list.filter(
@@ -318,24 +356,24 @@ document.addEventListener("DOMContentLoaded", () => {
         list = list.filter((c) => c.transitType === "BTS" || normTh(c.station).includes("bts"));
       }
 
-      // กรองตามเงื่อนไขสัตว์เลี้ยง
+      // 2. กรองตามเงื่อนไขสัตว์เลี้ยง
       if (entities.pet === true) {
         list = list.filter((c) => c.petFriendly);
       }
 
-      // กรองตามไลฟ์สไตล์
+      // 3. กรองตามงบประมาณ (บังคับใช้อย่างเคร่งครัดตามงบที่ระบุ ห้ามแสดงห้องที่ราคาเกินงบเด็ดขาด)
+      if (entities.maxPrice) {
+        list = list.filter((c) => c.price <= entities.maxPrice);
+      }
+      if (entities.minPrice) {
+        list = list.filter((c) => c.price >= entities.minPrice);
+      }
+
+      // 4. กรองตามไลฟ์สไตล์
       if (entities.lifestyles.length > 0) {
         const lsFiltered = list.filter((c) => c.lifestyle.some((tag) => entities.lifestyles.includes(tag)));
         if (lsFiltered.length > 0) {
           list = lsFiltered;
-        }
-      }
-
-      // กรองตามงบประมาณ
-      if (entities.maxPrice) {
-        const withinBudget = list.filter((c) => c.price <= entities.maxPrice);
-        if (withinBudget.length > 0) {
-          list = withinBudget;
         }
       }
 
@@ -345,7 +383,8 @@ document.addEventListener("DOMContentLoaded", () => {
         !entities.transit &&
         entities.pet === null &&
         entities.lifestyles.length === 0 &&
-        !entities.maxPrice
+        !entities.maxPrice &&
+        !entities.minPrice
       ) {
         list = list.filter(
           (c) =>
@@ -381,10 +420,84 @@ document.addEventListener("DOMContentLoaded", () => {
   // แสดงผลรายการคอนโดใน Grid
   function renderCondos(condos, entities) {
     if (!condos.length) {
+      let adviceHtml = "";
+      if (entities.maxPrice && entities.specificStation) {
+        const allAtStation = getAllCondos().filter((c) =>
+          normTh(c.station).includes(normTh(entities.specificStation))
+        );
+        const minAtStation = allAtStation.length
+          ? Math.min(...allAtStation.map((c) => c.price))
+          : null;
+
+        if (minAtStation && minAtStation > entities.maxPrice) {
+          adviceHtml = `
+            <div style="margin-top: 16px; padding: 14px 18px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 12px; text-align: left; max-width: 650px; margin-left: auto; margin-right: auto;">
+              <div style="font-weight: 600; color: #fca5a5; margin-bottom: 4px;">💡 ข้อมูลราคาตลาดในย่าน ${entities.specificStation}:</div>
+              <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5; margin: 0;">
+                คอนโดมิเนียมย่าน <strong>${entities.specificStation}</strong> ในระบบมีอัตราค่าเช่าเริ่มต้นที่ <strong>฿${minAtStation.toLocaleString()} บาท/เดือน</strong> ซึ่งสูงกว่างบที่ระบุ (≤ ฿${entities.maxPrice.toLocaleString()} บ./ด.) ระบบจึงคัดกรองออกเพื่อรักษาความถูกต้องตามเงื่อนไขงบประมาณของคุณ
+              </p>
+            </div>
+          `;
+        }
+      }
+
+      // ค้นหาตัวเลือกแนะนำบน BTS สายสีเขียวในงบใกล้เคียง
+      let suggestionCondos = [];
+      if (entities.maxPrice) {
+        suggestionCondos = getAllCondos()
+          .filter(
+            (c) =>
+              c.price <= entities.maxPrice + 1500 &&
+              (entities.pet ? c.petFriendly : true)
+          )
+          .slice(0, 4);
+      }
+
       condoGrid.innerHTML = `
-        <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
-          <p style="font-size: 1.1rem;">🔍 ไม่พบคอนโดมิเนียมที่ตรงกับเงื่อนไขที่พิมพ์</p>
-          <p style="font-size: 0.85rem; margin-top: 6px;">ลองพิมพ์ชื่อสถานีอื่นบนสายสีเขียว หรือปรับช่วงงบประมาณ</p>
+        <div style="grid-column: 1/-1; text-align: center; padding: 40px 20px; color: var(--text-muted);">
+          <div style="font-size: 2.2rem; margin-bottom: 8px;">🔍</div>
+          <p style="font-size: 1.15rem; color: #fff; font-weight: 500;">ไม่พบคอนโดมิเนียมที่ตรงกับทุกเงื่อนไขพร้อมกัน</p>
+          <p style="font-size: 0.88rem; margin-top: 6px; color: #94a3b8;">
+            ${
+              entities.maxPrice
+                ? `(คัดกรองเฉพาะห้องพักราคาไม่เกิน ฿${entities.maxPrice.toLocaleString()} บาท/เดือน ตามที่คุณระบุ)`
+                : "ลองปรับคำค้นหาหรือตัวกรอง"
+            }
+          </p>
+          ${adviceHtml}
+          ${
+            suggestionCondos.length
+              ? `
+            <div style="margin-top: 28px; text-align: left;">
+              <h4 style="color: #a5b4fc; font-size: 0.95rem; margin-bottom: 12px; text-align: center;">
+                ✨ โครงการแนะนำบน BTS สายสีเขียว ในงบประมาณใกล้เคียง ${
+                  entities.pet ? "(อนุญาตเลี้ยงสัตว์)" : ""
+                }:
+              </h4>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; max-width: 900px; margin: 0 auto;">
+                ${suggestionCondos
+                  .map(
+                    (sc) => `
+                  <div class="condo-card" style="cursor: pointer; padding: 12px;" onclick="openCondoDetail(${sc.id})">
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                      <img src="${sc.image}" style="width: 70px; height: 70px; border-radius: 8px; object-fit: cover;" alt="${sc.name}">
+                      <div>
+                        <div style="font-weight: 600; color: #fff; font-size: 0.9rem;">${sc.name}</div>
+                        <div style="font-size: 0.78rem; color: #94a3b8;">📍 ${sc.station}</div>
+                        <div style="font-size: 0.88rem; color: #6ee7b7; font-weight: 600; margin-top: 2px;">฿${sc.price.toLocaleString()} /ด. ${
+                      sc.petFriendly ? "🐾" : ""
+                    }</div>
+                      </div>
+                    </div>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          `
+              : ""
+          }
         </div>
       `;
       return;

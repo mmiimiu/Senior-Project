@@ -150,10 +150,10 @@ const CONDO_DATASET_5 = [
     station: "BTS อารีย์",
     transitType: "BTS",
     distance: "400 ม.",
-    price: 13500,
+    price: 7000,
     petFriendly: true,
-    lifestyle: ["เป็นส่วนตัว", "ราคาประหยัด", "ร่มรื่น"],
-    desc: "คอนโดใจกลางซอยอารีย์ 4 ใกล้ BTS อารีย์ อนุญาตเลี้ยงสัตว์ (Pet-Friendly) บรรยากาศอบอุ่น ร่มรื่น เหมาะกับคนรุ่นใหม่ที่รักสัตว์เลี้ยงและชื่นชอบไลฟ์สไตล์ย่านอารีย์",
+    lifestyle: ["เหมาะกับ WFH", "ราคาประหยัด", "เป็นส่วนตัว"],
+    desc: "คอนโด Low-Rise ซอยอารีย์ 4 ใกล้ BTS อารีย์ ห้องสตูดิโอโปรโมชัน อนุญาตเลี้ยงสัตว์ (Pet-Friendly) ตอบโจทย์คนทำงาน WFH ในราคาประหยัดและคุ้มค่าที่สุดในย่านอารีย์",
     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80"
   },
   {
