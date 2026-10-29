@@ -1,17 +1,15 @@
 /** Thai NLP & Lifestyle Condominium Search Engine Prototype (100 Projects BTS Green Line) */
 const STATIONS = ["คูคต","แยก คปอ.","พิพิธภัณฑ์กองทัพอากาศ","โรงพยาบาลภูมิพลอดุลยเดช","สะพานใหม่","สายหยุด","พหลโยธิน 59","วัดพระศรีมหาธาตุ","บางเขน","กรมทหารราบที่ 11","บางบัว","กรมป่าไม้","มหาวิทยาลัยเกษตรศาสตร์","ม.เกษตร","เสนานิคม","รัชโยธิน","พหลโยธิน 24","ห้าแยกลาดพร้าว","หมอชิต","สะพานควาย","อารีย์","อารี","สนามเป้า","อนุสาวรีย์ชัยสมรภูมิ","อนุสาวรีย์","พญาไท","ราชเทวี","สยาม","ชิดลม","เพลินจิต","นานา","อโศก","พร้อมพงษ์","ทองหล่อ","เอกมัย","พระโขนง","อ่อนนุช","บางจาก","ปุณณวิถี","อุดมสุข","บางนา","แบริ่ง","สำโรง","ปู่เจ้า","ช้างเอราวัณ","โรงเรียนนายเรือ","ปากน้ำ","ศรีนครินทร์","แพรกษา","สายลวด","เคหะฯ","เคหะ"];
-
+const SK_STNS = ["ชิดลม","เพลินจิต","นานา","อโศก","พร้อมพงษ์","ทองหล่อ","เอกมัย","พระโขนง","อ่อนนุช","บางจาก","ปุณณวิถี","อุดมสุข","บางนา","แบริ่ง","สำโรง","ปู่เจ้า","ช้างเอราวัณ","โรงเรียนนายเรือ","ปากน้ำ","ศรีนครินทร์","แพรกษา","สายลวด","เคหะฯ","เคหะ"];
+const PH_STNS = ["คูคต","แยก คปอ.","สะพานใหม่","สายหยุด","พหลโยธิน 59","วัดพระศรีมหาธาตุ","บางเขน","บางบัว","กรมป่าไม้","มหาวิทยาลัยเกษตรศาสตร์","ม.เกษตร","เสนานิคม","รัชโยธิน","พหลโยธิน 24","ห้าแยกลาดพร้าว","หมอชิต"];
 const LIFESTYLE_MAP = [
   { key: "เหมาะกับ WFH", terms: ["wfh", "ทำงาน", "work from home", "co-working"] }, { key: "เงียบสงบ", terms: ["เงียบ", "สงบ", "ไม่วุ่นวาย"] }, { key: "เป็นส่วนตัว", terms: ["ส่วนตัว", "ยูนิตน้อย"] },
   { key: "ร่มรื่น", terms: ["ร่มรื่น", "ต้นไม้", "สวน"] }, { key: "วิวเมืองสวย", terms: ["วิวเมือง", "วิวสวย", "high-rise"] }, { key: "ราคาประหยัด", terms: ["ประหยัด", "ราคาถูก", "สบายกระเป๋า"] }
 ];
-
 let showAll = false;
 const getAllCondos = () => window.CONDO_DATASET || [];
 const toggleModal = (id, s) => { const el = document.getElementById(id); if (el) el.style.display = s ? "flex" : "none"; };
-window.openResearchModal = () => toggleModal("researchModal", true);
-window.closeResearchModal = () => toggleModal("researchModal", false);
-window.closeCondoModal = () => toggleModal("condoModal", false);
+window.openResearchModal = () => toggleModal("researchModal", true); window.closeResearchModal = () => toggleModal("researchModal", false); window.closeCondoModal = () => toggleModal("condoModal", false);
 window.resetToHome = () => { const el = document.getElementById("searchInput"); if (el) el.value = ""; showAll = false; window._performSearch?.(); window.scrollTo({ top: 0, behavior: "smooth" }); };
 window.toggleShowAll = () => { showAll = !showAll; window._performSearch?.(); };
 
@@ -47,9 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function extractEntities(text) {
     const q = (text || "").toLowerCase().trim();
-    if (!q) return { transit: null, specificStation: null, pet: null, lifestyles: [], maxPrice: null, minPrice: null };
+    if (!q) return { transit: null, specificStation: null, zone: null, pet: null, lifestyles: [], maxPrice: null, minPrice: null, maxDist: null };
     const nq = normTh(q), specificStation = findStation(q);
-    const transit = specificStation || (nq.includes("bts") || nq.includes("สายสีเขียว") || nq.includes("รถไฟ") ? "BTS สายสีเขียว (คูคต-เคหะฯ)" : null);
+    const isSk = nq.includes("สุขุมวิท") || nq.includes("sukhumvit"), isPh = !isSk && (nq.includes("พหลโยธิน") || nq.includes("phahol"));
+    const zone = !specificStation ? (isSk ? "สุขุมวิท" : isPh ? "พหลโยธิน" : null) : null;
+    const transit = specificStation ? `BTS ${specificStation}` : zone === "สุขุมวิท" ? "โซนสุขุมวิท (BTS นานา - เคหะฯ)" : zone === "พหลโยธิน" ? "โซนพหลโยธิน (คูคต - ลาดพร้าว)" : (nq.includes("bts") || nq.includes("สายสีเขียว") || nq.includes("รถไฟ") ? "BTS สายสีเขียว (คูคต-เคหะฯ)" : null);
+    const distMatch = q.match(/(?:ไม่เกิน|ห่าง|เดิน)?\s*([0-9]{2,4})\s*(?:ม\.|เมตร|m\b)/);
+    const maxDist = distMatch ? parseInt(distMatch[1], 10) : null;
     const isNegPet = /ห้าม(?:ให้)?เลี้ยง|ไม่(?:ให้|อนุญาตให้|อนุญาต)?เลี้ยง|ไม่รับสัตว์|ไม่เอาสัตว์|ห้าม(?:มี)?สัตว์|no\s*pets?/i.test(q) || /หาม(?:ให)?เลี?ยง|ไม(?:ให|อนญาตให|อนญาต)?เลี?ยง|ไมรบสตว|ไมเอาสตว|หาม(?:ม)?สตว/i.test(nq);
     const isPosPet = !isNegPet && (/เลี?ยง(?:สัตว์|หมา|แมว|สุนัข)?|สัตว์เลี้ยง|สุนัข|หมา|แมว|pet-friendly|pet\b|dog\b|cat\b/i.test(q) || /เลี?ยง(?:สตว|หมา|แมว|สนข)?|สตวเลี?ยง|สนข|หมา|แมว/i.test(nq));
     const pet = isNegPet ? false : isPosPet ? true : null;
@@ -65,12 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (kMatch && Math.round(parseFloat(kMatch[1]) * 1000) >= 2500) maxPrice = Math.round(parseFloat(kMatch[1]) * 1000);
     else if (mMatch && Math.round(parseFloat(mMatch[1]) * 10000) >= 2500) maxPrice = Math.round(parseFloat(mMatch[1]) * 10000);
     else if (pMatch && parseInt(pMatch[1].replace(/,/g, ""), 10) >= 2500) maxPrice = parseInt(pMatch[1].replace(/,/g, ""), 10);
-    return { transit, specificStation, pet, lifestyles, minPrice, maxPrice };
+    return { transit, specificStation, zone, pet, lifestyles, minPrice, maxPrice, maxDist };
   }
 
   function updateEntityUI(ent, q) {
+    const transitText = ent.transit ? `${ent.transit}${ent.maxDist ? ` (≤ ${ent.maxDist} ม.)` : ""}` : (ent.maxDist ? `ระยะเดิน ≤ ${ent.maxDist} ม.` : (q ? "สายสีเขียว (ทุกสถานี)" : "ทั้งหมด"));
     [
-      { id: "entityTransit", val: ent.transit || (q ? "สายสีเขียว (ทุกสถานี)" : "ทั้งหมด"), active: !!ent.transit },
+      { id: "entityTransit", val: transitText, active: !!(ent.transit || ent.maxDist) },
       { id: "entityPet", val: ent.pet === true ? "✅ อนุญาตเลี้ยงสัตว์" : ent.pet === false ? "❌ ไม่อนุญาตเลี้ยงสัตว์" : q ? "ทั่วไป" : "ไม่ระบุ", active: ent.pet !== null },
       { id: "entityLifestyle", val: ent.lifestyles.join(", ") || (q ? "ทั่วไป" : "ไม่ระบุ"), active: ent.lifestyles.length > 0 },
       { id: "entityBudget", val: ent.minPrice && ent.maxPrice ? `${ent.minPrice.toLocaleString()} - ${ent.maxPrice.toLocaleString()} บ./ด.` : ent.maxPrice ? `≤ ${ent.maxPrice.toLocaleString()} บ./ด.` : ent.minPrice ? `≥ ${ent.minPrice.toLocaleString()} บ./ด.` : "ไม่จำกัด", active: !!(ent.maxPrice || ent.minPrice) }
@@ -78,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const el = document.getElementById(id);
       if (el) { el.querySelector(".ent-val").textContent = val; el.classList.toggle("active", active); }
     });
-    const c = [ent.transit, ent.pet, ent.lifestyles.length, ent.maxPrice || ent.minPrice].filter(Boolean).length;
+    const c = [ent.transit, ent.zone, ent.maxDist, ent.pet, ent.lifestyles.length, ent.maxPrice || ent.minPrice].filter(Boolean).length;
     const badge = document.getElementById("matchScoreBadge");
     if (badge) badge.textContent = c > 0 ? `สกัดได้ ${c} มิติเงื่อนไข` : "พร้อมวิเคราะห์";
   }
@@ -102,12 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (ent.specificStation) {
         const nst = normTh(ent.specificStation);
         list = list.filter((c) => normTh(c.station).includes(nst) || normTh(c.name).includes(nst));
+      } else if (ent.zone === "สุขุมวิท") {
+        list = list.filter((c) => SK_STNS.some((st) => normTh(c.station).includes(normTh(st))) || normTh(c.name).includes("สุขุมวิท") || normTh(c.desc).includes("สุขุมวิท"));
+      } else if (ent.zone === "พหลโยธิน") {
+        list = list.filter((c) => PH_STNS.some((st) => normTh(c.station).includes(normTh(st))) || normTh(c.name).includes("พหลโยธิน") || normTh(c.desc).includes("พหลโยธิน"));
       } else if (ent.transit) list = list.filter((c) => c.transitType === "BTS" || normTh(c.station).includes("bts"));
+      if (ent.maxDist) list = list.filter((c) => parseInt(c.distance, 10) <= ent.maxDist);
       if (ent.pet !== null) list = list.filter((c) => c.petFriendly === ent.pet);
       if (ent.maxPrice) list = list.filter((c) => c.price <= ent.maxPrice);
       if (ent.minPrice) list = list.filter((c) => c.price >= ent.minPrice);
       if (ent.lifestyles.length) list = list.filter((c) => c.lifestyle.some((t) => ent.lifestyles.includes(t)));
-      if (!ent.specificStation && !ent.transit && ent.pet === null && !ent.lifestyles.length && !ent.maxPrice && !ent.minPrice) {
+      if (!ent.specificStation && !ent.zone && !ent.transit && ent.pet === null && !ent.lifestyles.length && !ent.maxPrice && !ent.minPrice && !ent.maxDist) {
         list = list.filter((c) => normTh(c.name).includes(nq) || normTh(c.desc).includes(nq) || normTh(c.station).includes(nq));
       }
       if (loadMoreBox) loadMoreBox.style.display = "none";
@@ -117,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (loadMoreBox) loadMoreBox.style.display = "block";
       if (loadMoreBtn) loadMoreBtn.textContent = showAll ? "ย่อรายการแนะนำ (6 โครงการ)" : `ดูห้องพักทั้งหมด (${data.length} โครงการ)`;
       document.getElementById("resultsCount").textContent = showAll ? `${data.length} โครงการทั้งหมด` : `แนะนำ 6 จาก ${data.length} โครงการ`;
-      if (!showAll) list = list.slice(0, 6);
+      if (!showAll) list = [data[2], data[16], data[27], data[34], data[44], data[51]].filter(Boolean);
     }
     renderCondos(list, ent);
   }
