@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1150" width="960" height="1150" style="background:#ffffff; font-family:'Sarabun', 'Prompt', 'Thonburi', -apple-system, BlinkMacSystemFont, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="flow-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <marker id="flow-arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="30" y="20" width="900" height="75" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="50" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">รูปที่ 3.4: แผนภาพลำดับขั้นตอนการใช้งานของผู้ใช้ (User Flow Diagram)</text>
+  <text x="480" y="74" text-anchor="middle" font-size="14" fill="#475569">แสดงประสบการณ์การใช้งานจริงบนหน้าเว็บ BKK CONDO NLP ตั้งแต่เข้าเว็บจนถึงการดูข้อมูลห้องพัก</text>
+
+  <!-- Step 1: Start -->
+  <rect x="330" y="120" width="300" height="55" rx="27.5" fill="#2563eb" filter="url(#shadow)"/>
+  <text x="480" y="154" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">เริ่มต้น: เข้าสู่หน้าเว็บ BKK CONDO</text>
+
+  <line x1="480" y1="175" x2="480" y2="210" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+  <!-- Step 2: Default Screen -->
+  <rect x="260" y="210" width="440" height="65" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="237" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#1e293b">1. ดูหน้าจอเริ่มต้นของระบบ (Initial Screen)</text>
+  <text x="480" y="257" text-anchor="middle" font-size="12" fill="#64748b">แสดงคอนโดแนะนำ 6 โครงการแรกตามแนวรถไฟฟ้า BTS</text>
+
+  <line x1="480" y1="275" x2="480" y2="315" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+  <!-- Decision 1: Search method -->
+  <polygon points="480,315 650,365 480,415 310,365" fill="#fffbeb" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="480" y="360" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400e">เลือกรูปแบบการค้นหา?</text>
+  <text x="480" y="378" text-anchor="middle" font-size="12" fill="#b45309">(พิมพ์เอง หรือ กดแท็กแนะนำ)</text>
+
+  <!-- Branch Left: Quick Tag -->
+  <path d="M 310 365 L 170 365 L 170 455" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+  <text x="210" y="355" font-size="12" font-weight="bold" fill="#2563eb">กดแท็กคำค้นหาแนะนำ</text>
+  <rect x="60" y="455" width="220" height="65" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="170" y="482" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1e40af">2A. คลิกปุ่มคำค้นหาแนะนำ</text>
+  <text x="170" y="502" text-anchor="middle" font-size="11.5" fill="#64748b">เช่น 'สะพานใหม่ ติดรถไฟฟ้า'</text>
+
+  <!-- Branch Right: Custom Text -->
+  <path d="M 650 365 L 790 365 L 790 455" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+  <text x="680" y="355" font-size="12" font-weight="bold" fill="#2563eb">พิมพ์ค้นหาด้วยภาษาพูด</text>
+  <rect x="680" y="455" width="220" height="65" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="790" y="482" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1e40af">2B. พิมพ์ข้อความค้นหาเอง</text>
+  <text x="790" y="502" text-anchor="middle" font-size="11.5" fill="#64748b">ระบุสถานี สัตว์ ไลฟ์สไตล์ งบ</text>
+
+  <!-- Converge to Step 3 -->
+  <path d="M 170 520 L 170 565 L 480 565" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <path d="M 790 520 L 790 565 L 480 565" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <line x1="480" y1="565" x2="480" y2="595" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+  <!-- Step 3: Observe Live Monitor -->
+  <rect x="230" y="595" width="500" height="75" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="480" y="623" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15803d">3. สังเกตแถบสรุปเงื่อนไขอัตโนมัติ (Live Condition Bar)</text>
+  <text x="480" y="645" text-anchor="middle" font-size="12" fill="#334155">ตรวจดูว่า AI สกัดเงื่อนไข: สถานี • สัตว์เลี้ยง • ไลฟ์สไตล์ • งบ ถูกต้องตามต้องการ</text>
+
+  <line x1="480" y1="670" x2="480" y2="710" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+  <!-- Step 4: Browse Results -->
+  <rect x="230" y="710" width="500" height="70" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="738" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#1e40af">4. เลื่อนดูรายการการ์ดคอนโดมิเนียม (Browse Results)</text>
+  <text x="480" y="758" text-anchor="middle" font-size="12" fill="#64748b">เปรียบเทียบรูปภาพ, ระยะเดินเท้าถึงสถานี BTS, ค่าเช่าต่อเดือน, และแท็กไลฟ์สไตล์</text>
+
+  <line x1="480" y1="780" x2="480" y2="820" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+  <!-- Decision 2: Next Action -->
+  <polygon points="480,820 660,865 480,910 300,865" fill="#fffbeb" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="480" y="860" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400e">สนใจโครงการใดเป็นพิเศษ?</text>
+  <text x="480" y="878" text-anchor="middle" font-size="12" fill="#b45309">(คลิกดูข้อมูลเชิงลึก หรือ ค้นหาใหม่)</text>
+
+  <!-- Branch Left: Open Modal -->
+  <path d="M 300 865 L 180 865 L 180 945" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#flow-arrow)"/>
+  <text x="215" y="855" font-size="12" font-weight="bold" fill="#16a34a">คลิกดูรายละเอียด</text>
+  <rect x="70" y="945" width="220" height="65" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="180" y="972" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#15803d">5A. เปิด Modal ดูรายละเอียด</text>
+  <text x="180" y="992" text-anchor="middle" font-size="11.5" fill="#64748b">อ่านสิ่งอำนวยความสะดวก & รีวิว</text>
+
+  <!-- Branch Right: Search Again / Toggle All -->
+  <path d="M 660 865 L 780 865 L 780 945" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#flow-arrow-gray)"/>
+  <text x="685" y="855" font-size="12" font-weight="bold" fill="#64748b">เปลี่ยนคำค้น / ดูทั้งหมด</text>
+  <rect x="670" y="945" width="220" height="65" rx="8" fill="#ffffff" stroke="#64748b" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="780" y="972" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#334155">5B. ปรับคำค้นหาใหม่</text>
+  <text x="780" y="992" text-anchor="middle" font-size="11.5" fill="#64748b">หรือกดปุ่มดูคอนโด 100 แห่ง</text>
+
+  <!-- Converge to End -->
+  <path d="M 180 1010 L 180 1055 L 480 1055" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <path d="M 780 1010 L 780 1055 L 480 1055" fill="none" stroke="#2563eb" stroke-width="2"/>
+  <line x1="480" y1="1055" x2="480" y2="1080" stroke="#2563eb" stroke-width="2" marker-end="url(#flow-arrow)"/>
+
+  <rect x="330" y="1080" width="300" height="50" rx="25" fill="#1e293b" filter="url(#shadow)"/>
+  <text x="480" y="1111" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#ffffff">สิ้นสุด: ผู้ใช้ตัดสินใจเลือกห้องพัก</text>
+</svg>
