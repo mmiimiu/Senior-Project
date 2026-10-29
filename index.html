@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=311">
+  <link rel="stylesheet" href="style.css?v=314">
 </head>
 <body>
   <div class="bg-glow"></div>
@@ -53,18 +53,59 @@
       </div>
     </section>
 
-    <!-- Entity Extraction Visualization -->
+    <!-- Entity Extraction Visualization (NLP Senior Project Core Dashboard) -->
     <section class="nlp-insight-section" id="nlpSection">
       <div class="nlp-card">
-        <div class="nlp-card-header">
-          <div class="nlp-status"><span class="nlp-indicator"></span><h3>ผลการสกัดเอนทิตีภาษาธรรมชาติ (Entity Extraction)</h3></div>
+        <div class="nlp-academic-bar">
+          <span class="academic-chip">🎓 หัวใจหลักงานวิจัย • ระบบประมวลผลภาษาธรรมชาติ (NLP)</span>
           <span class="nlp-badge" id="matchScoreBadge">พร้อมวิเคราะห์</span>
         </div>
+        <div class="nlp-card-header">
+          <div class="nlp-status">
+            <span class="nlp-indicator"></span>
+            <div>
+              <h3>แผงวิเคราะห์เอนทิตีภาษาธรรมชาติ (AI Entity Extraction Monitor)</h3>
+              <p class="nlp-desc-help">💡 <strong>แสดงผลอัตโนมัติ (ไม่ใช่ปุ่มกด):</strong> ระบบ AI จะแยกแยะเงื่อนไขจากข้อความที่คุณพิมพ์ค้นหา เพื่อจับคู่ห้องพักที่ตรงใจที่สุด</p>
+            </div>
+          </div>
+        </div>
         <div class="entities-grid" id="entitiesGrid">
-          <div class="entity-item" id="entityTransit"><span class="ent-title">🚇 ทำเล/รถไฟฟ้า</span><span class="ent-val">ทั้งหมด</span></div>
-          <div class="entity-item" id="entityPet"><span class="ent-title">🐾 การเลี้ยงสัตว์</span><span class="ent-val">ไม่ระบุ</span></div>
-          <div class="entity-item" id="entityLifestyle"><span class="ent-title">✨ บรรยากาศ/ไลฟ์สไตล์</span><span class="ent-val">ไม่ระบุ</span></div>
-          <div class="entity-item" id="entityBudget"><span class="ent-title">💰 งบประมาณค่าเช่า</span><span class="ent-val">ไม่จำกัด</span></div>
+          <div class="entity-item" id="entityTransit">
+            <div class="ent-item-header">
+              <span class="ent-dim-tag">มิติที่ 1</span>
+              <span class="ent-status-tag"></span>
+            </div>
+            <div class="ent-title"><span class="ent-icon">🚇</span> ทำเล / แนวรถไฟฟ้า</div>
+            <div class="ent-val-box"><span class="ent-val">ทั้งหมด</span></div>
+            <div class="ent-hint">สกัดจาก: ชื่อสถานี, ถนน, โซน BTS</div>
+          </div>
+          <div class="entity-item" id="entityPet">
+            <div class="ent-item-header">
+              <span class="ent-dim-tag">มิติที่ 2</span>
+              <span class="ent-status-tag"></span>
+            </div>
+            <div class="ent-title"><span class="ent-icon">🐾</span> นโยบายเลี้ยงสัตว์</div>
+            <div class="ent-val-box"><span class="ent-val">ไม่ระบุ</span></div>
+            <div class="ent-hint">สกัดจาก: เลี้ยงหมา, แมว, Pet-friendly</div>
+          </div>
+          <div class="entity-item" id="entityLifestyle">
+            <div class="ent-item-header">
+              <span class="ent-dim-tag">มิติที่ 3</span>
+              <span class="ent-status-tag"></span>
+            </div>
+            <div class="ent-title"><span class="ent-icon">✨</span> บรรยากาศ / ไลฟ์สไตล์</div>
+            <div class="ent-val-box"><span class="ent-val">ไม่ระบุ</span></div>
+            <div class="ent-hint">สกัดจาก: WFH, เงียบสงบ, วิวสวย, สวน</div>
+          </div>
+          <div class="entity-item" id="entityBudget">
+            <div class="ent-item-header">
+              <span class="ent-dim-tag">มิติที่ 4</span>
+              <span class="ent-status-tag"></span>
+            </div>
+            <div class="ent-title"><span class="ent-icon">💰</span> งบประมาณค่าเช่า</div>
+            <div class="ent-val-box"><span class="ent-val">ไม่จำกัด</span></div>
+            <div class="ent-hint">สกัดจาก: ตัวเลขงบ, k, พัน, หมื่น, บ./ด.</div>
+          </div>
         </div>
       </div>
     </section>
@@ -113,7 +154,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=313"></script>
-  <script src="app.js?v=313"></script>
+  <script src="data.js?v=314"></script>
+  <script src="app.js?v=314"></script>
 </body>
 </html>
