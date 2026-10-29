@@ -111,7 +111,7 @@
   <path d="M 802 600 L 802 645 L 480 645" fill="none" stroke="#475569" stroke-width="1.8"/>
   <line x1="480" y1="645" x2="480" y2="675" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
 
-  <!-- Step 3: Synthesis & Live UI Sync -->
+  <!-- Step 3: Synthesis &amp; Live UI Sync -->
   <rect x="230" y="675" width="500" height="80" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)"/>
   <text x="480" y="703" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803d">3. สรุปเป็นวัตถุเงื่อนไขค้นหา (Search Criteria Object)</text>
   <text x="480" y="725" text-anchor="middle" font-size="12.5" fill="#334155">{ station, petFriendly, lifestyle: [...], maxPrice, maxWalkDistance }</text>
@@ -144,7 +144,7 @@
   <line x1="480" y1="1000" x2="480" y2="1045" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
   <text x="495" y="1025" font-size="13" font-weight="bold" fill="#16a34a">ใช่ (พบข้อมูล)</text>
 
-  <!-- Step 5A: Ranking & Sorting -->
+  <!-- Step 5A: Ranking &amp; Sorting -->
   <rect x="280" y="1045" width="400" height="60" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)"/>
   <text x="480" y="1071" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15803d">5.1 จัดอันดับผลลัพธ์ (Relevance Ranking)</text>
   <text x="480" y="1091" text-anchor="middle" font-size="12" fill="#64748b">เรียงลำดับตามความใกล้ของสถานี และจำนวนแท็กไลฟ์สไตล์ที่ตรงกัน</text>
