@@ -132,7 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window._performSearch = performSearch;
-  document.getElementById("searchInput")?.addEventListener("input", () => performSearch(false));
+  const sIn = document.getElementById("searchInput");
+  sIn?.addEventListener("input", () => { const b = document.getElementById("clearSearchBtn"); if (b) b.style.display = sIn.value.trim() ? "block" : "none"; });
   document.getElementById("searchForm")?.addEventListener("submit", (e) => { e.preventDefault(); performSearch(true); });
   document.getElementById("clearSearchBtn")?.addEventListener("click", () => { const el = document.getElementById("searchInput"); if (el) el.value = ""; performSearch(true); el?.focus(); });
   document.querySelectorAll(".prompt-chip").forEach((chip) => chip.addEventListener("click", () => { const el = document.getElementById("searchInput"); if (el) el.value = chip.dataset.query; performSearch(true); }));
