@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=315">
+  <link rel="stylesheet" href="style.css?v=316">
 </head>
 <body>
   <div class="bg-glow"></div>
@@ -69,42 +69,38 @@
             </div>
           </div>
         </div>
-        <div class="entities-grid" id="entitiesGrid">
-          <div class="entity-item" id="entityTransit">
-            <div class="ent-item-header">
-              <span class="ent-dim-tag">เงื่อนไขด้านที่ 1</span>
+        <div class="nlp-text-list" id="entitiesGrid">
+          <div class="nlp-text-item" id="entityTransit">
+            <div class="nlp-text-line">
+              <span class="nlp-label"><span class="nlp-bullet">1.</span> 🚇 <strong>ทำเล / แนวรถไฟฟ้า:</strong></span>
+              <span class="ent-val">ทั้งหมด</span>
               <span class="ent-status-tag"></span>
             </div>
-            <div class="ent-title"><span class="ent-icon">🚇</span> ทำเล / แนวรถไฟฟ้า</div>
-            <div class="ent-val-box"><span class="ent-val">ทั้งหมด</span></div>
-            <div class="ent-hint">ตัวอย่างคำค้น: อโศก, อ่อนนุช, สุขุมวิท, คูคต, ไม่เกิน 300 ม.</div>
+            <div class="nlp-text-hint">ตัวอย่างคำค้น: อโศก, อ่อนนุช, สุขุมวิท, คูคต, ไม่เกิน 300 ม.</div>
           </div>
-          <div class="entity-item" id="entityPet">
-            <div class="ent-item-header">
-              <span class="ent-dim-tag">เงื่อนไขด้านที่ 2</span>
+          <div class="nlp-text-item" id="entityPet">
+            <div class="nlp-text-line">
+              <span class="nlp-label"><span class="nlp-bullet">2.</span> 🐾 <strong>การเลี้ยงสัตว์:</strong></span>
+              <span class="ent-val">ไม่ระบุ</span>
               <span class="ent-status-tag"></span>
             </div>
-            <div class="ent-title"><span class="ent-icon">🐾</span> การเลี้ยงสัตว์</div>
-            <div class="ent-val-box"><span class="ent-val">ไม่ระบุ</span></div>
-            <div class="ent-hint">ตัวอย่างคำค้น: เลี้ยงสัตว์ได้, เลี้ยงแมว, หมา, ห้ามเลี้ยงสัตว์</div>
+            <div class="nlp-text-hint">ตัวอย่างคำค้น: เลี้ยงสัตว์ได้, เลี้ยงแมว, สุนัข, ห้ามเลี้ยงสัตว์</div>
           </div>
-          <div class="entity-item" id="entityLifestyle">
-            <div class="ent-item-header">
-              <span class="ent-dim-tag">เงื่อนไขด้านที่ 3</span>
+          <div class="nlp-text-item" id="entityLifestyle">
+            <div class="nlp-text-line">
+              <span class="nlp-label"><span class="nlp-bullet">3.</span> ✨ <strong>ไลฟ์สไตล์ & บรรยากาศ:</strong></span>
+              <span class="ent-val">ไม่ระบุ</span>
               <span class="ent-status-tag"></span>
             </div>
-            <div class="ent-title"><span class="ent-icon">✨</span> ไลฟ์สไตล์ & บรรยากาศ</div>
-            <div class="ent-val-box"><span class="ent-val">ไม่ระบุ</span></div>
-            <div class="ent-hint">ตัวอย่างคำค้น: WFH, ทำงาน, เงียบสงบ, ร่มรื่น, วิวสวย, ประหยัด</div>
+            <div class="nlp-text-hint">ตัวอย่างคำค้น: WFH, ทำงาน, เงียบสงบ, ร่มรื่น, วิวสวย, ประหยัด</div>
           </div>
-          <div class="entity-item" id="entityBudget">
-            <div class="ent-item-header">
-              <span class="ent-dim-tag">เงื่อนไขด้านที่ 4</span>
+          <div class="nlp-text-item" id="entityBudget">
+            <div class="nlp-text-line">
+              <span class="nlp-label"><span class="nlp-bullet">4.</span> 💰 <strong>งบประมาณค่าเช่า:</strong></span>
+              <span class="ent-val">ไม่จำกัด</span>
               <span class="ent-status-tag"></span>
             </div>
-            <div class="ent-title"><span class="ent-icon">💰</span> งบประมาณค่าเช่า</div>
-            <div class="ent-val-box"><span class="ent-val">ไม่จำกัด</span></div>
-            <div class="ent-hint">ตัวอย่างคำค้น: ไม่เกิน 15,000, งบ 12k, ต่ำกว่า 10000, 8000-15000</div>
+            <div class="nlp-text-hint">ตัวอย่างคำค้น: ไม่เกิน 15,000, งบ 12k, ต่ำกว่า 10000, 8000-15000</div>
           </div>
         </div>
       </div>
@@ -154,7 +150,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=315"></script>
-  <script src="app.js?v=315"></script>
+  <script src="data.js?v=316"></script>
+  <script src="app.js?v=316"></script>
 </body>
 </html>
