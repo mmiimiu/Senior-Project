@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=316">
+  <link rel="stylesheet" href="style.css?v=317">
 </head>
 <body>
   <div class="bg-glow"></div>
@@ -53,54 +53,32 @@
       </div>
     </section>
 
-    <!-- Entity Extraction Visualization (NLP Senior Project Core Dashboard) -->
+    <!-- Compact Horizontal AI Search Conditions Strip -->
     <section class="nlp-insight-section" id="nlpSection">
-      <div class="nlp-card">
-        <div class="nlp-academic-bar">
-          <span class="academic-chip">💡 วิธีใช้งานระบบค้นหาอัจฉริยะ (AI Smart Search Guide)</span>
+      <div class="nlp-compact-bar">
+        <div class="nlp-compact-header">
+          <div class="nlp-compact-title">
+            <span class="nlp-indicator"></span>
+            <span>💡 <strong>สรุปเงื่อนไขคำค้นหา:</strong> <small style="color:var(--text-muted);font-weight:400;font-size:0.8rem;">(ระบบอ่านจากคำค้นหาของคุณอัตโนมัติ)</small></span>
+          </div>
           <span class="nlp-badge" id="matchScoreBadge">พร้อมวิเคราะห์</span>
         </div>
-        <div class="nlp-card-header">
-          <div class="nlp-status">
-            <span class="nlp-indicator"></span>
-            <div>
-              <h3>สรุปเงื่อนไขที่ระบบตรวจพบจากคำค้นหาของคุณ</h3>
-              <p class="nlp-desc-help">📌 <strong>วิธีใช้งาน:</strong> พิมพ์ข้อความภาษาพูดลงในช่องค้นหาด้านบน (เช่น ทำเล งบ สัตว์เลี้ยง) แล้วกด <strong>"ค้นหา"</strong> ระบบจะอ่านและแยกเงื่อนไข 4 ด้านนี้ออกมาให้อัตโนมัติ <em>(หน้าจอนี้เป็นส่วนแสดงผลสรุป ไม่ใช่ปุ่มกด)</em></p>
-            </div>
+        <div class="nlp-compact-row" id="entitiesGrid">
+          <div class="nlp-compact-item" id="entityTransit">
+            <span class="compact-label">🚇 ทำเล:</span>
+            <span class="ent-val">ทั้งหมด</span>
           </div>
-        </div>
-        <div class="nlp-text-list" id="entitiesGrid">
-          <div class="nlp-text-item" id="entityTransit">
-            <div class="nlp-text-line">
-              <span class="nlp-label"><span class="nlp-bullet">1.</span> 🚇 <strong>ทำเล / แนวรถไฟฟ้า:</strong></span>
-              <span class="ent-val">ทั้งหมด</span>
-              <span class="ent-status-tag"></span>
-            </div>
-            <div class="nlp-text-hint">ตัวอย่างคำค้น: อโศก, อ่อนนุช, สุขุมวิท, คูคต, ไม่เกิน 300 ม.</div>
+          <div class="nlp-compact-item" id="entityPet">
+            <span class="compact-label">🐾 สัตว์เลี้ยง:</span>
+            <span class="ent-val">ไม่ระบุ</span>
           </div>
-          <div class="nlp-text-item" id="entityPet">
-            <div class="nlp-text-line">
-              <span class="nlp-label"><span class="nlp-bullet">2.</span> 🐾 <strong>การเลี้ยงสัตว์:</strong></span>
-              <span class="ent-val">ไม่ระบุ</span>
-              <span class="ent-status-tag"></span>
-            </div>
-            <div class="nlp-text-hint">ตัวอย่างคำค้น: เลี้ยงสัตว์ได้, เลี้ยงแมว, สุนัข, ห้ามเลี้ยงสัตว์</div>
+          <div class="nlp-compact-item" id="entityLifestyle">
+            <span class="compact-label">✨ ไลฟ์สไตล์:</span>
+            <span class="ent-val">ไม่ระบุ</span>
           </div>
-          <div class="nlp-text-item" id="entityLifestyle">
-            <div class="nlp-text-line">
-              <span class="nlp-label"><span class="nlp-bullet">3.</span> ✨ <strong>ไลฟ์สไตล์ & บรรยากาศ:</strong></span>
-              <span class="ent-val">ไม่ระบุ</span>
-              <span class="ent-status-tag"></span>
-            </div>
-            <div class="nlp-text-hint">ตัวอย่างคำค้น: WFH, ทำงาน, เงียบสงบ, ร่มรื่น, วิวสวย, ประหยัด</div>
-          </div>
-          <div class="nlp-text-item" id="entityBudget">
-            <div class="nlp-text-line">
-              <span class="nlp-label"><span class="nlp-bullet">4.</span> 💰 <strong>งบประมาณค่าเช่า:</strong></span>
-              <span class="ent-val">ไม่จำกัด</span>
-              <span class="ent-status-tag"></span>
-            </div>
-            <div class="nlp-text-hint">ตัวอย่างคำค้น: ไม่เกิน 15,000, งบ 12k, ต่ำกว่า 10000, 8000-15000</div>
+          <div class="nlp-compact-item" id="entityBudget">
+            <span class="compact-label">💰 งบประมาณ:</span>
+            <span class="ent-val">ไม่จำกัด</span>
           </div>
         </div>
       </div>
@@ -150,7 +128,7 @@
     </div>
   </div>
 
-  <script src="data.js?v=316"></script>
-  <script src="app.js?v=316"></script>
+  <script src="data.js?v=317"></script>
+  <script src="app.js?v=317"></script>
 </body>
 </html>
