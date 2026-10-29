@@ -1,0 +1,19 @@
+{
+  "name": "thai-nlp-condo-search",
+  "version": "1.0.0",
+  "description": "Thai NLP Condominium Search System (Senior Project - Rangsit University)",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --check app.js data.js data2.js data3.js data4.js data5.js server.js"
+  },
+  "keywords": [
+    "thai-nlp",
+    "condo-search",
+    "javascript",
+    "bts-green-line"
+  ],
+  "author": "Watinee Wannakit (6707225)",
+  "license": "MIT"
+}

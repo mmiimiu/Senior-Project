@@ -2,9 +2,20 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Web Server (Port 5500)",
+      "label": "Start JavaScript Server (Port 5500)",
       "type": "shell",
-      "command": "python3 -m http.server 5500",
+      "command": "node server.js",
+      "problemMatcher": [],
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Start Python Server (Alternative)",
+      "type": "shell",
+      "command": "python3 server.py",
       "problemMatcher": [],
       "isBackground": true
     }
