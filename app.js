@@ -7,7 +7,7 @@ const LIFESTYLE_MAP = [
 ];
 
 let showAll = false;
-const getAllCondos = () => [...(window.CONDO_DATASET || []), ...(window.CONDO_DATASET_2 || []), ...(window.CONDO_DATASET_3 || []), ...(window.CONDO_DATASET_4 || []), ...(window.CONDO_DATASET_5 || [])];
+const getAllCondos = () => window.CONDO_DATASET || [];
 const toggleModal = (id, s) => { const el = document.getElementById(id); if (el) el.style.display = s ? "flex" : "none"; };
 window.openResearchModal = () => toggleModal("researchModal", true);
 window.closeResearchModal = () => toggleModal("researchModal", false);

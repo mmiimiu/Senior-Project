@@ -13,7 +13,7 @@
    - มี `server.js` ในรูปแบบ Pure Node.js Built-in สำหรับรันใน VS Code
 2. **โครงสร้างโค้ดกระชับตามกฎ (Strictly <= 150 Lines per File)**:
    - `app.js`: 140 บรรทัด (NLP Search & Entity Extraction Engine)
-   - `data.js` ถึง `data5.js`: 125 บรรทัดต่อไฟล์ (ฐานข้อมูล 100 โครงการ BTS สายสีเขียว)
+   - `data.js`: ฐานข้อมูลคอนโดมิเนียม BTS สายสีเขียว รวม 100 โครงการในไฟล์เดียวอย่างเป็นระเบียบ
    - `index.html`: 122 บรรทัด (โครงสร้างหน้าเว็บและ Semantic UI)
    - `style.css`: 98 บรรทัด (Modern Luxury Glassmorphism)
 
