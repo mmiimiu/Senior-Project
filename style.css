@@ -172,7 +172,7 @@ body { font-family: var(--font); background: var(--bg-dark); color: var(--text-m
   border-color: rgba(16, 185, 129, 0.3);
 }
 .entity-item.active .ent-status-tag::before {
-  content: "✓ สกัดสำเร็จ";
+  content: "✓ ตรวจพบในข้อความ";
 }
 .ent-title { 
   font-size: 0.85rem; 
