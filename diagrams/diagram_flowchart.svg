@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1440" width="960" height="1440" style="background:#ffffff; font-family:'Sarabun', 'Prompt', 'Thonburi', -apple-system, BlinkMacSystemFont, sans-serif;">
+  <defs>
+    <linearGradient id="startGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#e11d48"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <!-- Header Banner -->
+  <rect x="30" y="25" width="900" height="80" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="58" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">รูปที่ 3.1: แผนภาพขั้นตอนการทำงานของระบบ (System Flowchart)</text>
+  <text x="480" y="84" text-anchor="middle" font-size="14" fill="#475569">กระบวนการสกัดเอนทิตีภาษาธรรมชาติและการจับคู่ข้อมูลคอนโดมิเนียมตามเกณฑ์ไลฟ์สไตล์</text>
+
+  <!-- Start Node -->
+  <rect x="260" y="135" width="440" height="60" rx="30" fill="url(#startGrad)" filter="url(#shadow)"/>
+  <text x="480" y="160" text-anchor="middle" font-size="16" font-weight="bold" fill="#ffffff">เริ่มต้น: ผู้ใช้งานพิมพ์ข้อความค้นหาภาษาธรรมชาติ</text>
+  <text x="480" y="180" text-anchor="middle" font-size="12.5" fill="#e0e7ff">ตัวอย่าง: 'คอนโดใกล้หมอชิต เลี้ยงแมวได้ งบ 15000 วิวสวย เดินไม่เกิน 300 ม.'</text>
+
+  <!-- Line to Step 1 -->
+  <line x1="480" y1="195" x2="480" y2="225" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 1: Text Normalization -->
+  <rect x="260" y="225" width="440" height="65" rx="8" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="252" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e293b">1. การทำความสะอาดข้อความ (Text Normalization)</text>
+  <text x="480" y="274" text-anchor="middle" font-size="12.5" fill="#64748b">ตัดช่องว่างส่วนเกิน, ลบสัญลักษณ์พิเศษ, แปลงเป็นตัวพิมพ์เล็ก</text>
+
+  <!-- Line to Subgraph -->
+  <line x1="480" y1="290" x2="480" y2="325" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Subgraph Box: NLP Engine -->
+  <rect x="40" y="325" width="880" height="300" rx="14" fill="#f8fafc" stroke="#3b82f6" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <rect x="60" y="310" width="380" height="30" rx="6" fill="#2563eb"/>
+  <text x="250" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">กระบวนการสกัดเอนทิตีภาษาธรรมชาติ (Entity Extraction)</text>
+
+  <!-- 4 Parallel Extractors -->
+  <!-- Box 1: Station -->
+  <rect x="60" y="355" width="195" height="245" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="60" y="355" width="195" height="38" rx="8" fill="#eff6ff"/>
+  <text x="157" y="379" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#1d4ed8">📍 สถานีและระยะทาง</text>
+  <text x="75" y="412" font-size="12" fill="#334155">• ค้นหาชื่อสถานี BTS</text>
+  <text x="75" y="432" font-size="11.5" fill="#64748b">  (Direct Match / Regex)</text>
+  <text x="75" y="456" font-size="12" fill="#334155">• ตรวจจับการสะกดผิด</text>
+  <text x="75" y="476" font-size="11.5" fill="#64748b">  (Levenshtein Distance)</text>
+  <text x="75" y="500" font-size="12" fill="#334155">• แยกกลุ่มโซนหลัก</text>
+  <text x="75" y="520" font-size="11.5" fill="#64748b">  (สุขุมวิท / พหลโยธิน)</text>
+  <text x="75" y="544" font-size="12" fill="#334155">• สกัดระยะทางเดินเท้า</text>
+  <text x="75" y="564" font-size="11.5" fill="#64748b">  (เช่น ไม่เกิน 300 เมตร)</text>
+
+  <!-- Box 2: Pet -->
+  <rect x="275" y="355" width="195" height="245" rx="8" fill="#ffffff" stroke="#ec4899" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="275" y="355" width="195" height="38" rx="8" fill="#fdf2f8"/>
+  <text x="372" y="379" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#be185d">🐾 สัตว์เลี้ยง (Pet-Friendly)</text>
+  <text x="290" y="412" font-size="12" fill="#334155">• ตรวจจับคำอนุญาต</text>
+  <text x="290" y="432" font-size="11.5" fill="#64748b">  (เลี้ยงสัตว์, สุนัข, หมา,</text>
+  <text x="290" y="450" font-size="11.5" fill="#64748b">   แมว, pet-friendly)</text>
+  <text x="290" y="478" font-size="12" fill="#334155">• ตรวจจับคำปฏิเสธ</text>
+  <text x="290" y="498" font-size="11.5" fill="#64748b">  (ห้ามเลี้ยง, ไม่รับสัตว์,</text>
+  <text x="290" y="516" font-size="11.5" fill="#64748b">   no pets)</text>
+  <text x="290" y="544" font-size="12" fill="#334155">• กำหนดค่าตรรกะ</text>
+  <text x="290" y="564" font-size="11.5" fill="#64748b">  (true / false / null)</text>
+
+  <!-- Box 3: Lifestyle -->
+  <rect x="490" y="355" width="195" height="245" rx="8" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="490" y="355" width="195" height="38" rx="8" fill="#f5f3ff"/>
+  <text x="587" y="379" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#6d28d9">✨ เกณฑ์ไลฟ์สไตล์</text>
+  <text x="505" y="412" font-size="12" fill="#334155">• จับคู่พจนานุกรมคำศัพท์</text>
+  <text x="505" y="432" font-size="11.5" fill="#64748b">  (Lifestyle Taxonomy)</text>
+  <text x="505" y="456" font-size="12" fill="#334155">• เหมาะกับ WFH</text>
+  <text x="505" y="478" font-size="12" fill="#334155">• ติดรถไฟฟ้า / เดินทาง</text>
+  <text x="505" y="500" font-size="12" fill="#334155">• วิวเมืองสวย / วิวสูง</text>
+  <text x="505" y="522" font-size="12" fill="#334155">• เป็นส่วนตัว / สงบ</text>
+  <text x="505" y="544" font-size="12" fill="#334155">• ราคาประหยัด</text>
+  <text x="505" y="564" font-size="11.5" fill="#64748b">  (คืนค่าเป็น Array)</text>
+
+  <!-- Box 4: Budget -->
+  <rect x="705" y="355" width="195" height="245" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="705" y="355" width="195" height="38" rx="8" fill="#fffbeb"/>
+  <text x="802" y="379" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#b45309">💰 งบประมาณ (Budget)</text>
+  <text x="720" y="412" font-size="12" fill="#334155">• สกัดช่วงราคา</text>
+  <text x="720" y="432" font-size="11.5" fill="#64748b">  (เช่น 10000 - 15000)</text>
+  <text x="720" y="456" font-size="12" fill="#334155">• สกัดหน่วยย่อ 'k' หรือ 'พัน'</text>
+  <text x="720" y="476" font-size="11.5" fill="#64748b">  (เช่น 12k -> 12,000)</text>
+  <text x="720" y="500" font-size="12" fill="#334155">• สกัดเพดานงบสูงสุด</text>
+  <text x="720" y="520" font-size="11.5" fill="#64748b">  (ไม่เกิน / คุมงบ / งบ)</text>
+  <text x="720" y="544" font-size="12" fill="#334155">• คืนค่าตัวเลข</text>
+  <text x="720" y="564" font-size="11.5" fill="#64748b">  (minPrice, maxPrice)</text>
+
+  <!-- Convergence Lines from 4 boxes to Step 3 -->
+  <path d="M 157 600 L 157 645 L 480 645" fill="none" stroke="#475569" stroke-width="1.8"/>
+  <path d="M 372 600 L 372 645 L 480 645" fill="none" stroke="#475569" stroke-width="1.8"/>
+  <path d="M 587 600 L 587 645 L 480 645" fill="none" stroke="#475569" stroke-width="1.8"/>
+  <path d="M 802 600 L 802 645 L 480 645" fill="none" stroke="#475569" stroke-width="1.8"/>
+  <line x1="480" y1="645" x2="480" y2="675" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Synthesis & Live UI Sync -->
+  <rect x="230" y="675" width="500" height="80" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="480" y="703" text-anchor="middle" font-size="15" font-weight="bold" fill="#15803d">3. สรุปเป็นวัตถุเงื่อนไขค้นหา (Search Criteria Object)</text>
+  <text x="480" y="725" text-anchor="middle" font-size="12.5" fill="#334155">{ station, petFriendly, lifestyle: [...], maxPrice, maxWalkDistance }</text>
+  <text x="480" y="743" text-anchor="middle" font-size="12" fill="#16a34a">💡 อัปเดตแถบสรุปเงื่อนไขอัตโนมัติบนหน้าจอทันที (Live Condition Monitor)</text>
+
+  <!-- Line to Step 4 -->
+  <line x1="480" y1="755" x2="480" y2="790" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: Multi-Criteria Filter with Dataset -->
+  <!-- Side box for Dataset -->
+  <rect x="755" y="770" width="170" height="75" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="840" y="796" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e40af">คลังข้อมูลโครงการ</text>
+  <text x="840" y="815" text-anchor="middle" font-size="11" fill="#1d4ed8">CONDO_DATASET</text>
+  <text x="840" y="832" text-anchor="middle" font-size="10.5" fill="#64748b">(100 แห่ง BTS สายสีเขียว)</text>
+  <line x1="755" y1="810" x2="705" y2="810" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <rect x="255" y="790" width="450" height="65" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="480" y="817" text-anchor="middle" font-size="15" font-weight="bold" fill="#3730a3">4. การประมวลผลคัดกรองข้อมูล (Criteria Filtering)</text>
+  <text x="480" y="839" text-anchor="middle" font-size="12.5" fill="#64748b">จับคู่และกรองข้อมูลแบบ Multi-Attribute Filtering (สถานี, สัตว์เลี้ยง, ไลฟ์สไตล์, ราคา)</text>
+
+  <!-- Line to Decision -->
+  <line x1="480" y1="855" x2="480" y2="890" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Decision Diamond -->
+  <polygon points="480,890 640,945 480,1000 320,945" fill="#fffbeb" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="480" y="942" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#92400e">พบคอนโดมิเนียม</text>
+  <text x="480" y="960" text-anchor="middle" font-size="13" fill="#b45309">ที่ตรงตามเงื่อนไขหรือไม่?</text>
+
+  <!-- Branch YES (Down) -->
+  <line x1="480" y1="1000" x2="480" y2="1045" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="495" y="1025" font-size="13" font-weight="bold" fill="#16a34a">ใช่ (พบข้อมูล)</text>
+
+  <!-- Step 5A: Ranking & Sorting -->
+  <rect x="280" y="1045" width="400" height="60" rx="8" fill="#ffffff" stroke="#16a34a" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="480" y="1071" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#15803d">5.1 จัดอันดับผลลัพธ์ (Relevance Ranking)</text>
+  <text x="480" y="1091" text-anchor="middle" font-size="12" fill="#64748b">เรียงลำดับตามความใกล้ของสถานี และจำนวนแท็กไลฟ์สไตล์ที่ตรงกัน</text>
+
+  <!-- Branch NO (Right then Down) -->
+  <line x1="640" y1="945" x2="820" y2="945" stroke="#e11d48" stroke-width="2"/>
+  <line x1="820" y1="945" x2="820" y2="1045" stroke="#e11d48" stroke-width="2" marker-end="url(#arrow-rose)"/>
+  <text x="680" y="935" font-size="13" font-weight="bold" fill="#e11d48">ไม่ใช่ (ไม่พบข้อมูล)</text>
+
+  <!-- Step 5B: Fallback -->
+  <rect x="720" y="1045" width="200" height="60" rx="8" fill="#fff1f2" stroke="#f43f5e" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="820" y="1071" text-anchor="middle" font-size="13" font-weight="bold" fill="#be123c">5.2 แจ้งเตือนไม่พบข้อมูล</text>
+  <text x="820" y="1091" text-anchor="middle" font-size="11.5" fill="#881337">แสดงคำค้นหาแนะนำ (Fallback)</text>
+
+  <!-- Lines to Render Step -->
+  <line x1="480" y1="1105" x2="480" y2="1150" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 820 1105 L 820 1150 L 680 1150" fill="none" stroke="#e11d48" stroke-width="1.5" marker-end="url(#arrow-rose)"/>
+
+  <!-- Step 6: Render to UI -->
+  <rect x="260" y="1150" width="440" height="70" rx="8" fill="#ffffff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+  <text x="480" y="1178" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e40af">6. เรนเดอร์ผลลัพธ์บนหน้าเว็บ (Render UI)</text>
+  <text x="480" y="1200" text-anchor="middle" font-size="12.5" fill="#475569">แสดงการ์ดคอนโดมิเนียม, ราคา, ระยะเดินเท้า, ป้ายสัตว์เลี้ยง, ปุ่มดูรายละเอียด</text>
+
+  <!-- Line to End -->
+  <line x1="480" y1="1220" x2="480" y2="1255" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- End Node -->
+  <rect x="290" y="1255" width="380" height="55" rx="27.5" fill="#1e293b" filter="url(#shadow)"/>
+  <text x="480" y="1282" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">สิ้นสุด: ผู้ใช้งานได้รับรายการห้องพักที่ตรงใจ</text>
+  <text x="480" y="1300" text-anchor="middle" font-size="11.5" fill="#94a3b8">สามารถคลิกเปิดหน้าต่าง Modal เพื่อดูรายละเอียดเชิงลึกของแต่ละโครงการได้</text>
+
+  <!-- Footer Credit -->
+  <text x="480" y="1365" text-anchor="middle" font-size="11.5" fill="#94a3b8">คณะเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มหาวิทยาลัยรังสิต • วาทินี วรรณกิจ (6707225)</text>
+</svg>

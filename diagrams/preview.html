@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แผนภาพสำหรับบทที่ 3 - เล่มวิจัย 6707225</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 30px 20px;
+      line-height: 1.6;
+    }
+    .header-box {
+      max-width: 1100px;
+      margin: 0 auto 30px auto;
+      text-align: center;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 24px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+    h1 {
+      font-family: 'Prompt', sans-serif;
+      font-size: 1.8rem;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+    .meta-text {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .diagram-card {
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+    .diagram-title {
+      font-family: 'Prompt', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+    .diagram-desc {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 16px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .btn-secondary:hover {
+      background: #cbd5e1;
+    }
+    .img-wrapper {
+      width: 100%;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+    .img-wrapper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-box">
+    <h1>📊 แผนภาพประกอบบทที่ 3 (System Diagrams)</h1>
+    <p class="meta-text">โครงการ: ระบบค้นหาคอนโดมิเนียมด้วยการประมวลผลภาษาธรรมชาติอิงเกณฑ์ไลฟ์สไตล์ (BTS สายสีเขียว 100 แห่ง)</p>
+    <p class="meta-text" style="margin-top: 4px;">ผู้วิจัย: วาทินี วรรณกิจ (6707225) • คณะเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มหาวิทยาลัยรังสิต</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Card 1: Flowchart -->
+    <div class="diagram-card">
+      <div class="diagram-title">รูปที่ 3.1: แผนภาพขั้นตอนการทำงานของระบบ (System Flowchart)</div>
+      <div class="diagram-desc">แสดงขั้นตอนการทำงานของระบบตั้งแต่รับข้อความภาษาธรรมชาติจากผู้ใช้, การทำ Text Normalization, การสกัดเอนทิตี 4 มิติ (สถานี/โซน, สัตว์เลี้ยง, ไลฟ์สไตล์, งบประมาณ), การอัปเดต Live Monitor, การค้นหาจับคู่กับ 100 โครงการ, และการแสดงผลลัพธ์</div>
+      <div class="btn-group">
+        <a href="diagram_flowchart.png" download class="btn btn-primary">⬇️ ดาวน์โหลดภาพ PNG (ความละเอียดสูง)</a>
+        <a href="diagram_flowchart.svg" target="_blank" class="btn btn-secondary">🔍 เปิดไฟล์เวกเตอร์ SVG</a>
+      </div>
+      <div class="img-wrapper">
+        <img src="diagram_flowchart.png" alt="System Flowchart">
+      </div>
+    </div>
+
+    <!-- Card 2: DFD Level 1 -->
+    <div class="diagram-card">
+      <div class="diagram-title">รูปที่ 3.2: แผนภาพกระแสข้อมูลระดับที่ 1 (Data Flow Diagram Level 1: DFD Level 1)</div>
+      <div class="diagram-desc">แสดงการไหลของข้อมูลระหว่าง Entity ผู้ใช้งาน, 4 กระบวนการหลัก (รับคำค้นหา, สกัดเอนทิตี, ประมวลผลและกรองข้อมูล, แสดงผลลัพธ์), และ Data Store D1 (คลังข้อมูลคอนโด 100 แห่ง)</div>
+      <div class="btn-group">
+        <a href="diagram_dfd.png" download class="btn btn-primary">⬇️ ดาวน์โหลดภาพ PNG (ความละเอียดสูง)</a>
+        <a href="diagram_dfd.svg" target="_blank" class="btn btn-secondary">🔍 เปิดไฟล์เวกเตอร์ SVG</a>
+      </div>
+      <div class="img-wrapper">
+        <img src="diagram_dfd.png" alt="DFD Level 1">
+      </div>
+    </div>
+
+    <!-- Card 3: Architecture -->
+    <div class="diagram-card">
+      <div class="diagram-title">รูปที่ 3.3: แผนภาพสถาปัตยกรรมระบบ (System Architecture Diagram)</div>
+      <div class="diagram-desc">แสดงโครงสร้างเชิงเทคนิค 3 เลเยอร์: 1. Presentation Layer (UI: Search Bar, Live Condition Bar, Condo Grid, Modal) 2. Application Logic Layer (app.js: Normalizer, Zone & Station NLP, Multi-Entity Parser, Filtering Engine) 3. Data Storage Layer (data.js: CONDO_DATASET 100 โครงการ)</div>
+      <div class="btn-group">
+        <a href="diagram_architecture.png" download class="btn btn-primary">⬇️ ดาวน์โหลดภาพ PNG (ความละเอียดสูง)</a>
+        <a href="diagram_architecture.svg" target="_blank" class="btn btn-secondary">🔍 เปิดไฟล์เวกเตอร์ SVG</a>
+      </div>
+      <div class="img-wrapper">
+        <img src="diagram_architecture.png" alt="System Architecture">
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
