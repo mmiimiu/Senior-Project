@@ -11,13 +11,6 @@
         "kind": "build",
         "isDefault": true
       }
-    },
-    {
-      "label": "Start Python Server (Alternative)",
-      "type": "shell",
-      "command": "python3 server.py",
-      "problemMatcher": [],
-      "isBackground": true
     }
   ]
 }

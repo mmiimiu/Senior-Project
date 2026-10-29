@@ -1,11 +1,4 @@
 {
-  "python.analysis.extraPaths": [
-    "${workspaceFolder}/backend"
-  ],
-  "python.analysis.diagnosticSeverityOverrides": {
-    "reportMissingImports": "none",
-    "reportMissingModuleSource": "none"
-  },
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "vscode.typescript-language-features",
