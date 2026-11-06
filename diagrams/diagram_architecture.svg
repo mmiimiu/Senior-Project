@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 860" width="1100" height="860" style="background:#ffffff; font-family:'Sarabun', 'Prompt', 'Thonburi', -apple-system, BlinkMacSystemFont, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 840" width="1000" height="840" style="background:#ffffff; font-family:'Sarabun', 'Prompt', 'Thonburi', -apple-system, BlinkMacSystemFont, sans-serif;">
   <defs>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="112%" filterUnits="userSpaceOnUse">
       <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.08"/>
     </filter>
     <marker id="arrow-down" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -9,117 +9,119 @@
     <marker id="arrow-up" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
     </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
   </defs>
 
   <!-- Title Banner -->
-  <rect x="40" y="20" width="1020" height="75" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-  <text x="550" y="50" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">รูปที่ 3.5: แผนภาพสถาปัตยกรรมระบบ (System Architecture Diagram)</text>
-  <text x="550" y="74" text-anchor="middle" font-size="14" fill="#475569">โครงสร้างระบบเว็บแอปพลิเคชัน 3 ชั้น (3-Tier Web Architecture) เข้าใจง่าย เป็นระเบียบ ชัดเจน</text>
+  <rect x="30" y="20" width="940" height="75" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="500" y="50" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">รูปที่ 3.5: แผนภาพสถาปัตยกรรมระบบ (System Architecture Diagram)</text>
+  <text x="500" y="74" text-anchor="middle" font-size="14" fill="#475569">โครงสร้างระบบเว็บแอปพลิเคชัน 3 ชั้น (3-Tier Web Architecture) แยกหน้าที่ชัดเจน ดูเข้าใจง่าย</text>
 
-  <!-- ==================== LAYER 1: PRESENTATION LAYER ==================== -->
+  <!-- ==================== TIER 1: PRESENTATION TIER ==================== -->
   <g filter="url(#shadow)">
-    <rect x="50" y="115" width="1000" height="180" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.8"/>
-    <rect x="65" y="102" width="360" height="28" rx="6" fill="#1d4ed8"/>
-    <text x="245" y="121" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">1. ส่วนติดต่อผู้ใช้งาน (Presentation Layer - HTML5 / CSS3)</text>
+    <rect x="40" y="115" width="920" height="165" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <!-- Tier Header Tag -->
+    <rect x="55" y="102" width="340" height="28" rx="6" fill="#1d4ed8"/>
+    <text x="225" y="121" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">ชั้นที่ 1: ส่วนติดต่อผู้ใช้ (Presentation Tier - UI)</text>
   </g>
 
-  <!-- Layer 1 Cards -->
+  <!-- 4 Clean Boxes in Tier 1 -->
   <g filter="url(#shadow)">
-    <rect x="75" y="145" width="215" height="125" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
-    <text x="182" y="178" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">🔍 Search Bar</text>
-    <text x="182" y="204" text-anchor="middle" font-size="12.5" fill="#334155">ช่องค้นหาภาษาธรรมชาติ</text>
-    <text x="182" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">รองรับการพิมพ์อิสระ</text>
-    <text x="182" y="246" text-anchor="middle" font-size="11.5" fill="#64748b">พร้อมปุ่มคำค้นหาแนะนำ</text>
+    <rect x="60" y="145" width="205" height="115" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <text x="162" y="182" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">🔍 Search Bar</text>
+    <text x="162" y="210" text-anchor="middle" font-size="13" fill="#334155">ช่องค้นหาภาษาธรรมชาติ</text>
+    <text x="162" y="232" text-anchor="middle" font-size="11.5" fill="#64748b">รับข้อความพิมพ์และปุ่มลัด</text>
 
-    <rect x="315" y="145" width="235" height="125" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
-    <text x="432" y="178" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">💡 Live Condition Bar</text>
-    <text x="432" y="204" text-anchor="middle" font-size="12.5" fill="#334155">แถบสรุปเอนทิตี 4 มิติสด</text>
-    <text x="432" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">สถานี • สัตว์เลี้ยง</text>
-    <text x="432" y="246" text-anchor="middle" font-size="11.5" fill="#64748b">ไลฟ์สไตล์ • งบประมาณ</text>
+    <rect x="285" y="145" width="215" height="115" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <text x="392" y="182" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">💡 Live Monitor Bar</text>
+    <text x="392" y="210" text-anchor="middle" font-size="13" fill="#334155">แถบสรุป 4 เงื่อนไขสด</text>
+    <text x="392" y="232" text-anchor="middle" font-size="11.5" fill="#64748b">แสดงผลการวิเคราะห์ทันที</text>
 
-    <rect x="575" y="145" width="225" height="125" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
-    <text x="687" y="178" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">🏢 Condo Cards Grid</text>
-    <text x="687" y="204" text-anchor="middle" font-size="12.5" fill="#334155">การ์ดแสดงผลห้องพัก</text>
-    <text x="687" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">รูปภาพ • ค่าเช่า • ระยะเดิน</text>
-    <text x="687" y="246" text-anchor="middle" font-size="11.5" fill="#64748b">ป้ายสัตว์เลี้ยง &amp; แท็กเด่น</text>
+    <rect x="520" y="145" width="215" height="115" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <text x="627" y="182" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">🏢 Condo Cards Grid</text>
+    <text x="627" y="210" text-anchor="middle" font-size="13" fill="#334155">การ์ดแสดงผลลัพธ์ห้องพัก</text>
+    <text x="627" y="232" text-anchor="middle" font-size="11.5" fill="#64748b">รูปภาพ ราคา ระยะเดิน แท็ก</text>
 
-    <rect x="825" y="145" width="205" height="125" rx="8" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
-    <text x="927" y="178" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">📄 Project Modal</text>
-    <text x="927" y="204" text-anchor="middle" font-size="12.5" fill="#334155">หน้าต่างข้อมูลเชิงลึก</text>
-    <text x="927" y="226" text-anchor="middle" font-size="11.5" fill="#64748b">สิ่งอำนวยความสะดวก</text>
-    <text x="927" y="246" text-anchor="middle" font-size="11.5" fill="#64748b">รายละเอียดโครงการเต็ม</text>
+    <rect x="755" y="145" width="185" height="115" rx="8" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <text x="847" y="182" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">📄 Project Modal</text>
+    <text x="847" y="210" text-anchor="middle" font-size="13" fill="#334155">ป๊อปอัปดูข้อมูลเชิงลึก</text>
+    <text x="847" y="232" text-anchor="middle" font-size="11.5" fill="#64748b">รายละเอียดโครงการเต็ม</text>
   </g>
 
   <!-- ==================== CONNECTORS 1 <-> 2 ==================== -->
-  <line x1="380" y1="295" x2="380" y2="345" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-down)"/>
-  <rect x="270" y="305" width="220" height="24" rx="5" fill="#ffffff" stroke="#bfdbfe"/>
-  <text x="380" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">⬇️ ส่งข้อความค้นหา (User Input Events)</text>
+  <line x1="330" y1="280" x2="330" y2="340" stroke="#2563eb" stroke-width="2.2" marker-end="url(#arrow-down)"/>
+  <rect x="215" y="295" width="230" height="24" rx="5" fill="#ffffff" stroke="#bfdbfe"/>
+  <text x="330" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#1d4ed8">⬇️ ส่งข้อความค้นหา (User Input Query)</text>
 
-  <line x1="730" y1="345" x2="730" y2="295" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrow-up)"/>
-  <rect x="615" y="305" width="230" height="24" rx="5" fill="#ffffff" stroke="#bbf7d0"/>
-  <text x="730" y="322" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803d">⬆️ เรนเดอร์การ์ดห้องพัก &amp; แถบสรุปสด</text>
+  <line x1="670" y1="340" x2="670" y2="280" stroke="#16a34a" stroke-width="2.2" marker-end="url(#arrow-up)"/>
+  <rect x="555" y="295" width="230" height="24" rx="5" fill="#ffffff" stroke="#bbf7d0"/>
+  <text x="670" y="312" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803d">⬆️ เรนเดอร์การ์ดห้องพักและสรุปเงื่อนไข</text>
 
-  <!-- ==================== LAYER 2: LOGIC & NLP LAYER ==================== -->
+  <!-- ==================== TIER 2: APPLICATION & NLP LOGIC TIER ==================== -->
   <g filter="url(#shadow)">
-    <rect x="50" y="345" width="1000" height="240" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.8"/>
-    <rect x="65" y="332" width="380" height="28" rx="6" fill="#6d28d9"/>
-    <text x="255" y="351" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">2. ส่วนประมวลผลตรรกะและค้นหา (Logic &amp; NLP Layer - app.js)</text>
+    <rect x="40" y="340" width="920" height="175" rx="12" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+    <!-- Tier Header Tag -->
+    <rect x="55" y="327" width="400" height="28" rx="6" fill="#6d28d9"/>
+    <text x="255" y="346" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">ชั้นที่ 2: ส่วนประมวลผลตรรกะและ NLP (Logic Tier - app.js)</text>
   </g>
 
-  <!-- Layer 2 Components -->
+  <!-- 4 Clean Boxes in Tier 2 -->
   <g filter="url(#shadow)">
-    <rect x="75" y="375" width="215" height="185" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.2"/>
-    <text x="182" y="405" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#5b21b6">🔤 Text Normalizer</text>
-    <text x="95" y="432" font-size="12" fill="#334155">• ตัดช่องว่าง &amp; สัญลักษณ์</text>
-    <text x="95" y="454" font-size="12" fill="#334155">• ลบวรรณยุกต์เทียบเคียง</text>
-    <text x="95" y="476" font-size="12" fill="#334155">• แปลงเป็นตัวพิมพ์เล็ก</text>
-    <text x="95" y="498" font-size="12" fill="#334155">• ฟังก์ชัน normTh()</text>
-    <text x="95" y="528" font-size="11.5" fill="#6d28d9">เตรียมสตริงก่อนการสกัดคำ</text>
+    <rect x="60" y="370" width="205" height="125" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.5"/>
+    <text x="162" y="404" text-anchor="middle" font-size="15" font-weight="bold" fill="#5b21b6">🔤 Text Normalizer</text>
+    <text x="162" y="432" text-anchor="middle" font-size="13" fill="#334155">เตรียมข้อความก่อนวิเคราะห์</text>
+    <text x="162" y="454" text-anchor="middle" font-size="11.5" fill="#64748b">ตัดวรรณยุกต์และช่องว่าง</text>
+    <text x="162" y="474" text-anchor="middle" font-size="11" fill="#7c3aed">ฟังก์ชัน normTh()</text>
 
-    <rect x="315" y="375" width="235" height="185" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.2"/>
-    <text x="432" y="405" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#5b21b6">🧠 Station &amp; Zone NLP</text>
-    <text x="335" y="432" font-size="12" fill="#334155">• Direct Substring Match</text>
-    <text x="335" y="454" font-size="12" fill="#334155">• Levenshtein Distance</text>
-    <text x="335" y="476" font-size="12" fill="#334155">• โซนสุขุมวิท (58 สถานี)</text>
-    <text x="335" y="498" font-size="12" fill="#334155">• โซนพหลโยธิน (28 สถานี)</text>
-    <text x="335" y="528" font-size="11.5" fill="#6d28d9">ป้องกันการค้นหาข้ามโซน</text>
+    <rect x="285" y="370" width="215" height="125" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.5"/>
+    <text x="392" y="404" text-anchor="middle" font-size="15" font-weight="bold" fill="#5b21b6">🧠 Station &amp; Zone NLP</text>
+    <text x="392" y="432" text-anchor="middle" font-size="13" fill="#334155">ค้นหาสถานีและจัดกลุ่มโซน</text>
+    <text x="392" y="454" text-anchor="middle" font-size="11.5" fill="#64748b">Levenshtein + Zone Map</text>
+    <text x="392" y="474" text-anchor="middle" font-size="11" fill="#7c3aed">โซนสุขุมวิท / พหลโยธิน</text>
 
-    <rect x="575" y="375" width="225" height="185" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.2"/>
-    <text x="687" y="405" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#5b21b6">🏷️ Multi-Entity Parser</text>
-    <text x="595" y="432" font-size="12" fill="#334155">• สัตว์เลี้ยง: RegEx บวก/ลบ</text>
-    <text x="595" y="454" font-size="12" fill="#334155">• ไลฟ์สไตล์: Taxonomy Map</text>
-    <text x="595" y="476" font-size="12" fill="#334155">• งบประมาณ: RegEx Range/k</text>
-    <text x="595" y="498" font-size="12" fill="#334155">• ระยะเดิน: RegEx '...ม.'</text>
-    <text x="595" y="528" font-size="11.5" fill="#6d28d9">แยก 4 เงื่อนไขอัตโนมัติ</text>
+    <rect x="520" y="370" width="215" height="125" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.5"/>
+    <text x="627" y="404" text-anchor="middle" font-size="15" font-weight="bold" fill="#5b21b6">🏷️ 4-Entity Parser</text>
+    <text x="627" y="432" text-anchor="middle" font-size="13" fill="#334155">สกัดเงื่อนไข 4 มิติ</text>
+    <text x="627" y="454" text-anchor="middle" font-size="11.5" fill="#64748b">สัตว์เลี้ยง • ไลฟ์สไตล์ • งบ</text>
+    <text x="627" y="474" text-anchor="middle" font-size="11" fill="#7c3aed">Regex &amp; Lifestyle Taxonomy</text>
 
-    <rect x="825" y="375" width="205" height="185" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.2"/>
-    <text x="927" y="405" text-anchor="middle" font-size="14.5" font-weight="bold" fill="#5b21b6">⚙️ Search &amp; Filter</text>
-    <text x="845" y="432" font-size="12" fill="#334155">• Multi-Criteria Match</text>
-    <text x="845" y="454" font-size="12" fill="#334155">• Walking Distance Filter</text>
-    <text x="845" y="476" font-size="12" fill="#334155">• Relevance Sorting Score</text>
-    <text x="845" y="498" font-size="12" fill="#334155">• Default Showcase</text>
-    <text x="845" y="528" font-size="11.5" fill="#6d28d9">จัดอันดับความตรงเงื่อนไข</text>
+    <rect x="755" y="370" width="185" height="125" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.5"/>
+    <text x="847" y="404" text-anchor="middle" font-size="15" font-weight="bold" fill="#5b21b6">⚙️ Search &amp; Filter</text>
+    <text x="847" y="432" text-anchor="middle" font-size="13" fill="#334155">จับคู่และจัดอันดับห้อง</text>
+    <text x="847" y="454" text-anchor="middle" font-size="11.5" fill="#64748b">คัดกรองระยะเดินเท้า</text>
+    <text x="847" y="474" text-anchor="middle" font-size="11" fill="#7c3aed">Relevance Ranking Score</text>
   </g>
 
   <!-- ==================== CONNECTORS 2 <-> 3 ==================== -->
-  <line x1="550" y1="585" x2="550" y2="635" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-down)"/>
-  <rect x="410" y="598" width="280" height="24" rx="5" fill="#ffffff" stroke="#a7f3d0"/>
-  <text x="550" y="615" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">↕️ สืบค้นและดึงข้อมูลโครงการ (In-Memory Query)</text>
+  <line x1="500" y1="515" x2="500" y2="575" stroke="#059669" stroke-width="2.2" marker-end="url(#arrow-down)"/>
+  <rect x="350" y="530" width="300" height="24" rx="5" fill="#ffffff" stroke="#a7f3d0"/>
+  <text x="500" y="547" text-anchor="middle" font-size="12" font-weight="bold" fill="#047857">↕️ สืบค้นข้อมูลโครงการในหน่วยความจำ (In-Memory Query)</text>
 
-  <!-- ==================== LAYER 3: DATA LAYER ==================== -->
+  <!-- ==================== TIER 3: DATA STORAGE TIER ==================== -->
   <g filter="url(#shadow)">
-    <rect x="50" y="635" width="1000" height="145" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="1.8"/>
-    <rect x="65" y="622" width="320" height="28" rx="6" fill="#047857"/>
-    <text x="225" y="641" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">3. ส่วนจัดเก็บข้อมูล (Data Storage Layer - data.js)</text>
+    <rect x="40" y="575" width="920" height="165" rx="12" fill="#ecfdf5" stroke="#059669" stroke-width="2"/>
+    <!-- Tier Header Tag -->
+    <rect x="55" y="562" width="340" height="28" rx="6" fill="#047857"/>
+    <text x="225" y="581" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ffffff">ชั้นที่ 3: ส่วนจัดเก็บข้อมูล (Data Storage Tier - data.js)</text>
   </g>
 
+  <!-- Clean Sub-boxes in Tier 3 -->
   <g filter="url(#shadow)">
-    <rect x="75" y="665" width="955" height="95" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.2"/>
-    <text x="105" y="696" font-size="15.5" font-weight="bold" fill="#065f46">📦 CONDO_DATASET (Single-Entity Document Dataset 100 โครงการ)</text>
-    <text x="105" y="722" font-size="13" fill="#334155">• โครงสร้างข้อมูล 10 ฟิลด์: id, name, station, transitType, distance, price, petFriendly, lifestyle[], desc, image</text>
-    <text x="105" y="743" font-size="12.5" fill="#047857">• ขอบเขตสถานี: BTS รถไฟฟ้าสายสีเขียวตลอดสาย (สถานีคูคต N24 ถึง สถานีเคหะฯ E23 รวม 47 สถานีหลัก)</text>
+    <rect x="60" y="605" width="430" height="115" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+    <text x="275" y="638" text-anchor="middle" font-size="15.5" font-weight="bold" fill="#065f46">📦 คลังข้อมูล CONDO_DATASET</text>
+    <text x="275" y="664" text-anchor="middle" font-size="13" fill="#334155">ชุดข้อมูลคอนโดมิเนียมจริง 100 โครงการ</text>
+    <text x="275" y="686" text-anchor="middle" font-size="11.5" fill="#64748b">จัดเก็บแบบ Single-Entity Document Objects</text>
+    <text x="275" y="705" text-anchor="middle" font-size="11" fill="#059669">เข้าถึงข้อมูลแบบ Instant Access (0ms latency)</text>
+
+    <rect x="510" y="605" width="430" height="115" rx="8" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.5"/>
+    <text x="725" y="638" text-anchor="middle" font-size="15.5" font-weight="bold" fill="#065f46">🏷️ โครงสร้างข้อมูล 10 คุณลักษณะ (Schema)</text>
+    <text x="725" y="664" text-anchor="middle" font-size="12.5" fill="#334155">id, name, station, transitType, distance, price,</text>
+    <text x="725" y="685" text-anchor="middle" font-size="12.5" fill="#334155">petFriendly, lifestyle[ ], desc, image</text>
+    <text x="725" y="705" text-anchor="middle" font-size="11" fill="#059669">ครอบคลุม BTS สายสีเขียว 47 สถานี (คูคต - เคหะฯ)</text>
   </g>
 
   <!-- Footer Credit -->
-  <text x="550" y="825" text-anchor="middle" font-size="12" fill="#94a3b8">คณะเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มหาวิทยาลัยรังสิต • วาทินี วรรณกิจ (6707225)</text>
+  <text x="500" y="795" text-anchor="middle" font-size="12" fill="#94a3b8">คณะเทคโนโลยีสารสนเทศและนวัตกรรมดิจิทัล มหาวิทยาลัยรังสิต • วาทินี วรรณกิจ (6707225)</text>
 </svg>
