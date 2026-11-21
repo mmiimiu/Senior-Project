@@ -1,4 +1,4 @@
-# Thai NLP Condominium Search Prototype (Lifestyle Criteria)
+# Thai NLP Condominium Search System (Next.js + Python FastAPI + SQLite)
 ระบบค้นหาคอนโดมิเนียมจากข้อความภาษาธรรมชาติภาษาไทยตามเงื่อนไขไลฟ์สไตล์
 
 โครงงานวิจัยปริญญานิพนธ์ สาขาวิชาวิทยาการคอมพิวเตอร์ วิทยาลัยนวัตกรรมดิจิทัลเทคโนโลยี มหาวิทยาลัยรังสิต (ปีการศึกษา 2569)
@@ -7,34 +7,46 @@
 
 ---
 
-## จุดเด่นของสถาปัตยกรรม (JavaScript-Centric & Concise Code)
-1. **พัฒนาด้วย JavaScript เป็นหลัก (Vanilla JS ES6+)**:
-   - ระบบค้นหาและสกัดเอนทิตีภาษาธรรมชาติ 4 มิติ ทำงานบนฝั่งไคลเอนต์ (Client-side NLP) ได้อย่างรวดเร็วโดยไม่ต้องพึ่งพาเซิร์ฟเวอร์ภายนอก
-   - มี `server.js` ในรูปแบบ Pure Node.js Built-in สำหรับรันใน VS Code
-2. **โครงสร้างโค้ดกระชับตามกฎ (Strictly <= 150 Lines per File)**:
-   - `app.js`: 140 บรรทัด (NLP Search & Entity Extraction Engine)
-   - `data.js`: ฐานข้อมูลคอนโดมิเนียม BTS สายสีเขียว รวม 100 โครงการในไฟล์เดียวอย่างเป็นระเบียบ
-   - `index.html`: 122 บรรทัด (โครงสร้างหน้าเว็บและ Semantic UI)
-   - `style.css`: 98 บรรทัด (Modern Luxury Glassmorphism)
+## โครงสร้างไฟล์แบ่งตาม Layer (3-Tier Layered Architecture)
 
----
+```text
+Project/
+├── src/                                # [Layer 1: Presentation Tier — Next.js (React/TypeScript)]
+│   ├── app/                            # Next.js App Router (layout.tsx, page.tsx, globals.css)
+│   ├── components/                     # UI Components (SearchHero, CriteriaMonitor, CondoGrid, Modals)
+│   └── types/                          # TypeScript Interfaces (condo.ts)
+├── backend/                            # [Layer 2 & 3: Application & Data Tier — Python FastAPI + SQLite]
+│   ├── api/                            # API Layer (routes.py — FastAPI REST Endpoints)
+│   ├── services/                       # Service Layer (nlp_engine.py — PyThaiNLP, TF-IDF, Levenshtein)
+│   ├── data/                           # Data Layer (database.py & condos.db — ฐานข้อมูล SQLite 100 โครงการ)
+│   ├── tests/                          # Testing Layer (evaluate_chapter4.py & test_nlp_engine.py)
+│   └── requirements.txt
+├── docs/                               # [Documentation & Thesis Reports]
+│   ├── เล่มโปรเจค-6707225Edit 2-.docx  # เล่มโปรเจกต์จบฉบับสมบูรณ์ (บทที่ 1–5)
+│   ├── ResearchPaper.docx              # เล่มวิจัย (บทที่ 1–3)
+│   └── diagrams/                       # แผนภาพการออกแบบระบบ (รูปที่ 3.1 – 3.5)
+├── main.py                             # Entry Point สตาร์ททั้ง Next.js และ FastAPI ด้วยคำสั่งเดียว
+├── next.config.mjs                     # ตั้งค่า Next.js & API Proxy Rewrites
+├── package.json                        # Scripts (dev, build, test, evaluate)
+└── tsconfig.json                       # ตั้งค่า TypeScript
+```
 
-## ฟังก์ชันการค้นหา 4 มิติ
-1. 🚇 **ทำเล / สถานีรถไฟฟ้า**: รองรับสถานี BTS สายสีเขียว (คูคต - เคหะฯ) เช่น อารีย์, บางเขน, คูคต, หมอชิต ฯลฯ
-2. 🐾 **นโยบายสัตว์เลี้ยง**: กรองห้องพักที่อนุญาตเลี้ยงสัตว์ (Pet-Friendly) หรือไม่อนุญาตเลี้ยงสัตว์อย่างเข้มงวด 100%
-3. ✨ **บรรยากาศและไลฟ์สไตล์**: เช่น เหมาะกับ WFH, เงียบสงบ, เป็นส่วนตัว, วิวเมืองสวย, ราคาประหยัด
-4. 💰 **งบประมาณค่าเช่า**: สกัดราคาและช่วงงบประมาณ (เช่น ไม่เกิน 7,000, 5,000-8,000 บ.) และล็อกไม่ให้แสดงห้องพักที่ราคาเกินงบเด็ดขาด
+## วิธีการรันระบบใน VS Code (คำสั่งเดียวสตาร์ทครบทั้ง Stack)
+```bash
+npm run dev
+```
+หรือกดปุ่ม **Run / F5** (`Run Full-Stack (Next.js + FastAPI + SQLite)`) ใน VS Code:
+- **Next.js Frontend Server**: `http://localhost:3000`
+- **FastAPI Server + Static UI**: `http://localhost:5500`
+- **Swagger API Documentation**: `http://localhost:5500/docs`
 
----
+## วิธีเผยแพร่เว็บไซต์ให้เปิดผ่านอินเทอร์เน็ต
+โปรเจกต์แยกหน้าเว็บ Next.js และ API FastAPI จึงต้องเผยแพร่ทั้งสองส่วน:
 
-## วิธีการเปิดใช้งานบน VS Code
-1. **รันผ่าน Node.js (JavaScript Server)**:
-   ```bash
-   npm start
-   # หรือ
-   node server.js
-   ```
-   เปิดเว็บเบราว์เซอร์ที่: `http://localhost:5500`
+1. Push โค้ดขึ้น GitHub
+2. สร้าง Web Service บน Render โดยเลือก repository นี้ Render จะอ่านการตั้งค่าจาก `render.yaml` แล้วติดตั้ง backend ให้อัตโนมัติ เมื่อ Deploy สำเร็จ ให้คัดลอก URL ของ service (เช่น `https://ชื่อ-service.onrender.com`)
+3. Import repository เดียวกันเป็นโปรเจกต์บน Vercel โดยใช้ค่า Build Command เริ่มต้น (`npm run build`)
+4. ใน Vercel ไปที่ **Settings → Environment Variables** เพิ่ม `NEXT_PUBLIC_API_BASE_URL` ให้เป็น URL ของ Render โดยไม่ต้องเติม `/api` ต่อท้าย แล้วกด Redeploy
+5. เปิด URL ที่ Vercel แสดง เพื่อเข้าชมเว็บไซต์จากอินเทอร์เน็ต
 
-2. **รันผ่าน VS Code Live Server Extension**:
-   - คลิกขวาที่ไฟล์ `index.html` แล้วเลือก **Open with Live Server** (Port 5500)
+API ที่เผยแพร่แล้วดูเอกสารได้ที่ `<Render URL>/docs` และตรวจสถานะได้ที่ `<Render URL>/api/info` หากใช้บริการ Render แบบ Free อาจต้องรอสักครู่เมื่อเรียกครั้งแรกหลังไม่มีการใช้งาน

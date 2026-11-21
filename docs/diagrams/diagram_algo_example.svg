@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1100" width="1100" height="1100" style="font-family:'Sarabun', 'Prompt', 'Thonburi', -apple-system, BlinkMacSystemFont, sans-serif;">
+  <defs>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#059669"/>
+    </marker>
+    <marker id="arr-p" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="1100" fill="#ffffff"/>
+
+  <!-- Header -->
+  <rect x="40" y="24" width="1020" height="72" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="550" y="55" text-anchor="middle" font-size="21" font-weight="bold" fill="#0f172a">ตัวอย่างการทำงานของอัลกอริทึม (Algorithm Trace: Input → Calculation → Output)</text>
+  <text x="550" y="81" text-anchor="middle" font-size="14" fill="#475569">จำลองการประมวลผลคำค้นหาจริง: “อารี เลี้ยงสัตว์ wfh ไม่เกิน7000” บนสถาปัตยกรรม Next.js + FastAPI + SQLite</text>
+
+  <!-- Step 1: User Input -->
+  <rect x="140" y="118" width="820" height="76" rx="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <rect x="156" y="130" width="130" height="24" rx="6" fill="#2563eb"/>
+  <text x="221" y="147" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">STEP 1: INPUT</text>
+  <text x="305" y="148" font-size="14" font-weight="bold" fill="#1e3a8a">ผู้ใช้พิมพ์ประโยคภาษาธรรมชาติบนหน้าเว็บ (Next.js) → ส่ง POST /api/search/nlp</text>
+  <text x="550" y="177" text-anchor="middle" font-size="16" font-weight="bold" fill="#0f172a">Query = "อารี เลี้ยงสัตว์ wfh ไม่เกิน7000"</text>
+
+  <line x1="550" y1="194" x2="550" y2="224" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-b)"/>
+
+  <!-- Step 2: PyThaiNLP Tokenization -->
+  <rect x="140" y="228" width="820" height="86" rx="12" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <rect x="156" y="240" width="180" height="24" rx="6" fill="#7c3aed"/>
+  <text x="246" y="257" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">STEP 2: TOKENIZATION</text>
+  <text x="352" y="258" font-size="14" font-weight="bold" fill="#4c1d95">ตัดคำด้วย PyThaiNLP (word_tokenize engine="newmm") + ลบ Stopwords</text>
+
+  <rect x="210" y="274" width="100" height="28" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="260" y="293" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">"อารี"</text>
+  <rect x="330" y="274" width="130" height="28" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="395" y="293" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">"เลี้ยงสัตว์"</text>
+  <rect x="480" y="274" width="90" height="28" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="525" y="293" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">"wfh"</text>
+  <rect x="590" y="274" width="120" height="28" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="650" y="293" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">"ไม่เกิน"</text>
+  <rect x="730" y="274" width="110" height="28" rx="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="785" y="293" text-anchor="middle" font-size="14" font-weight="bold" fill="#5b21b6">"7000"</text>
+
+  <line x1="550" y1="314" x2="550" y2="344" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arr-p)"/>
+
+  <!-- Step 3: 4-Dimension Entity Extraction -->
+  <rect x="60" y="348" width="980" height="156" rx="12" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
+  <rect x="78" y="360" width="230" height="24" rx="6" fill="#0f172a"/>
+  <text x="193" y="377" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">STEP 3: 4D ENTITY EXTRACTION</text>
+  <text x="325" y="378" font-size="14" font-weight="bold" fill="#0f172a">สกัดเงื่อนไข 4 มิติด้วย Synonym Dictionary, Regex และ Levenshtein Distance</text>
+
+  <!-- 4 Cards -->
+  <rect x="80" y="396" width="220" height="92" rx="8" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="190" y="418" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">1. ทำเล (Station)</text>
+  <text x="190" y="440" text-anchor="middle" font-size="13" fill="#334155">"อารี" → ตรงคำพ้อง</text>
+  <text x="190" y="460" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">station = "BTS อารีย์"</text>
+  <text x="190" y="478" text-anchor="middle" font-size="11" fill="#64748b">(รับระยะห่าง ≤ 2 สถานี)</text>
+
+  <rect x="320" y="396" width="220" height="92" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+  <text x="430" y="418" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">2. สัตว์เลี้ยง (Pet Policy)</text>
+  <text x="430" y="440" text-anchor="middle" font-size="13" fill="#334155">"เลี้ยงสัตว์" → ไม่พบคำปฏิเสธ</text>
+  <text x="430" y="460" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">pet_friendly = True</text>
+  <text x="430" y="478" text-anchor="middle" font-size="11" fill="#64748b">(Hard Filter: ต้องเลี้ยงได้)</text>
+
+  <rect x="560" y="396" width="220" height="92" rx="8" fill="#faf5ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="670" y="418" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d28d9">3. ไลฟ์สไตล์ (Lifestyle)</text>
+  <text x="670" y="440" text-anchor="middle" font-size="13" fill="#334155">"wfh" → LIFESTYLE_CLUSTERS</text>
+  <text x="670" y="460" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">tags = ["เหมาะกับ WFH"]</text>
+  <text x="670" y="478" text-anchor="middle" font-size="11" fill="#64748b">(Soft Score +16 ต่อแท็ก)</text>
+
+  <rect x="800" y="396" width="220" height="92" rx="8" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="910" y="418" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">4. งบประมาณ (Budget)</text>
+  <text x="910" y="440" text-anchor="middle" font-size="13" fill="#334155">Regex จับ "ไม่เกิน7000"</text>
+  <text x="910" y="460" text-anchor="middle" font-size="13" font-weight="bold" fill="#0f172a">max_price = 7,000</text>
+  <text x="910" y="478" text-anchor="middle" font-size="11" fill="#64748b">(Hard Filter: ≤ 7,000 บ./ด.)</text>
+
+  <line x1="550" y1="504" x2="550" y2="534" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arr-b)"/>
+
+  <!-- Step 4: SQLite Filtering + TF-IDF & Hybrid Scoring -->
+  <rect x="60" y="538" width="980" height="236" rx="12" fill="#f0fdf4" stroke="#059669" stroke-width="2"/>
+  <rect x="78" y="550" width="300" height="24" rx="6" fill="#059669"/>
+  <text x="228" y="567" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">STEP 4: FILTERING &amp; HYBRID SCORING</text>
+  <text x="394" y="568" font-size="14" font-weight="bold" fill="#064e3b">คัดกรองจาก 100 โครงการ (SQLite: condos.db) + คำนวณคะแนน TF-IDF Cosine Similarity</text>
+
+  <!-- Left box: Filtering -->
+  <rect x="80" y="586" width="380" height="170" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <text x="270" y="608" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">4.1 คัดกรองเงื่อนไขบังคับ (Hard Filter)</text>
+  <text x="96" y="632" font-size="13" fill="#334155">• ฐานข้อมูล SQLite ทั้งหมด: 100 โครงการ</text>
+  <text x="96" y="654" font-size="13" fill="#334155">• ตัดโครงการที่ห่าง BTS อารีย์ &gt; 2 สถานี</text>
+  <text x="96" y="676" font-size="13" fill="#334155">• ตัดโครงการที่ pet_friendly = False</text>
+  <text x="96" y="698" font-size="13" fill="#334155">• ตัดโครงการที่ price &gt; 7,000 บาท/เดือน</text>
+  <rect x="96" y="712" width="348" height="32" rx="6" fill="#ecfdf5" stroke="#10b981"/>
+  <text x="270" y="733" text-anchor="middle" font-size="13" font-weight="bold" fill="#065f46">ผ่านเกณฑ์ทั้ง 3 เงื่อนไขบังคับ = 2 โครงการ</text>
+
+  <!-- Right box: Hybrid Formula -->
+  <rect x="480" y="586" width="540" height="170" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.5"/>
+  <text x="750" y="608" text-anchor="middle" font-size="14" font-weight="bold" fill="#047857">4.2 คำนวณคะแนนความตรงใจ (Hybrid Score Formula)</text>
+  <text x="496" y="632" font-size="12.5" font-weight="bold" fill="#0f172a">Score = Location(+50) + Pet(+30) + Budget(+20) + Tag(+16) + TF-IDF(35×CosineSim)</text>
+  <text x="496" y="656" font-size="13" fill="#1e293b">1) Le Rich @ Aree (BTS อารีย์, ฿6,800, เลี้ยงสัตว์ได้, เหมาะกับ WFH):</text>
+  <text x="512" y="676" font-size="12.5" fill="#047857">   50 + 30 + 20 + 16 + (35 × CosineSim) → Clamp สูงสุด = 100% (Match Score)</text>
+  <text x="496" y="700" font-size="13" fill="#1e293b">2) The Seed Atom Phaholyothin 7 (BTS อารีย์, ฿7,000, เลี้ยงสัตว์ได้, WFH):</text>
+  <text x="512" y="720" font-size="12.5" fill="#047857">   50 + 30 + 20 + 16 + (35 × CosineSim) → Clamp สูงสุด = 100% (Match Score)</text>
+  <text x="496" y="744" font-size="12" fill="#475569">เรียงผลลัพธ์ตาม: (1) ระยะสถานีใกล้สุด → (2) Match Score สูงสุด → (3) TF-IDF Cosine สูงสุด</text>
+
+  <line x1="550" y1="774" x2="550" y2="804" stroke="#059669" stroke-width="2.5" marker-end="url(#arr-g)"/>
+
+  <!-- Step 5: JSON Response & UI Render -->
+  <rect x="60" y="808" width="980" height="226" rx="12" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+  <rect x="78" y="820" width="280" height="24" rx="6" fill="#1d4ed8"/>
+  <text x="218" y="837" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">STEP 5: JSON RESPONSE → UI</text>
+  <text x="374" y="838" font-size="14" font-weight="bold" fill="#1e3a8a">FastAPI ส่งผลลัพธ์ JSON กลับไปยัง Next.js เพื่ออัปเดตหน้าเว็บทันที</text>
+
+  <!-- JSON Payload -->
+  <rect x="80" y="856" width="450" height="160" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="96" y="878" font-size="13" font-weight="bold" fill="#38bdf8">JSON Response ที่ส่งกลับ (/api/search/nlp):</text>
+  <text x="96" y="900" font-size="12" fill="#e2e8f0">{ "total_found": 2,</text>
+  <text x="96" y="918" font-size="12" fill="#a7f3d0">  "condition_summary": "สกัดได้ 4 มิติเงื่อนไข",</text>
+  <text x="96" y="936" font-size="12" fill="#fde68a">  "entities": { "station": "BTS อารีย์", "pet": true, "max": 7000 },</text>
+  <text x="96" y="954" font-size="12" fill="#c7d2fe">  "results": [</text>
+  <text x="96" y="972" font-size="12" fill="#e2e8f0">    { "name": "Le Rich @ Aree", "match_score": 100, "reasons": [...] },</text>
+  <text x="96" y="990" font-size="12" fill="#e2e8f0">    { "name": "The Seed Atom Phaholyothin 7", "match_score": 100 }</text>
+  <text x="96" y="1006" font-size="12" fill="#c7d2fe">  ] }</text>
+
+  <!-- UI Display -->
+  <rect x="550" y="856" width="470" height="160" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="785" y="878" text-anchor="middle" font-size="14" font-weight="bold" fill="#1d4ed8">การแสดงผลบนหน้าเว็บ (Next.js Components)</text>
+  <text x="566" y="904" font-size="13" fill="#0f172a">1. CriteriaMonitor.tsx (แถบสรุป 4 สี):</text>
+  <text x="580" y="924" font-size="12.5" fill="#2563eb">   🚇 BTS อารีย์  |  🐾 อนุญาต  |  ✨ เหมาะกับ WFH  |  💰 ≤ 7,000 บ./ด.</text>
+  <text x="566" y="950" font-size="13" fill="#0f172a">2. CondoGrid.tsx (แสดงผลลัพธ์ 2 โครงการ):</text>
+  <text x="580" y="970" font-size="12.5" fill="#334155">   • การ์ด #1: Le Rich @ Aree (฿6,800/ด. • BTS อารีย์ 500 ม.)</text>
+  <text x="580" y="990" font-size="12.5" fill="#334155">   • การ์ด #2: The Seed Atom Phaholyothin 7 (฿7,000/ด. • 400 ม.)</text>
+  <text x="566" y="1010" font-size="12" fill="#64748b">3. Modals.tsx: คลิกการ์ดเพื่อเปิดดูรายละเอียดและสิ่งอำนวยความสะดวก</text>
+
+  <!-- Footer -->
+  <text x="550" y="1070" text-anchor="middle" font-size="13" fill="#64748b">วิทยาลัยนวัตกรรมดิจิทัลเทคโนโลยี มหาวิทยาลัยรังสิต • นางสาว วาธิณีย์ วรรณกิจ (6707225)</text>
+</svg>

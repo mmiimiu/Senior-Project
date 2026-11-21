@@ -2,15 +2,34 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Start JavaScript Server (Port 5500)",
+      "label": "Setup: Install Dependencies (Python + Node.js)",
       "type": "shell",
-      "command": "node server.js",
+      "command": "[ -x .venv/bin/python ] || python3 -m venv .venv; .venv/bin/pip install -r backend/requirements.txt && npm install",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Full-Stack (Next.js + FastAPI + SQLite)",
+      "type": "shell",
+      "command": "[ -x .venv/bin/python ] && .venv/bin/python main.py || python3 main.py",
       "problemMatcher": [],
       "isBackground": true,
       "group": {
         "kind": "build",
         "isDefault": true
       }
+    },
+    {
+      "label": "Run Unit Tests (Python)",
+      "type": "shell",
+      "command": ".venv/bin/python -m unittest backend.tests.test_nlp_engine",
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Run Chapter 4 Evaluation (Python)",
+      "type": "shell",
+      "command": "[ -x .venv/bin/python ] && .venv/bin/python backend/tests/evaluate_chapter4.py || python3 backend/tests/evaluate_chapter4.py",
+      "problemMatcher": []
     }
   ]
 }

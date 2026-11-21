@@ -1,18 +1,36 @@
 {
   "name": "thai-nlp-condo-search",
-  "version": "1.0.0",
-  "description": "Thai NLP Condominium Search System (Senior Project - Rangsit University)",
-  "main": "app.js",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Thai NLP Condominium Search System (Next.js + Python FastAPI + SQLite - Rangsit University)",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js",
-    "test": "node --check app.js data.js server.js"
+    "dev": "[ -x .venv/bin/python ] && .venv/bin/python main.py || python3 main.py",
+    "next:dev": "next dev -p 3000",
+    "build": "NEXT_BUILD_EXPORT=1 next build",
+    "start": "[ -x .venv/bin/python ] && .venv/bin/python main.py || python3 main.py",
+    "evaluate": "[ -x .venv/bin/python ] && .venv/bin/python backend/tests/evaluate_chapter4.py || python3 backend/tests/evaluate_chapter4.py",
+    "test": "[ -x .venv/bin/python ] && .venv/bin/python -m unittest backend.tests.test_nlp_engine || python3 -m unittest backend.tests.test_nlp_engine"
+  },
+  "dependencies": {
+    "next": "^14.2.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.3"
   },
   "keywords": [
+    "nextjs",
+    "react",
+    "typescript",
     "thai-nlp",
-    "condo-search",
-    "javascript",
-    "bts-green-line"
+    "pythainlp",
+    "fastapi",
+    "sqlite",
+    "condo-search"
   ],
   "author": "Watinee Wannakit (6707225)",
   "license": "MIT"

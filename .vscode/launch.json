@@ -2,16 +2,30 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Open index.html in Chrome",
-      "type": "chrome",
+      "name": "Run Full-Stack (Next.js + FastAPI + SQLite)",
+      "type": "python",
       "request": "launch",
-      "file": "${workspaceFolder}/index.html"
+      "program": "${workspaceFolder}/main.py",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
     },
     {
-      "name": "Open Localhost (5500)",
+      "name": "Run Chapter 4 Evaluation Benchmark",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/backend/tests/evaluate_chapter4.py",
+      "python": "${workspaceFolder}/.venv/bin/python",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Open Next.js Web App in Chrome (Port 3000)",
       "type": "chrome",
       "request": "launch",
-      "url": "http://localhost:5500",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
     }
   ]
