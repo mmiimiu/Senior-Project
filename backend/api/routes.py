@@ -48,32 +48,22 @@ class SearchRequest(BaseModel):
 def build_condition_summary(entities: dict, query: str = "") -> dict:
     """สร้างข้อความสรุปเงื่อนไข 4 มิติจากฝั่ง Python สำหรับแสดงผลบน Next.js UI"""
     station = entities.get("station") or entities.get("line")
+    oos = entities.get("out_of_scope")
     lifestyle = entities.get("lifestyle_tags_matched") or []
     min_price, max_price = entities.get("min_price"), entities.get("max_price")
     pet = entities.get("pet_friendly")
-
-    if min_price and max_price:
-        budget_text = f"{min_price:,} - {max_price:,} บ./ด."
-    elif max_price:
-        budget_text = f"≤ {max_price:,} บ./ด."
-    elif min_price:
-        budget_text = f"≥ {min_price:,} บ./ด."
-    else:
-        budget_text = "ไม่จำกัด"
-
-    pet_text = (
-        "✅ อนุญาตเลี้ยงสัตว์"
-        if pet is True
-        else ("❌ ไม่อนุญาตเลี้ยงสัตว์" if pet is False else ("ทั่วไป" if query else "ไม่ระบุ"))
-    )
+    budget_text = f"{min_price:,} - {max_price:,} บ./ด." if (min_price and max_price) else (f"≤ {max_price:,} บ./ด." if max_price else (f"≥ {min_price:,} บ./ด." if min_price else "ไม่จำกัด"))
+    pet_text = "✅ อนุญาตเลี้ยงสัตว์" if pet is True else ("❌ ไม่อนุญาตเลี้ยงสัตว์" if pet is False else ("ทั่วไป" if query else "ไม่ระบุ"))
+    transit_val = f"{oos} (นอกแนว BTS สายสีเขียว)" if oos else (station or ("ไม่พบทำเล" if query else "ทั้งหมด"))
     items = [
-        {"id": "entityTransit", "value": station or ("ไม่พบทำเล" if query else "ทั้งหมด"), "active": bool(station)},
+        {"id": "entityTransit", "value": transit_val, "active": bool(station or oos)},
         {"id": "entityPet", "value": pet_text, "active": pet is not None},
         {"id": "entityLifestyle", "value": ", ".join(lifestyle) if lifestyle else ("ทั่วไป" if query else "ไม่ระบุ"), "active": len(lifestyle) > 0},
         {"id": "entityBudget", "value": budget_text, "active": bool(min_price or max_price)},
     ]
     active_count = sum(1 for item in items if item["active"])
-    return {"items": items, "badge": f"สกัดได้ {active_count} มิติเงื่อนไข" if active_count else "พร้อมวิเคราะห์"}
+    badge = "ทำเลอยู่นอกแนว BTS สายสีเขียว (0 รายการ)" if oos else (f"สกัดได้ {active_count} มิติเงื่อนไข" if active_count else "พร้อมวิเคราะห์")
+    return {"items": items, "badge": badge}
 
 
 @app.get("/api/info")

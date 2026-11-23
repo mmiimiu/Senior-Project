@@ -31,6 +31,7 @@ export interface ConditionSummary {
 export interface ExtractedEntities {
   station?: string | null;
   line?: string | null;
+  out_of_scope?: string | null;
   pet_friendly?: boolean | null;
   min_price?: number | null;
   max_price?: number | null;

@@ -52,9 +52,11 @@ export default function CondoGrid({
             <div style={{ fontSize: "2.5rem", marginBottom: "12px" }}>🔍</div>
             <p style={{ fontSize: "1.15rem", color: "#fff", fontWeight: 600 }}>ไม่พบคอนโดมิเนียมที่ตรงกับเงื่อนไข</p>
             <p style={{ fontSize: "0.9rem", marginTop: "8px", color: "#94a3b8", lineHeight: 1.6 }}>
-              {entities.max_price
-                ? `ไม่มีรายการที่ผ่านงบไม่เกิน ฿${Number(entities.max_price).toLocaleString()} บาท/เดือน`
-                : "ลองปรับคำค้นหาหรือเปลี่ยนตัวกรอง"}
+              {entities.out_of_scope
+                ? `ทำเล "${entities.out_of_scope}" อยู่นอกแนว BTS สายสีเขียว (ระบบครอบคลุมเฉพาะคอนโดตามแนว BTS คูคต - เคหะฯ)`
+                : entities.max_price
+                  ? `ไม่มีรายการที่ผ่านงบไม่เกิน ฿${Number(entities.max_price).toLocaleString()} บาท/เดือน`
+                  : "ลองปรับคำค้นหาหรือเปลี่ยนตัวกรอง"}
             </p>
           </div>
         ) : (
